@@ -1,0 +1,47 @@
+<!-- 个人信息 -->
+<ion-view view-title="个人资料" >
+    <ion-nav-buttons side="left">
+        <button class="button button-clear ion-chevron-left button-anywide" ng-click="gotoHome()">&nbsp;&nbsp;&nbsp;&nbsp;</button>
+    </ion-nav-buttons>
+    
+    <ion-content style="background-color: #F2F2F2">
+
+        <div class="list">
+
+            <!-- 身份与荣誉 -->
+            <a class="item item-icon-left item-icon-right" href="javascript:void(0)" ng-click="identityClick()">
+                <i class="icon">
+                    <h2>&nbsp;身份与荣誉</h2>
+                </i>
+
+                <span class="item-note" ng-init="updateUserRole()">{{data.userRole}}</span>
+                <!--<i class="icon ion-ios-arrow-right"></i>-->
+            </a>
+            
+            <!-- 二维码名片 -->
+            <a class="item item-icon-left item-icon-right" herf="javascript:void(0)" ng-click="myCodeClick()" ng-if="!ios">
+                <i class="icon">
+                    <h2>&nbsp;二维码名片</h2>
+                </i>
+
+                <span class="item-note">&nbsp;</span>
+                <i class="icon ion-ios-arrow-right"></i>
+            </a>
+
+            <div class="item item-divider-anywide" ng-if="!ios"></div>
+
+            <!-- 地址管理 -->
+            <a class="item item-icon-left item-icon-right" herf="javascript:void(0)" ng-click="addressManageClick()" ng-if="!ios">
+                <i class="icon">
+                    <h2>&nbsp;地址管理</h2>
+                </i>
+
+                <span class="item-note">&nbsp;</span>
+                <i class="icon ion-ios-arrow-right"></i>
+            </a>
+
+
+        </div>
+
+    </ion-content>
+</ion-view>

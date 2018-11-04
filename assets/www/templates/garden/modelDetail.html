@@ -1,0 +1,66 @@
+
+<div class="bar bar-header bar-anywide">
+    <button class="button button-clear ion-chevron-left button-anywide" ng-click="goBack()">&nbsp;&nbsp;&nbsp;&nbsp;</button>
+    <h1 class="title" >种植模型详情</h1>
+</div>
+
+<ion-view title="种植模型详情" hide-nav-bar="true">
+    <meta name="format-detection" content="telephone=no" />
+    <ion-content class="has-header" has-bouncing="false" ng-init="requestPlaningDetail()" style="background-color:#F2F2F2 ">
+        <div ng-repeat="item in data.planting">
+            <label class="item item-thumbnail-left" style="background-color: #F2F2F2;border-bottom: 1px solid gainsboro" ng-click="clickItem($index)">
+                <img ng-src="{{handlePath(item.crop_image)}}" style="width: 70px;height: 70px"/>
+                <i class="icon ion-chevron-down" ng-if="openIndex != $index" style="float: right;margin-top: 30px;color: #979797"></i>
+                <i class="icon ion-chevron-up" ng-if="openIndex == $index" style="float: right;margin-top: 30px;color: #979797"></i>
+                <h2 style="margin-top: 30px;color: #979797">{{item.crop_name}}</h2>
+                <p style="color: #979797"></p>
+            </label>
+            <div style="background-color: #ffffff;" ng-if="openIndex == $index">
+                <label class="item item-avatar" style="margin-left: 35px;border-left: none;border-top: 1px solid gainsboro;border-bottom: none" ng-repeat="tmp in item.planting_cycle">
+                    <img ng-if="tmp.planting_kind == 1" src="img/sh-fashion-garden-crop_03.png"/>
+                    <img ng-if="tmp.planting_kind == 2" src="img/sh-fashion-garden-crop_03-06.png"/>
+                    <img ng-if="tmp.planting_kind == 3" src="img/sh-fashion-garden-crop_03-08.png"/>
+                    <h2 ng-if="tmp.planting_kind == 1" style="color: #979797">育苗期</h2>
+                    <h2 ng-if="tmp.planting_kind == 2" style="color: #979797">营养生长期</h2>
+                    <h2 ng-if="tmp.planting_kind == 3" style="color: #979797">采收期</h2>
+                    <p style="color: #7eda72;font-size: 16px">{{tmp.start_date}}~{{tmp.end_date}}</p>
+                </label>
+            </div>
+            <div style="height: 2px"></div>
+        </div>
+
+
+
+
+        <!--<div ng-repeat="item in data.planting">
+            <div style="float: left;position: absolute;margin-top: 20px;text-align:right;margin-left: 4%">
+                <h4 style="font-weight: bold;font-size: 12px">{{data.planting[$index].startAlias.substr(0,5)}}</h4>
+                <h4 style="font-weight: bold;font-size: 12px;margin-top: -15%;padding: 0">{{data.planting[$index].startAlias.substr(5,10)}}</h4>
+                &lt;!&ndash;<p style="font-size: 12px;text-align: center">{{data.planting[$index].name}}</p>&ndash;&gt;
+            </div>
+            <div style="float: left;position: absolute;margin-left: 21%;">
+                <img src="img/gray1.png" style="height: 101px"
+                     ng-if="isInProgress(data.planting[$index].start, data.planting[$index].end) == 1"/>
+
+                <img src="img/green1.png" style="height: 101px"
+                     ng-if="isInProgress(data.planting[$index].start, data.planting[$index].end) == -1"/>
+
+                <img src="img/red1.png" style="height: 101px"
+                     ng-if="isInProgress(data.planting[$index].start, data.planting[$index].end) == 0"/>
+            </div>
+
+            <div style="margin-left: 29%;">
+                <label class="item item-avatar" style="border-left: none;">
+                    <img ng-src="{{handlePath(data.planting[$index].image)}}" style="width: 100%;height: auto;">
+                    <h2 style="font-weight: bold;font-size: 14px;margin-top: 5%" ng-if="data.planting[$index].kind == 1">育苗期</h2>
+                    <h2 style="font-weight: bold;font-size: 14px;margin-top: 5%" ng-if="data.planting[$index].kind == 2">营养生长期</h2>
+                    <h2 style="font-weight: bold;font-size: 14px;margin-top: 5%" ng-if="data.planting[$index].kind == 3">采收期</h2>
+                    <p style="font-size: 12px;margin-top: 10px;margin-bottom: -5px">{{data.planting[$index].start}}~{{data.planting[$index].end}}</p>
+                    <p style="font-size: 12px;">种植比例{{data.planting[$index].percent*100}}%</p>
+                    <p style="font-size: 14px;float: left;margin-left: -50px;margin-top: -22px">{{data.planting[$index].name}}</p>
+                </label>
+            </div>
+        </div>-->
+
+    </ion-content>
+</ion-view>

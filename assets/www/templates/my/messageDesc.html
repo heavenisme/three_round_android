@@ -1,0 +1,69 @@
+<div class="bar bar-header bar-anywide">
+    <button class="button button-clear ion-chevron-left button-anywide" ng-click="goBack()">&nbsp;&nbsp;&nbsp;&nbsp;</button>
+    <h1 class="title" ng-show="data.currMsgType == 1">通知提醒</h1>
+    <h1 class="title" ng-show="data.currMsgType == 4">活动提醒</h1>
+    <h1 class="title" ng-show="data.currMsgType == 3">定时提醒</h1>
+</div>
+
+<!-- 通知提醒-->
+<ion-view hide-nav-bar="true" view-title="通知提醒">
+    <ion-content class="has-header" style="background-color: #F2F2F2">
+        <!--<div class="item item-divider-anywide"></div>-->
+        <div class="list">
+
+            <div style="text-align:center;">
+                &nbsp;
+            </div>
+
+            <div ng-repeat="buf in data.messageList" style="word-break:break-word;">
+                <div style="text-align:center;">
+                    {{buf.message_send_time.substring(0,16)}}
+                </div>
+
+                <label class="item item-icon-right card" ng-click="messageDir(buf.message_id)" style="word-break:break-word;">
+                    <img src="img/dsbl-mymessage_03.png" alt="" style="width: 30px;height: 30px;background-size: 100%;margin-top: 10%;margin-top: 30px;margin-bottom: 10%;">
+
+                    <h2 ng-if="buf.function_type == 1" style="position:absolute;top:25px;margin-left:12%">酋长选举啦！</h2>
+                    <h2 ng-if="buf.function_type == 2" style="position:absolute;top:25px;margin-left:12%">种植模型选择通知</h2>
+                    <h2 ng-if="buf.function_type == 3" style="position:absolute;top:25px;margin-left:12%">酋长决定了种植模型！</h2>
+                    <h2 ng-if="buf.function_type == 4" style="position:absolute;top:25px;margin-left:12%">通知消息</h2>
+                    <h2 ng-if="buf.function_type == 5" style="position:absolute;top:25px;margin-left:12%">交易提醒</h2>
+                    <h2 ng-if="buf.function_type == 6" style="position:absolute;top:25px;margin-left:12%">酋长选举结果通知</h2>
+                    <h2 ng-if="buf.function_type == 7" style="position:absolute;top:25px;margin-left:12%">种植模型查看通知</h2>
+                    <h2 ng-if="buf.function_type == 8" style="position:absolute;top:25px;margin-left:12%">物资方案扣除费用</h2>
+                    <!--<h2 ng-if="buf.function_type == 9" style="position:absolute;top:25px;margin-left:12%">物资方案</h2>-->
+                    <!--<h2 ng-if="buf.function_type == 11" style="position:absolute;top:25px;margin-left:12%">采收计划</h2>-->
+                    <h2 ng-if="buf.function_type == 9" style="position:absolute;top:25px;margin-left:12%">物资方案发布通知</h2>
+                    <h2 ng-if="buf.function_type == 11" style="position:absolute;top:25px;margin-left:12%">采收计划发布通知</h2>
+                    <h2 ng-if="buf.function_type == 12" style="position:absolute;top:25px;margin-left:12%">反馈截止时间提醒</h2>
+                    <h2 ng-if="buf.function_type == 13" style="position:absolute;top:25px;margin-left:12%">农事活动报名反馈</h2>
+                    <h2 ng-if="buf.function_type == 14" style="position:absolute;top:25px;margin-left:12%">农趣活动报名信息</h2>
+                    <h2 ng-if="buf.function_type == 15" style="position:absolute;top:25px;margin-left:12%">农趣活动发布通知</h2>
+                    <h2 ng-if="buf.function_type == 16" style="position:absolute;top:25px;margin-left:12%">农事活动发布通知</h2>
+                    <h2 ng-if="buf.function_type == 17" style="position:absolute;top:25px;margin-left:12%">采收计划反馈信息</h2>
+                    <!-- 预留 -->
+                    <h2 ng-if="buf.function_type == 18" style="position:absolute;top:25px;margin-left:12%">通知信息</h2>
+                    <h2 ng-if="buf.function_type == 19" style="position:absolute;top:25px;margin-left:12%">通知信息</h2>
+                    <!-- 预留 -->
+                    <h2 ng-if="buf.function_type == 20" style="position:absolute;top:25px;margin-left:12%">资产变动提醒</h2>
+                    <h2 ng-if="buf.function_type == 21" style="position:absolute;top:25px;margin-left:12%">账户变动提醒</h2>
+                    <p style="font-size:12px;float:right;position: absolute;top:40px;left:15%;margin-top: 10px; width:80%;height: 100px; word-break:break-word;">
+                        内容：{{buf.message_content}}
+                    </p>
+                    <img src="img/dsbl-mymessage_GO.png" style="width:20px;height:20px;background-size:100%;position: absolute;right:5%;bottom: 5%;"/>
+                </label>
+            </div>
+
+
+        </div>
+
+        <!--通知提醒空白页-->
+        <!--<div style="position:absolute;top:20%;left:50%;width:0px;height:0px;">
+            <img src="img/dsbl-mymessage_none-icon.png" style="width:76px;height:85px;position:absolute;top:80px;left:-38px;background-size:100%">
+            <div style="width:150px;height:100px;position:absolute;left:-75px;top:170px;font-size:16px;;color:#68b94f;text-align:center;">
+                暂无消息
+            </div>
+        </div>-->
+
+    </ion-content>
+</ion-view>

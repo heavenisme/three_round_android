@@ -1,0 +1,150 @@
+<style>
+        .taskBox{background-color: #ffffff;padding-top:15px;}
+        .taskBox p{color:#333333;}
+        .taskBox p span{color: #aeaeae;}
+        .taskImg{width:100%;overflow: hidden;}
+        .taskImg ul{overflow: hidden;width: 100%;}
+        .taskImg ul li{float: left;width:20%;margin-left: 4%;}
+        .taskImg ul li img{width:100%;}
+
+</style>
+<!--<script>
+  // 网页分享
+var weChatShare = {
+    check:function(){
+        //检查是否安装成功
+        Wechat.isInstalled(function (installed) {
+            alert("Wechat installed: " + (installed ? "Yes" : "No"));
+        }, function (reason) {
+            alert("Failed: " + reason);
+        });
+    },
+    webpage:function(_opt,_scene){
+        _scene = _scene==undefined?Wechat.Scene.TIMELINE:_scene;
+        alert("分享到："+(_scene === 0?"聊天界面":(_scene === 1?"朋友圈":_scene)));
+        opt = _opt || {
+            title:"网页分享——百度"
+            ,description:"简述，短述，摘录"
+            ,url:"http://baidu.com"
+            ,img:"https://ss0.bdstatic.com/5aV1bjqh_Q23odCf/static/superman/img/logo/bd_logo1_31bdc765.png"
+        };
+        Wechat.share({
+                message: {
+                    title: opt.title,
+                    description: opt.description,
+                    mediaTagName: "这是什么呢？什么呢？",//这是什么呢？媒体标签名！！
+                    thumb: opt.img,
+                    media: {
+                        type: Wechat.Type.WEBPAGE,   // webpage
+                        webpageUrl: opt.url   // webpage
+                    }
+                },
+                scene: _scene   // 默认分享到朋友圈
+            }, function () {
+                alert("Success");
+            }, function (reason) {
+                alert("Failed: " + reason);
+            });
+    }
+};
+//发送到朋友圈
+window.weChatShare = function(opt){
+    weChatShare.webpage(opt);
+};
+//发送给好友
+window.weChatShareToFriend = function(opt){
+    weChatShare.webpage(opt,Wechat.Scene.SESSION);
+};
+</script>-->
+<div class="bar bar-header bar-anywide">
+    <button class="button button-clear ion-chevron-left button-anywide" ng-click="gotoHome()">&nbsp;&nbsp;&nbsp;&nbsp;</button>
+    <h1 class="title" >作业任务</h1>
+    <button class="button button-clear button-light"  ng-click="share()" style="color:#ffffff;">
+      <p style="font-size: 25px">...</p>
+    </button>
+</div>
+
+<ion-view view-title="作业任务" hide-nav-bar="true">
+  <!--<ion-nav-buttons side="left">
+    <button class="button button-clear ion-chevron-left button-anywide" ng-click="gotoHome()"></button>
+  </ion-nav-buttons>-->
+
+
+
+
+  <ion-content class="has-header" style="background-color: #f2f2f2;" ng-init="init()">
+
+        <div class="taskList" style="width:92%;margin:0 auto;" ng-repeat="item in data.tasklist">
+              <div style="height: 50px;line-height: 50px;font-weight: bold;color: #000000">
+                  {{item.create_time | date:'yyyy-MM-dd'}}
+              </div>
+              <div class="taskBox" >
+                  <p style="padding-left: 15px"><span>品种：</span>{{item.crop_name}}</p>
+                  <p style="padding-left: 15px"><span>作业：</span>{{item.work_item_name}}</p>
+                  <div class="taskImg" style="border-bottom: 1px solid #e5e5e5;">
+                      <ul ng-repeat="temp in item.images" style="display: inline">
+                          <li style="width: 30% !important;height: 70px !important;margin-left: 5px;margin-top: 5px;"><img ng-src="{{handlePath(temp.image_url,true)}}" width="100%" height="100%" /></li>
+                          <!--<li><img src="img/taskList/hgbl-task_06.png" alt=""/></li>
+                          <li><img src="img/taskList/hgbl-task_09.png" alt=""/></li>
+                          <li><img src="img/taskList/hgbl-task_11.png" alt=""/></li>-->
+                      </ul>
+                  </div>
+
+                  <div style="position: relative;top:0;left:0;height:45px;" ng-click="taskDescClick(item.ar_task_id,item.taskType)">
+                      <p style="position: absolute;right:5%;bottom: 5%;color: #66bb6a;font-size: 16px;">
+                          查看详情&nbsp<i class="icon ion-ios-arrow-right"></i></p>
+                  </div>
+              </div>
+        </div>
+        <ion-infinite-scroll ng-if="data.moredata" on-infinite="init()" distance="1%" ></ion-infinite-scroll>
+
+          <!--<div class="taskList" style="width:92%;margin:0 auto;">-->
+              <!--<div style="text-align: center;height: 50px;line-height: 50px;">-->
+                  <!--2016-1-10-->
+              <!--</div>-->
+              <!--<div class="taskBox">-->
+                  <!--<p><span>品种：</span>西红柿</p>-->
+                  <!--<p><span>作业：</span>种植</p>-->
+                  <!--<div class="taskImg" style="border-bottom: 1px solid #e5e5e5;">-->
+                      <!--<ul>-->
+                          <!--<li><img src="img/taskList/hgbl-task_03.png" alt=""/></li>-->
+                          <!--<li><img src="img/taskList/hgbl-task_06.png" alt=""/></li>-->
+                          <!--<li><img src="img/taskList/hgbl-task_09.png" alt=""/></li>-->
+                          <!--<li><img src="img/taskList/hgbl-task_11.png" alt=""/></li>-->
+                      <!--</ul>-->
+                  <!--</div>-->
+
+                  <!--<div style="position: relative;top:0;left:0;height:45px;" ng-click="taskDescClick()">-->
+                      <!--<p style="position: absolute;right:5%;bottom: 5%;color: #66bb6a;font-size: 16px;">-->
+                          <!--种植详情&nbsp<i class="icon ion-ios-arrow-right" style="font-weight: 200"></i></p>-->
+                  <!--</div>-->
+              <!--</div>-->
+          <!--</div>-->
+
+
+          <!--<div class="taskList" style="width:92%;margin:0 auto;">-->
+              <!--<div style="text-align: center;height: 50px;line-height: 50px;">-->
+                  <!--2016-1-10-->
+              <!--</div>-->
+              <!--<div class="taskBox">-->
+                  <!--<p><span>品种：</span>西红柿</p>-->
+                  <!--<p><span>作业：</span>种植</p>-->
+                  <!--<div class="taskImg" style="border-bottom: 1px solid #e5e5e5;">-->
+                      <!--<ul>-->
+                          <!--<li><img src="img/taskList/hgbl-task_03.png" alt=""/></li>-->
+                          <!--<li><img src="img/taskList/hgbl-task_06.png" alt=""/></li>-->
+                          <!--<li><img src="img/taskList/hgbl-task_09.png" alt=""/></li>-->
+                          <!--<li><img src="img/taskList/hgbl-task_11.png" alt=""/></li>-->
+                      <!--</ul>-->
+                  <!--</div>-->
+
+                  <!--<div style="position: relative;top:0;left:0;height:45px;" ng-click="taskDescClick()">-->
+                      <!--<p style="position: absolute;right:5%;bottom: 5%;color: #66bb6a;font-size: 16px;">-->
+                          <!--种植详情&nbsp<i class="icon ion-ios-arrow-right" style="font-weight: 300"></i></p>-->
+                  <!--</div>-->
+              <!--</div>-->
+          <!--</div>-->
+
+
+  </ion-content>
+</ion-view>

@@ -1,0 +1,48 @@
+<!--部落市场（卖家店铺页面）-->
+<style>
+    .row.defined{width: 100%;margin: 0 auto;}
+    .col{height: auto;}
+    .col.odd{padding: 10px;background-color: #fff;border: 1px solid #ddd;margin-right: 10px}
+    .col.even{padding: 10px;background-color: #fff;border: 1px solid #ddd}
+    .row p{font-size: 14px;color:#000}
+</style>
+
+<div class="bar bar-header bar-anywide">
+    <button class="button button-clear ion-chevron-left button-anywide" ng-click="gotoHome()">&nbsp;&nbsp;&nbsp;&nbsp;</button>
+    <h1 class="title">{{data.commendGoods[0].name_shop}}</h1>
+</div>
+
+<ion-view hide-nav-bar="true" view-title="卖家店铺"  ng-init="getShopMsg()">
+    <ion-content class="has-header" style="background-color: #F2F2F2">
+        <div>
+            <img style="height: 300px;" ng-src="{{handlePath(data.commendGoods[0].image_path_shop,true)}}" alt=""/>
+        </div>
+        <div style="width: 94%;margin: 0 auto">
+            <div style="padding: 10px;margin-top: 10px;background-color: #fff;">
+                <p style="margin: 0;padding: 5px 0;color: #000;font-size: 18px">店铺名称：<span>{{data.commendGoods[0].name_shop}}</span></p>
+                <p style="margin: 0;padding: 5px 0;color: #3C3C3C">店家昵称：<span>{{data.commendGoods[0].userName_shop}}</span></p>
+                <p style="margin: 0;padding: 5px 0;color: #3C3C3C">联系方式：<span>{{data.commendGoods[0].phone_shop}}</span></p>
+                <p style="margin: 0;padding: 5px 0;color: #3C3C3C">店铺介绍：</p>
+                <p style="color: #3C3C3C;text-indent: 2em;margin: 0">{{data.commendGoods[0].shop_description}}</p>
+            </div>
+
+            <div style="border-left: 4px solid #66BB6A;margin-top: 15px;">
+                <p style="color: #000">&nbsp;&nbsp;&nbsp;商品列表</p>
+            </div>
+            <div ng-show="data.commendGoods[0].cropCommoditylist[0].commodity_id">
+                <div style="padding-top: 10px; padding-bottom:10px">
+                    <div style="width: 98%;margin:0 auto;overflow: hidden">
+                        <div class="tribe-box" ng-repeat="good in data.commendGoods[0].cropCommoditylist" style="background: #fff;border:1px solid #ddd;width:49%;padding:10px;margin-top: 10px;" ng-click="marketInfo(good.commodity_id,good.shop_id)">
+                            <img ng-src="{{handlePath(good.image_path,good.image_file,true)}}" style="height: 100px;"/>
+                            <p style="font-size: 14px;color:#000; width:120px;overflow:hidden;white-space:nowrap;text-overflow:ellipsis;" ng-if="!good.commodity_name">【{{good.crop_kind}}】{{good.crop_name}}</p>
+                            <p style="font-size: 14px;color:#000; width:120px;overflow:hidden;white-space:nowrap;text-overflow:ellipsis;" ng-if="good.commodity_name">{{good.commodity_name}}</p>
+                            <p style="color: #FF5912;font-size: 14px;padding: 0px 5px;margin: 0" ng-if="!good.commodity_unit">{{good.price}}元/斤</p>
+                            <p style="color: #FF5912;font-size: 14px;padding: 0px 5px;margin: 0" ng-if="good.commodity_unit">{{good.price}}元/{{good.commodity_unit}}</p>
+                            
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </ion-content>
+</ion-view>

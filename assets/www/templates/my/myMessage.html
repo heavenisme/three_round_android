@@ -1,0 +1,75 @@
+<!-- 我的消息-->
+
+<div class="bar bar-header bar-anywide">
+    <button class="button button-clear ion-chevron-left button-anywide" ng-click="gotoHome()">&nbsp;&nbsp;&nbsp;&nbsp;</button>
+    <h1 class="title" >我的消息</h1>
+</div>
+
+<ion-view hide-nav-bar="true" view-title="我的消息">
+    
+<!--     <ion-nav-buttons side="left">
+        <button class="button button-clear ion-chevron-left button-anywide" ng-if="isNeedBackButton()" ng-click="gotoHome()">&nbsp;&nbsp;&nbsp;&nbsp;</button>
+    </ion-nav-buttons> -->
+
+    <ion-content class="has-header" style="background-color: #F2F2F2">
+        <!--<div class="item item-divider-anywide"></div>-->
+        <div class="list" >
+
+            <label class="item item-icon-right" ng-click="gotoNextPage(1)" style="padding-top:8px;padding-bottom:10px;margin-top:5%;">
+                <img src="img/dsbl-mymessage_03.png" alt="" style="width:30px;height:30px;background-size:100%;margin-top: 5%">
+                <div style="width:100%;height:50px;margin-top:-45px;margin-left:40px;">
+                         <h2 style="padding-top:5px;font-weight:bold">通知提醒</h2>
+                         <p style="color:#B4B4B4;position:relative;top:-20px;right:-85%;">&nbsp;</p>
+                         <p style="font-size:12px;position: relative;top:-20px;left:0%;white-space:nowrap;overflow:hidden;text-overflow:ellipsis; width:100%">{{data.tzxx}}</p>
+                </div>
+            </label>
+
+
+            <!--<div class="item item-divider-anywide" style="background-color: #F2F2F2"></div>-->
+            
+
+            <!--<label class="item item-icon-right" ng-click="gotoNextPage(2)"  style="padding-top:8px;padding-bottom:10px;">-->
+                <!--<img src="img/dsbl-mymessage_06.png" alt="" style="width:30px;height:30px;background-size:100%;margin-top: 7%">-->
+                <!--<div style="width:100%;height:50px;margin-top:-45px;margin-left:40px;">-->
+                    <!--<h2 style="padding-top:5px;font-weight:bold">物流助手</h2>-->
+                    <!--<p style="color:#B4B4B4;position:relative;top:-20px;right:-85%;">&nbsp;</p>-->
+                    <!--<p style="font-size:12px;position: relative;top:-20px;left:0%;white-space:nowrap;overflow:hidden;text-overflow:ellipsis; width:100%">{{data.wlzs}}</p>-->
+                <!--</div>-->
+            <!--</label>-->
+
+            <div class="item item-divider-anywide" style="background-color: #F2F2F2"></div>
+
+            <label class="item item-icon-right" ng-click="gotoNextPage(3)"  style="padding-top:8px;padding-bottom:10px;">
+                <img src="img/dsbl-mymessage_08.png" alt="" style="width:30px;height:30px;background-size:100%;margin-top: 7%">
+                <div style="width:100%;height:50px;margin-top:-45px;margin-left:40px;">
+                    <h2 style="padding-top:5px;font-weight:bold;">定时提醒</h2>
+                    <p style="color:#B4B4B4;position:relative;top:-20px;right:-85%;">&nbsp;</p>
+                    <p style="font-size:12px;position: relative;top:-20px;left:0%;white-space:nowrap;overflow:hidden;text-overflow:ellipsis; width:100%">{{data.dstx}}</p>
+                </div>
+            </label>
+
+            <div class="item item-divider-anywide" style="background-color: #F2F2F2"></div>
+
+            <label class="item item-icon-right" ng-click="gotoNextPage(4)"  style="padding-top:8px;padding-bottom:10px;">
+                <img src="img/dsbl-mymessage_10.png" alt="" style="width:30px;height:30px;background-size:100%;margin-top: 7%">
+                <div style="width:100%;height:50px;margin-top:-45px;margin-left:40px;">
+                    <h2 style="padding-top:5px;font-weight:bold">活动提醒</h2>
+                    <p style="color:#B4B4B4;position:relative;top:-20px;right:-85%;">&nbsp;</p>
+                    <p style="font-size:12px;position: relative;top:-20px;left:0%;white-space:nowrap;overflow:hidden;text-overflow:ellipsis; width:100%">{{data.nshd}}</p>
+                </div>
+            </label>
+           <!--  <label class="item item-icon-right" ng-click="gotoNextPage(5)"  style="padding-top:8px;padding-bottom:10px;">
+                <img src="img/dsbl-mymessage_12.png" alt="" style="width:30px;height:30px;background-size:100%;margin-top: 7%">
+                <div style="width:100%;height:50px;margin-top:-45px;margin-left:40px;">
+                    <h2 style="padding-top:5px;font-weight:bold;border-top: 0px">农趣活动</h2>
+                    <p style="color:#B4B4B4;position:relative;top:-20px;right:-85%;">&nbsp;</p>
+                    <p style="font-size:12px;position: relative;top:-20px;left:0%;white-space:nowrap;overflow:hidden;text-overflow:ellipsis; width:100%">{{data.nqhd}}</p>
+                </div>
+            </label> -->
+
+            <!--<div class="item item-divider-anywide"></div>-->
+        </div>
+
+
+    </ion-content>
+</ion-view>

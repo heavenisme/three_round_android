@@ -1,0 +1,65 @@
+<!--帮助与反馈页-->
+
+<style>
+    .row button{
+        border: 1px solid #68B94F;
+        background-color: #ffffff;
+        border-radius: 5px;
+        margin: 0;
+        padding: 0;
+    }
+</style>
+<ion-view view-title="帮助与反馈" >
+    <ion-nav-buttons side="left">
+        <button class="button button-clear ion-chevron-left button-anywide" ng-click="gotoHome()">&nbsp;&nbsp;&nbsp;&nbsp;</button>
+    </ion-nav-buttons>
+
+    <ion-content>
+
+        <div style="border: 1px solid #68B94F;width: 90%;height: 70%;margin-top: 10%;margin-left: 5%">
+            <textarea value="{{data.advice}}" cols="36" rows="10" placeholder="用的不爽，来吐槽吧！~" style="resize: none;margin-top: 5%;margin-left: 3%"></textarea>
+        </div>
+
+        <div class="row">
+            <div class="col" >
+                <button class="button button-block " style="width: 70%;margin-left: 10%" ng-click="check()">产品很牛</button>
+            </div>
+            <div class="col">
+                <button class="button button-block" style="width: 70%;float: right;margin-right: 10%" ng-click="check()">产品太烂</button>
+            </div>
+        </div>
+
+        <div class="row" style="margin-top: -10%">
+            <div class="col" >
+                <button class="button button-block " style="width: 70%;margin-left: 10%" ng-click="check()">使用方便</button>
+            </div>
+            <div class="col">
+                <button class="button button-block" style="width: 70%;float: right;margin-right: 10%" ng-click="check()">使用不便</button>
+            </div>
+        </div>
+
+        <div class="row" style="margin-top: -10%">
+            <div class="col">
+                <button class="button button-block " style="width: 70%;margin-left: 10%" ng-click="check()">首页炫酷</button>
+            </div>
+            <div class="col">
+                <button class="button button-block" style="width: 70%;float: right;margin-right: 10%" ng-click="check()">首页太丑</button>
+            </div>
+        </div>
+
+        <div class="row" style="margin-top: -10%">
+            <div class="col">
+                <button class="button button-block " style="width: 70%;margin-left: 10%" ng-click="check()">继续使用</button>
+            </div>
+            <div class="col">
+                <button class="button button-block" style="width: 70%;float: right;margin-right: 10%" ng-click="check()">立马卸载</button>
+            </div>
+        </div>
+
+    </ion-content>
+
+    !-- 提交 -->
+    <ion-footer-bar  class="bar-balanced">
+        <h1 class="title" ng-click="commit()">提交</h1>
+    </ion-footer-bar>
+</ion-view>

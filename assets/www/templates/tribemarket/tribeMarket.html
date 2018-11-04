@@ -1,0 +1,43 @@
+<!--部落市场（）-->
+<style>
+    .col{height: auto}
+</style>
+<div class="bar bar-header bar-anywide">
+    <button class="button button-clear ion-chevron-left button-anywide" ng-click="gotoHome()">&nbsp;&nbsp;&nbsp;&nbsp;</button>
+    <h1 class="title">{{data.params.title}}</h1>
+</div>
+<!--<div class="tribeMarket-box3" ng-click="insidePrice()" ng-if="!ios">
+    <div class="tribeMarket-border3">
+        <p ng-repeat="price in data.priceList">今日批发价格：【{{price.crop_name}}】{{price.crop_price}}元/斤</p>
+    </div>
+</div>
+<div class="tribeMarket-box3" ng-click="insidePrice()" ng-if="ios" style="margin-top: 20px;">
+    <div class="tribeMarket-border3">
+        <p ng-repeat="price in data.priceList">今日批发价格：【{{price.crop_name}}】{{price.crop_price}}元/斤</p>
+    </div>
+</div>-->
+<div style="height:30px;overflow:hidden;" class="tribeMarket-box3" id="scroll" ng-click="insidePrice()" ng-if="!ios">
+    <div style="height:1000px;" id="content">
+        <p ng-repeat="price in data.priceList">今日批发价格：【{{price.crop_name}}】{{price.crop_price}}元/斤</p>
+    </div>
+</div>
+<div style="height:30px;overflow:hidden;margin-top: 20px;" class="tribeMarket-box3" id="scroll" ng-click="insidePrice()" ng-if="ios">
+    <div style="height:1000px;" id="content">
+        <p ng-repeat="price in data.priceList">今日批发价格：【{{price.crop_name}}】{{price.crop_price}}元/斤</p>
+    </div>
+</div>
+<ion-view hide-nav-bar="true" view-title="市场交易">
+    <ion-content class="has-header" style="background-color: #F2F2F2;">
+        <div style="position: relative" ng-init="init()">
+            <div style="padding: 5px">
+                <div class="tribe-box" ng-repeat="list in data.list" ng-click="storeOffer(list.crop_kind_id,list.shop_id)" style="margin-top: 10px">
+                    <!------------------------图片地址修改-------------------------->
+                    <img ng-if="list.type == 2" ng-src="{{handlePath('/resource/COMMODITY'+list.image_path,'',true)}}" style="height: 100px"/>
+                    <img ng-if="list.type != 2" ng-src="{{handlePath(list.crop_image_path,'',true)}}" style="height: 100px"/>
+                    <p  ng-if="list.type == 2" style="font-size: 14px;color:#000; width:160px;overflow:hidden;white-space:nowrap;text-overflow:ellipsis;" >{{list.commodity_name}}</p>
+                    <p  ng-if="list.type != 2" style="font-size: 14px;color:#000; width:160px;overflow:hidden;white-space:nowrap;text-overflow:ellipsis;" >【{{list.crop_kind}}】{{list.crop_name}}</p>
+                </div>
+            </div>
+        </div>
+    </ion-content>
+</ion-view>

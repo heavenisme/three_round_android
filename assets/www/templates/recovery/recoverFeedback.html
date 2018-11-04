@@ -1,0 +1,65 @@
+
+<!-- 采收计划反馈页 -->
+<style>
+    .tips{border-top:1px solid #bbbbbb;margin-top: 30%;}
+    .tips h3{
+        font-size: 13px;
+        color: #666;
+        margin-top: -10px !important;
+        text-align: center;
+        background: #f2f2f2;
+        width: 100px;
+        display: block;
+        margin: 0 auto;}
+    .tips p{font-size: 12px;
+        color: #666666;}
+</style>
+
+<div class="bar bar-header bar-anywide">
+    <button class="button button-clear ion-chevron-left button-anywide" ng-click="gotoHome()">&nbsp;&nbsp;&nbsp;&nbsp;</button>
+    <h1 class="title">采收计划反馈</h1>
+</div>
+
+<ion-view hide-nav-bar="true" view-title="采收计划反馈">
+
+    <ion-content class="has-header" style="padding: 0 15px;background-color: #F2F2F2" ng-init="recoverDetail()">
+        <div style="padding:10px 0;color: #000000">
+            <h2 style="font-size: 1.25em">采收方式</h2>
+            <label style="padding-top: 5px">
+                <p style="text-indent: 2em;">{{data.recoverDesc.house_name}}预定在{{data.recoverDesc.harvest_on_fromat}}采收{{data.recoverDesc.harvest_weight}}斤{{data.recoverDesc.crop_name}}，请在{{data.recoverDesc.feedbackDate}}前反馈采收处理方式和数量。</p>
+            </label>
+        </div>
+        <div style="margin-left: 5%">
+            <!--<input type="checkbox" style="width: 23px;height: 23px;float:left;" ng-model="chkRetention" ng-checked="data.chkRetention" ng-click="selectWay(1)" id="1" value="1" name="checkWay"/>-->
+            <input ng-show="false" type="checkbox" style="width: 23px;height: 23px;float:left;" ng-model="chkRetention" ng-checked="data.chkRetention" id="1" value="1" ng-click="selectWay(2)"/>
+            <label style="font-size: 14px;color: #000000;float: left;margin:2px 0 0 8px;">&nbsp;&nbsp;自留&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
+            <input type="number"style="border: 1px solid #CCCCCC;width: 90px;height: 25px;float: left" ng-model="data.retention" ng-readonly="!data.chkRetention" ng-change="change(data.retention, true)"/>
+            <label style="font-size: 14px;color: #000000;float: left;margin:2px 0 0 8px;">（斤）</label>
+        </div></br>
+        <div style="margin-left: 5%;margin-top: 5%">
+            <!--<input type="checkbox" style="width: 23px;height: 23px;float:left;"  ng-model="chkTransaction" ng-checked="data.chkTransaction" id="0" ng-click="selectWay(0)" value="2" name="checkWay"/>-->
+            <input ng-show="false" type="checkbox" style="width: 23px;height: 23px;float:left;"  ng-model="chkTransaction" ng-checked="data.chkTransaction" id="0"  value="2" ng-click="selectWay(1)"/>
+
+            <label style="font-size: 14px;color: #000000;float: left;margin:2px 0 0 8px;">&nbsp;&nbsp;交易&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
+            <input type="number"style="border: 1px solid #CCCCCC;width: 90px;height: 25px;float: left" ng-model="data.transaction" ng-readonly="!data.chkTransaction", ng-change="change(data.transaction, false)"/>
+            <label style="font-size: 14px;color: #000000;float: left;margin:2px 0 0 8px;">（斤）</label>
+        </div>
+        <div class="tips">
+            <h3>温馨提示</h3>
+            <div style="margin-top: 10px;">
+                <!--<p>1.需要蔬菜配送服务的客户，如果在采收当日的12点前反馈，则可以当天送达蔬菜；如果在12点以后16点前反馈，则只能在次日送达蔬菜。</p>-->
+                <!--<p>  2.用于交易的蔬菜将直接上架到耘客个人店铺中。</p>-->
+                <!--<p>  3.需要自提的客户，请在采收当日12点前反馈。</p>-->
+                <!--<p>4.快递公司：顺丰。邮费到付</p>-->
+               <textarea style="width:100%;background:transparent;border-style:none; min-height: 200px;resize:none" readonly="true">{{data.recoverDesc.reminder}}</textarea>
+            </div>
+        </div>
+    </ion-content>
+
+    <ion-footer-bar  class="bar-balanced" ng-if="data.haveRetention"  ng-click="next()">
+        <h1 class="title" >下一步</h1>
+    </ion-footer-bar>
+    <ion-footer-bar  class="bar-balanced" ng-if="!data.haveRetention"  ng-click="submit()" >
+        <h1 class="title">提交</h1>
+    </ion-footer-bar>
+</ion-view>

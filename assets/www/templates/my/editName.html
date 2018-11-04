@@ -1,0 +1,20 @@
+<!-- 编辑昵称 -->
+
+<ion-view view-title="修改昵称">
+
+	<ion-nav-buttons side="right">
+		<button class="button button-clear" ng-click="editName()">确定</button>
+	</ion-nav-buttons>
+
+	<ion-content>
+
+		<label class="item item-input">
+			<input type="text" placeholder="请输入萌萌的昵称" ng-model="data.name"></label>
+
+		<div class="list list-inset">
+			<span class="item-note">4-20个字符，可有中英文、数字、“_”、“-”组成</span>
+		</div>
+
+
+	</ion-content>
+</ion-view>

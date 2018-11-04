@@ -1,0 +1,222 @@
+<style>
+    .p{
+        padding-top:2%;
+        color: #8c8c8c;
+        margin:0 auto;
+    }
+    .photo{
+        width:12%;
+        /*height:10%;*/
+        background-size:100%;
+        background-repeat:no-repeat;
+        position:relative;
+        float:left;
+        margin-left:5%;
+        margin-top:7%;
+    }
+    .t{
+        float:left;
+        padding-top:2%;
+        color: #8c8c8c;
+    }
+    .mj{
+        padding-left:10%;
+    }
+    .jg{
+        padding-right:10%;
+    }
+    .nx{
+        margin: 0 auto;
+    }
+    #select {
+        margin: 0 auto;
+        background-color: #33cd5f;
+        border: none;
+        color: #ffffff;
+    }
+    .diming{
+        margin-left:5%;
+    }
+    .left{
+        width:65%;
+        height:10%;
+    }
+    .xinxi{
+        margin-left:7%;
+    }
+    .right{
+        width:35%;
+        height:10%;
+        float: right;
+        margin-top:-40px;
+    }
+    .img{
+        background-size:100%;
+        background-repeat:no-repeat;
+        width:31px;
+        height:40px;
+        position:absolute;
+        right:0;
+        top:20px;
+    }
+    .tx{
+        width:15%;
+        /*height:20px;*/
+        background-size:100%;
+
+    }
+    .name{
+        margin-left:17%;
+        position:absolute;
+        top:30%
+    }
+    .jibie{
+        margin-left:17%;
+        position:absolute;
+        top:60%
+    }
+    .phonepic{
+        background-size:100%;
+        background-repeat:no-repeat;
+        width:20px;
+        height:20px;
+        position:absolute;
+        left:30%;
+        bottom:0%;
+    }
+    .phone{
+        position:absolute;
+        left:44%;
+        bottom:0%;
+    }
+</style>
+<!-- 选择大棚下拉框 -->
+<script id="select-popover.html" type="text/ng-template">
+    <ion-popover-view style="margin-top:0px; height: {{getHeight(tribe.myGreenHouse.length)}}px;width: 170px">
+        <ion-content style="background-color:#D8D8D8;margin-top: 0px;padding-top: 0px">
+            <ion-list>
+                <ion-item ng-click="closeSelectPopover(item)" ng-repeat="item in tribe.myGreenHouse" style="background-color:#66BB6A;color: #ffffff"  >
+                    {{item.house_name}}
+                </ion-item>
+
+            </ion-list>
+        </ion-content>
+    </ion-popover-view>
+</script>
+
+<div class="bar bar-header bar-anywide" ng-init="getMyGreenHouse()">
+    <button class="button button-clear ion-chevron-left button-anywide" ng-click="gotoHome()" style="color:#ffffff;"></button>
+
+    <h1 class="title" ng-click="openSelectPopover($event)" style="width: 100px;margin-left: 40%">{{tribe.currSelection.house_name}} ▼</h1>
+
+</div>
+
+
+<ion-view view-title="我的部落" hide-nav-bar="true" >
+    <div class="bar bar-subheader" style="margin: 0px 0px;padding: 0px 0px;height: 25%">
+        <div class="item item-image" ng-init="getGreenHouseInfo(tribe.currHouseId)">
+            <img src="img/banner.jpg">
+            <img src="img/banner_overlay.png" style="position:absolute;top:1px;left:0">
+            <p style="position:absolute;bottom:2%;left:4%;font-size:0.9rem;color:#ffffff">
+                {{tribe.greenHouseInfo.data[0].house_area}}㎡
+            </p>
+
+            <p style="position:absolute;bottom:2%;right:4%;font-size:1rem;color:#ffffff">
+                {{tribe.greenHouseInfo.data[0].house_name}}</br>
+                <!--{{tribe.greenHouseInfo.data[0].house_no}}-->
+            </p>
+        </div>
+        <div class="tabs" style="position:relative;top:0%">
+            <p class="tab-item" style="color:#77BF60" id="dikuai0"
+               ng-click="setCurrMode(0)">
+                地块信息
+            </p>
+            <p class="tab-item" style="color:#838383" id="dikuai1"
+               ng-click="setCurrMode(1)">
+                联系方式
+            </p>
+        </div>
+    </div>
+
+    <ion-content overflow-scroll="true" style="overflow: hidden;top: 40%;">
+        <!--地块信息内容-->
+        <div id="xinxi" style="height: 100%;overflow: scroll" ng-init="getGreenHouseLand(tribe.currHouseId)"
+             ng-if="tribe.currMode == 0">
+
+            <ul class="list" ng-repeat="item in tribe.myGreenHouseLand">
+                <!--已付款-->
+                <li class="item" style="border-top:none;padding-top:5%;padding-bottom:2px;"
+                    ng-if="item.buy_state == 1">
+                    <div class="left ">
+                        <p class="diming" style="color:#434242;font-size:18px;">
+                            #{{item.land_index}}地块</p>
+                      <button ng-show="item.buy_state == 1" ng-if="item.transfer == 0" ng-click="resell(item.land_id, 1, $index)" class="button button-small button-outline button-positive" style="height:20px; min-height:10px; line-height:100%; position:absolute; right:3px; top:14px;">
+                        转让
+                      </button>
+                      <button ng-show="item.buy_state == 1" ng-if="item.transfer == 1" ng-click="resell(item.land_id, 0, $index)" class="button button-small button-outline button-positive" style="height:20px; min-height:10px; line-height:100%; position:absolute; right:1px; top:14px;">
+                        取消转让
+                      </button>
+
+                        <p class="diming" style="color:#838383;font-size:14px;">
+                            购买时间：{{item.buy_date.substring(0,16)}}</p>
+
+                            <p class="diming" style="color:#838383;font-size:14px;">
+                                有效期限：{{item.land_expire_date.substring(0,16)}}</p>
+                    </div>
+                    <div class="right">
+                        <p class="xinxi" style="color:#838383;font-size:14px;">
+                            面积：{{item.land_area}}㎡</p>
+
+                        <p class="xinxi" style="color:#838383;font-size:14px;">
+                            价格：{{item.land_price}}元</p>
+                    </div>
+                </li>
+                <!--未付款-->
+                <li class="item" style="border-top:none;padding-top:5%;padding-bottom:2px;"
+                    ng-if="item.buy_state == 2">
+                    <div class="left">
+                        <p class="diming" style="color:#434242;font-size:18px;">
+                            #{{item.land_index}}地块</p>
+
+                        <p class="diming" style="color:#ed2828;font-size:14px;">当前状态：未付款</p>
+
+                        <p class="diming" style="color:#ed2828;font-size:14px;">
+                            截止日期：{{item.land_expire_date.substring(0,16)}}</p>
+                    </div>
+                    <div class="right">
+                        <p class="xinxi" style="margin-right:-30px;color:#838383;font-size:14px;">
+                            面积：{{item.land_area}}㎡</p>
+
+                        <p class="xinxi" style="color:#838383;font-size:14px;">
+                            价格：{{item.land_price}}元</p>
+                        <img src="img/fixed.png" class="img" ng-click="gotoPay(item)">
+                    </div>
+                </li>
+            </ul>
+        </div>
+
+
+        <!--联系方式内容-->
+        <div id="lianxi" style="height: 100%;overflow: scroll" ng-init="getGreenHouseTribe(tribe.currHouseId)" ng-if="tribe.currMode == 1">
+
+            <ul class="list" ng-repeat="item in tribe.contacts">
+
+                <li class="item" style="border-top:none;padding-top:5%;padding-bottom:10px;">
+                    <img src="{{tribe.server}}{{item.header_image}}" class="tx">
+                    <!--<p class="name" style="color:#434242;font-size:14px;">{{tribe.server}}{{item.header_image}}</p>-->
+                    <p class="name" style="color:#434242;font-size:14px;">{{item.nick_name}}</p>
+
+                    <p class="jibie" style="color:#838383;font-size:14px;">{{item.user_role}}</p>
+
+                    <div style="width:50%;height:50%;position:absolute;right:10%;bottom:15px;">
+                        <img src="img/phone.png" class="phonepic">
+
+                        <!-- <p class="phone" style="color:#838383;font-size:16px;">{{item.contact}}</p> -->
+                        <a href="tel:{{item.contact}}" class="phone" style="color:#838383;font-size:16px;">{{item.contact}}</a>
+                    </div>
+                </li>
+
+            </ul>
+        </div>
+    </ion-content>
+</ion-view>

@@ -1,0 +1,26 @@
+<!--个人消息页-->
+<div class="bar bar-header bar-anywide">
+    <button class="button button-clear ion-chevron-left button-anywide" ng-click="gotoHome()">&nbsp;&nbsp;&nbsp;&nbsp;</button>
+    <h1 class="title">个人资料</h1>
+    <button class="button button-clear button-light"  ng-click="saveClick()" style="color:#ffffff;" ng-disabled="isDisabled">
+        <p>保存</p>
+    </button>
+</div>
+
+<ion-view view-title="个人资料" hide-nav-bar="true">
+
+    <ion-content class="has-header">
+        <div class="item item-divider-anywide"></div>
+
+        <div class="list">
+            <label class="item item-input">
+                昵称<input type="text" value="{{data.nickname}}" placeholder="都市小菜农" ng-model="data.nickname" minlength="1" maxlength="8" style="margin-left: 12%">
+            </label>
+
+            <label class="item item-input">
+                个性签名<input type="text" value="{{data.bufSignature}}" placeholder="空空如也，还没有签名~" ng-model="data.bufSignature" maxlength="15" style="margin-left: 2%">
+            </label>
+        </div>
+    </ion-content>
+
+</ion-view>

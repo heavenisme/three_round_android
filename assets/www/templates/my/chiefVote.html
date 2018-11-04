@@ -1,0 +1,30 @@
+
+<!-- <link rel="stylesheet" href="css/progressStyle.css"> -->
+
+<ion-view view-title="选举酋长">
+    <ion-content>
+
+        <h3 style="text-align: center;margin-top: 8%">{{data.content.voteTitle}}</h3>
+        <h4 style="text-align: center">{{data.content.voteContent}}</h4>
+
+        <br>
+
+        <div class="item" ng-repeat="buf in data.content.voteOptionContent">
+
+            <!-- <div> -->
+                <a ng-click="select($index)" ng-class="{'true': 'button ion-ios-checkmark icon-left button-clear button-assertive', 'false': 'button ion-ios-circle-outline icon-left button-clear button-assertive'}[data.selectIndex==$index]">
+                    <p style="position: absolute;height: 35%;top: 32%;left: 60%;font-family: Microsoft YaHei">{{buf.voteOptionContent}}</p>
+                </a>
+            <!-- </div> -->
+
+        </div>
+
+
+
+        <div class="row">
+            <button class="button button-block button-anywide " ng-click="vote()">投票</button>
+        </div>
+
+    </div>
+</ion-content>
+</ion-view>

@@ -1,0 +1,36 @@
+<!--店铺信息-->
+<div class="bar bar-header bar-anywide">
+    <button class="button button-clear ion-chevron-left button-anywide" ng-click="gotoHome()">&nbsp;&nbsp;&nbsp;&nbsp;</button>
+    <h1 class="title">店铺信息</h1>
+</div>
+<ion-view hide-nav-bar="true" view-title="店铺信息" ng-init="getMyShop_Info()">
+    <ion-content class="has-header" style="background: #F2F2F2">
+        <div class="myshop-main">
+            <div class="shopMessage-box">
+                <label>店铺名称</label>
+                <input type="text" ng-model="container[0].shop_name"/>
+            </div>
+            <!-- value="{{container[0].shop_name}}"-->
+            <div class="shopMessage-box">
+                <label>联系方式</label>
+                <input type="text" ng-model="container[0].phone"/>
+            </div>
+            <div class="shopMessage-box" ng-click="goToShopBg()">
+                <label id="changeShop-bg">店铺背景更换</label>
+                <i class="ion-ios-arrow-right shopMessage-right"></i>
+            </div>
+            <div class="shop-introduce">
+                <label>店铺介绍</label>
+                <textarea contenteditable="true" ng-model="container[0].shop_description">
+                    &nbsp;&nbsp;&nbsp;&nbsp;
+                </textarea>
+            </div>
+        </div>
+    </ion-content>
+    <ion-footer-bar  class="bar-balanced">
+        <h1 class="title" ng-click="updateShopInfo()">保存</h1>
+    </ion-footer-bar>
+</ion-view>
+
+
+

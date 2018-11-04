@@ -1,0 +1,97 @@
+<div class="bar bar-header bar-anywide">
+    <button class="button button-clear ion-chevron-left button-anywide" ng-click="goBack()">&nbsp;&nbsp;&nbsp;&nbsp;</button>
+    <h1 class="title" >种植模型</h1>
+</div>
+
+<ion-view title="种植模型" hide-nav-bar="true">
+
+	<ion-content class="has-header">
+
+		<div class="list">
+
+			<div class="item-anywide" style="height:80px;">
+                <br/>
+         		 <p>
+                     &nbsp; &nbsp;您好:
+                    <br/>
+                    &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;这是大棚本年度下一期的种植模型。
+                 </p>
+            </div>
+
+            <div ng-repeat="item in data.plant">
+                <div class="row">
+                    <div class="col">
+                        <div ng-if="item[0] != null" style="width:100;height:100%">
+
+                            <img ng-if="data.selectId != item[0].plan_id && item[0].use_count != 0"
+                                 ng-click="plantModelClick(item[0].plan_id)" 
+                                 src="img/dsbl-choose-crop_noChangeBtn.png"
+                                 style="background: url({{handlePath(item[0].plan_image)}}) no-repeat center center; width: 100%; height: 100%;"/>
+
+                            <img ng-if="data.selectId == item[0].plan_id && item[0].use_count != 0"
+                                 src="img/dsbl-choose-crop_changeBtn.png" 
+                                 style="background: url({{handlePath(item[0].plan_image)}}) no-repeat center center; width: 100%; height: 100%;"/>
+
+                            <img ng-if="item[0].use_count == 0"
+                                 src="img/dsbl-choose-crop_noChangeBtn.png"
+                                 style="background: url(img/disabled_model.png) no-repeat center center; width: 100%; height: 100%;"/>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div ng-if="item[1] != null" style="width:100;height:100%">
+
+                            <img ng-if="data.selectId != item[1].plan_id && item[1].use_count != 0"
+                                 ng-click="plantModelClick(item[1].plan_id)"
+                                 src="img/dsbl-choose-crop_noChangeBtn.png" 
+                                 style="background: url({{handlePath(item[1].plan_image)}}) no-repeat center center; width: 100%; height: 100%;"/>
+
+                            <img ng-if="data.selectId == item[1].plan_id && item[1].use_count != 0"
+                                 src="img/dsbl-choose-crop_changeBtn.png" 
+                                 style="background: url({{handlePath(item[1].plan_image)}}) no-repeat center center; width: 100%; height: 100%;"/>
+
+                            <img ng-if="item[1].use_count == 0"
+                                 src="img/dsbl-choose-crop_noChangeBtn.png"
+                                 style="background: url(img/disabled_model.png) no-repeat center center; width: 100%; height: 100%;"/>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div ng-if="item[2] != null" style="width:100;height:100%">
+
+                            <img ng-if="data.selectId != item[2].plan_id && item[2].use_count != 0"
+                                 ng-click="plantModelClick(item[2].plan_id)" 
+                                 src="img/dsbl-choose-crop_noChangeBtn.png"
+                                 style="background: url({{handlePath(item[2].plan_image)}}) no-repeat center center; width: 100%; height: 100%;"/>
+                            
+                            <img ng-if="data.selectId == item[2].plan_id && item[2].use_count != 0"
+                                 src="img/dsbl-choose-crop_changeBtn.png"
+                                 style="background: url({{handlePath(item[2].plan_image)}}) no-repeat center center; width: 100%; height: 100%;"/>
+
+                            <img ng-if="item[2].use_count == 0"
+                                 src="img/dsbl-choose-crop_noChangeBtn.png"
+                                 style="background: url(img/disabled_model.png) no-repeat center center; width: 100%; height: 100%;"/>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col">
+                        <h5 ng-if="item[0] != null" style="text-align: center" ng-click="modeldetail(item[0].plan_id)">种植模型{{item[0].plan_id}} ></h5>
+                    </div>
+                    <div class="col">
+                        <h5 ng-if="item[1] != null" style="text-align: center" ng-click="modeldetail(item[1].plan_id)">种植模型{{item[1].plan_id}} ></h5>
+                    </div>
+                    <div class="col">
+                        <h5 ng-if="item[2] != null" style="text-align: center" ng-click="modeldetail(item[2].plan_id)">种植模型{{item[2].plan_id}} ></h5>
+                    </div>
+                </div>
+
+            </div>
+
+
+		</div>
+
+	</ion-content>
+    <ion-footer-bar  class="bar-balanced" ng-if="data.isChief">
+        <h1 class="title" ng-click="vote()">确认选择</h1>
+    </ion-footer-bar>
+</ion-view>

@@ -1,0 +1,84 @@
+<div class="bar bar-header bar-anywide">
+    <button class="button button-clear ion-chevron-left button-anywide" ng-click="goBack()">&nbsp;&nbsp;&nbsp;&nbsp;</button>
+    <h1 class="title" ng-if="data.functionType == 1">酋长选举</h1>
+    <h1 class="title" ng-if="data.functionType == 2">种植模型选择通知</h1>
+    <h1 class="title" ng-if="data.functionType == 3">酋长决定了种植模型</h1>
+    <h1 class="title" ng-if="data.functionType == 4">通知消息</h1>
+    <h1 class="title" ng-if="data.functionType == 5">交易提醒</h1>
+    <h1 class="title" ng-if="data.functionType == 6">酋长选举结果通知</h1>
+    <h1 class="title" ng-if="data.functionType == 7">种植模型查看通知</h1>
+    <h1 class="title" ng-if="data.functionType == 8">物资方案费用扣除</h1>
+    <h1 class="title" ng-if="data.functionType == 9">物资方案发布通知</h1>
+    <h1 class="title" ng-if="data.functionType == 11">采收计划发布通知</h1>
+    <h1 class="title" ng-if="data.functionType == 12">反馈截止时间提醒</h1>
+    <h1 class="title" ng-if="data.functionType == 13">农事活动报名反馈</h1>
+    <h1 class="title" ng-if="data.functionType == 14">农趣活动报名信息</h1>
+    <h1 class="title" ng-if="data.functionType == 15">农趣活动发布通知</h1>
+    <h1 class="title" ng-if="data.functionType == 16">农事活动发布通知</h1>
+    <h1 class="title" ng-if="data.functionType == 17">采收计划反馈信息</h1>
+    <!-- 预留 -->
+    <h1 class="title" ng-if="data.functionType == 18">通知信息</h1>
+    <h1 class="title" ng-if="data.functionType == 19">通知信息</h1>
+    <!-- 预留 -->
+    <h1 class="title" ng-if="data.functionType == 20">资产变动提醒</h1>
+    <h1 class="title" ng-if="data.functionType == 21">账户变动提醒</h1>
+</div>
+
+<ion-view hide-nav-bar="true" view-title="消息详情">
+    <ion-content class="has-header" ng-init="init()">
+
+        <p style="text-indent:2em;margin-top: 10%;line-height: 1.5">{{data.messageContent}}</p>
+
+        <br/>
+        <br/>
+        <br/>
+        <br/>
+        <br/>
+        <br/>
+        <br/>
+
+        <button style="width: 95%;margin-left: 2.5%"
+                class="button button-block button-anywide"
+                ng-if="data.functionType == 1 && data.isVote == false && data.voteState == 2"
+                ng-click="chiefVote()">
+        	去投票
+        </button>
+        <button style="width: 95%;margin-left: 2.5%;background-color: #ccc;border-color: #ccc"
+                class="button button-block button-anywide"
+                ng-if="data.functionType == 1 && data.isVote == true && data.voteState != 1">
+            已投票
+        </button>
+        <button class="button button-block button-anywide" ng-if="data.functionType == 7" ng-click="chiefSelectModel()">
+        	去看种植模型详情
+        </button>
+        <button class="button button-block button-anywide" ng-if="data.functionType == 2 && !data.choice" ng-click="chiefSelectModel()">
+            去看种植模型详情
+        </button>
+        <button style="background-color: #ccc;border-color: #ccc" class="button button-block button-anywide" ng-if="data.functionType == 2 && data.choice">
+            已选择
+        </button>
+        <button class="button button-block button-anywide" ng-if="data.functionType == 3" ng-click="modelDetailEx()">
+        	查看种植模型
+        </button>
+        <!--物资方案选择-->
+        <button class="button button-block button-anywide" ng-if="data.functionType == 9 && data.isVote == false && data.voteState == 2" ng-click="goodsDesign()">
+            去看看
+        </button>
+        <button style="background-color: #ccc;border-color: #ccc"
+                class="button button-block button-anywide" ng-if="data.functionType == 9 && data.isVote == true && data.voteState != 1">
+            已选择
+        </button>
+        <!--采收计划-->
+        <button class="button button-block button-anywide" ng-show="data.functionType == 11 && data.recoverState == 0" ng-click="goRecoverDetail()">
+            去看看
+        </button>
+        <button style="background-color: #ccc;border-color: #ccc"
+                class="button button-block button-anywide" ng-show="data.functionType == 11 && data.recoverState == 1">
+            已反馈
+        </button>
+        <button style="background-color: #ccc;border-color: #ccc"
+                class="button button-block button-anywide" ng-show="data.functionType == 11 && data.recoverState == 2">
+            已过期
+        </button>
+    </ion-content>
+</ion-view>

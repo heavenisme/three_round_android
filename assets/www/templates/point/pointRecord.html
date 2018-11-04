@@ -1,0 +1,37 @@
+<ion-view view-title="我的兑换">
+    <ion-content>
+        <!-- <div class="list">
+            <div class="item">
+                aaa
+            </div>
+        </div> -->
+        <div class="card" ng-repeat="item in data.items track by $index">
+            <div class="item"><!-- item-text-wrap -->
+                <div style="height:28px;">
+                    <h2 style="float:left;">{{item.item_name}}</h2>
+                    <span class="item-note" ng-if="item.receive_status == 1">
+                        未领取
+                    </span>
+                    <span class="item-note" ng-if="item.receive_status == 2">
+                        已领取
+                    </span>
+                    <span class="item-note" ng-if="item.receive_status != 1 && item.receive_status != 2">
+                        item.receive_status
+                    </span>
+                </div>
+                <div style="overflow: hidden;">
+                    <p style="float:left;">个  数: </p>
+                    <p style="float:left; color:#000;">{{item.redeem_number}}</p>
+                </div>
+                <div style="overflow: hidden;">
+                    <p style="float:left;">兑换码: </p>
+                    <p style="float:left; color:#000;">{{item.redeem_code}}</p>
+                </div>
+                <div style="overflow: hidden;">
+                    <p style="float:left;">兑换日期: </p>
+                    <p style="float:left; color:#000;">{{item.redeem_time | date: 'yyyy-MM-dd'}}</p>
+                </div>
+            </div>
+        </div>
+    </ion-content>
+</ion-view>

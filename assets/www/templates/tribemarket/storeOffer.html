@@ -1,0 +1,84 @@
+<!--部落市场（商家报价页面）-->
+<style>
+    .price-body{width: 94%;margin: 0 auto;margin-top: 20px}
+    .price-body .list{border: 1px solid #D6D6D6;background-color: #fff;padding: 10px;overflow: hidden}
+    .price-body .list .price-img{width: 50%;float: left}
+    .price-body .list .price-letter{width: 48%;float: left;margin-left: 2%}
+    .price-body .list .price-letter .letter-one p{font-size: 14px;color: #000;}
+    .price-body .list .price-letter .letter-one img{width: 15px;height: 15px}
+    .price-body .list .price-letter .check{position: relative;top:0;left:0;height:25px;}
+    .price-body .list .price-letter .check p{position: absolute;right:5%;color: #66bb6a;font-size: 14px;}
+</style>
+<div class="bar bar-header bar-anywide">
+    <button class="button button-clear ion-chevron-left button-anywide" ng-click="gotoHome()">&nbsp;&nbsp;&nbsp;&nbsp;</button>
+    <h1 class="title">商家报价</h1>
+</div>
+
+<ion-view hide-nav-bar="true" view-title="商家报价">
+    <ion-content class="has-header" style="background-color: #F2F2F2">
+        <div class="price-body" ng-init="getList()">
+            <div class="list" ng-repeat="list in data.list">
+                <div class="price-img">
+                    <img ng-src="{{handlePath(list.image_path,list.image_file,true)}}"style="height: 120px"/>
+                </div>
+                <div class="price-letter">
+                    <div class="letter-one">
+                        <p ng-if="!list.commodity_name">【{{list.crop_kind}}】{{list.crop_name}}</p>
+                        <p ng-if="list.commodity_name">{{list.commodity_name}}</p>
+                        <p>&nbsp;&nbsp;<img src="img/tribemarket/home.png"/>&nbsp;&nbsp;{{list.shop_name}}</p>
+                        <p ng-if="!list.commodity_unit">&nbsp;&nbsp;<img src="img/tribemarket/price.png"/>&nbsp;&nbsp;{{list.price}}元/斤</p>
+                        <p ng-if="list.commodity_unit">&nbsp;&nbsp;<img src="img/tribemarket/price.png"/>&nbsp;&nbsp;{{list.price}}元/{{list.commodity_unit}}</p>
+                    </div>
+                    <div class="check" ng-click="marketDesc(list.commodity_id,list.shop_id)">
+                        <p>查看详情&nbsp<i class="icon ion-ios-arrow-right"></i></p>
+                    </div>
+                </div>
+            </div>
+            <!--<div class="list">-->
+                <!--<div class="price-img">-->
+                    <!--<img src="img/tribemarket/s1.png"/>-->
+                <!--</div>-->
+                <!--<div class="price-letter">-->
+                    <!--<div class="letter-one">-->
+                        <!--<p>【绿色蔬菜】小白菜</p>-->
+                        <!--<p>&nbsp;&nbsp;<img src="img/tribemarket/home.png"/>&nbsp;&nbsp;绿色生活</p>-->
+                        <!--<p>&nbsp;&nbsp;<img src="img/tribemarket/price.png"/>&nbsp;&nbsp;4.5元/500克</p>-->
+                    <!--</div>-->
+                    <!--<div class="check" ng-click="marketDesc()">-->
+                        <!--<p>查看详情&nbsp<i class="icon ion-ios-arrow-right"></i></p>-->
+                    <!--</div>-->
+                <!--</div>-->
+            <!--</div>-->
+            <!--<div class="list">-->
+                <!--<div class="price-img">-->
+                    <!--<img src="img/tribemarket/s1.png"/>-->
+                <!--</div>-->
+                <!--<div class="price-letter">-->
+                    <!--<div class="letter-one">-->
+                        <!--<p>【绿色蔬菜】小白菜</p>-->
+                        <!--<p>&nbsp;&nbsp;<img src="img/tribemarket/home.png"/>&nbsp;&nbsp;绿色生活</p>-->
+                        <!--<p>&nbsp;&nbsp;<img src="img/tribemarket/price.png"/>&nbsp;&nbsp;4.5元/500克</p>-->
+                    <!--</div>-->
+                    <!--<div class="check" ng-click="marketDesc()">-->
+                        <!--<p>查看详情&nbsp<i class="icon ion-ios-arrow-right"></i></p>-->
+                    <!--</div>-->
+                <!--</div>-->
+            <!--</div>-->
+            <!--<div class="list">-->
+                <!--<div class="price-img">-->
+                    <!--<img src="img/tribemarket/s1.png"/>-->
+                <!--</div>-->
+                <!--<div class="price-letter">-->
+                    <!--<div class="letter-one">-->
+                        <!--<p>【绿色蔬菜】小白菜</p>-->
+                        <!--<p>&nbsp;&nbsp;<img src="img/tribemarket/home.png"/>&nbsp;&nbsp;绿色生活</p>-->
+                        <!--<p>&nbsp;&nbsp;<img src="img/tribemarket/price.png"/>&nbsp;&nbsp;4.5元/500克</p>-->
+                    <!--</div>-->
+                    <!--<div class="check" ng-click="marketDesc()">-->
+                        <!--<p>查看详情&nbsp<i class="icon ion-ios-arrow-right"></i></p>-->
+                    <!--</div>-->
+                <!--</div>-->
+            <!--</div>-->
+        </div>
+    </ion-content>
+</ion-view>

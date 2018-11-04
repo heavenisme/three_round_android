@@ -1,0 +1,78 @@
+
+<!--采收计划反馈-配送-->
+<div class="bar bar-header bar-anywide">
+    <button class="button button-clear ion-chevron-left button-anywide" ng-click="gotoHome()">&nbsp;&nbsp;&nbsp;&nbsp;</button>
+    <h1 class="title">{{data.title}}</h1>
+</div>
+<ion-view hide-nav-bar="true" view-title="{{data.title}}">
+    <ion-content class="has-header" class="delivery-bg">
+        <div class="delivery-main" ng-init="deliveryWay()">
+            <h2 class="delivery-title">配送方式</h2>
+            <div class="delivery-way">
+                <div class="delivery-way-group">
+                    <input type="radio" name="way" id="1" ng-click="selectDeliveryWay(1,0)" ng-checked="data.dRadioFlag == 1" />
+                    <label class="delivery-name">自提</label>
+                </div>
+                <div class="delivery-way-group">
+                    <input type="radio" name="way" id="2" ng-click="selectDeliveryWay(2,data.price)" ng-checked="data.dRadioFlag == 2"/>
+                    <label class="delivery-name">会有便利<span class="delivery-red">(￥{{data.price}})</span></label>
+                    <div class="list delivery-list delivery-clear">
+                        <label class="item item-input item-select">
+                            <select ng-model="data.storeList" ng-change="selectShop(data.storeList)">
+                                <option value="" selected hidden></option>
+                                <option ng-repeat="store in data.store" value="{{store}}" ng-selected="store.shop_id == data.address_id">{{store.shop_name}}({{store.address}})</option>
+                            </select>
+                        </label>
+                    </div>
+                </div>
+                <div class="delivery-way-group">
+                    <input type="radio" name="way" id="3" ng-click="selectDeliveryWay(3,0)" ng-checked="data.dRadioFlag == 3"/>
+                    <label class="delivery-name">快递<span class="delivery-red">(费用到付)</span></label>
+                    <div class="list delivery-address delivery-clear">
+                        <div ng-if="data.haveAddress">
+                            <a class="item item-icon-right"href="#" ng-click="goToRecoverAddress()">
+                                <i class="icon ion-ios-arrow-right"></i>
+                                <p>{{address.name}} <span>{{address.phone}}</span></p>
+                                <p>{{address.address}}</p>
+                            </a>
+                        </div>
+                        <div  ng-if="!data.haveAddress" class="delivery-no-address">
+                            <p>暂无收货地址<a ng-click="goToCreateAddress()">点击添加></a></p>
+                        </div>
+                        <div  ng-if="data.haveAddress && noSelectAddress" class="delivery-no-address">
+                            <p>已有收货地址<a ng-click="goToRecoverAddress()">点击选择收货地址></a></p>
+                        </div>
+                    </div>
+                </div>
+                <div class="delivery-way-group">
+                    <label class="delivery-name">配送时间</label>
+                    <div class="list delivery-list delivery-clear">
+                        <label class="item item-input item-select">
+                            <select ng-model="data.timeList" ng-change="selectTime(data.timeList)">
+                                <option value="" selected hidden></option>
+                                <!-- ng-selected="deliveryTime.index == data.defaultDelivery_on"-->
+                                <option ng-repeat="deliveryTime in data.deliveryTimes" value="{{deliveryTime}}">{{deliveryTime.delivery_on}}</option>
+                            </select>
+                        </label>
+                    </div>
+                </div>
+            </div>
+            <div class="delivery-reminder" style="display: none">
+                <h3 class="delivery-reminder-title">温馨提示</h3>
+                <div class="delivery-reminder-font">
+                    <!--<p>1.需要蔬菜配送服务的客户，如果在采收当日的12点前反馈，则可以当天送达蔬菜；如果在12点以后16点前反馈，则只能在次日送达蔬菜。</p>-->
+                    <!--<p>  2.用于交易的蔬菜将直接上架到耘客个人店铺中。</p>-->
+                    <!--<p>  3.需要自提的客户，请在采收当日12点前反馈。</p>-->
+                    <!--<p>4.快递公司：顺丰。邮费到付</p>-->
+                    <textarea style="width:100%;background:transparent;border-style:none; min-height: 200px;resize:none" readonly="true">{{data.reminder}}</textarea>
+                </div>
+            </div>
+        </div>
+    </ion-content>
+    <ion-footer-bar  class="bar-balanced">
+        <h1 class="title" ng-click="goToPayWay()">提交</h1>
+    </ion-footer-bar>
+</ion-view>
+
+
+

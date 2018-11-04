@@ -1,0 +1,128 @@
+<?xml version='1.0' encoding='utf-8'?>
+<manifest android:hardwareAccelerated="true" android:versionCode="1" android:versionName="0.0.1" package="com.anywide.hengxun.tribe" xmlns:android="http://schemas.android.com/apk/res/android">
+    <uses-sdk android:minSdkVersion="19" android:targetSdkVersion="22" />
+    <supports-screens android:anyDensity="true" android:largeScreens="true" android:normalScreens="true" android:resizeable="true" android:smallScreens="true" android:xlargeScreens="true" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    <uses-permission android:name="android.permission.GET_ACCOUNTS" />
+    <uses-permission android:name="android.permission.READ_PROFILE" />
+    <uses-permission android:name="android.permission.READ_CONTACTS" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.READ_CALL_LOG" />
+    <uses-permission android:name="android.permission.MODIFY_AUDIO_SETTINGS" />
+    <permission android:name="com.anywide.hengxun.tribe.permission.JPUSH_MESSAGE" android:protectionLevel="signature" />
+    <uses-permission android:name="com.anywide.hengxun.tribe.permission.JPUSH_MESSAGE" />
+    <uses-permission android:name="android.permission.RECEIVE_USER_PRESENT" />
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
+    <uses-permission android:name="android.permission.WRITE_SETTINGS" />
+    <uses-permission android:name="android.permission.VIBRATE" />
+    <uses-permission android:name="android.permission.MOUNT_UNMOUNT_FILESYSTEMS" />
+    <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.CHANGE_WIFI_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_LOCATION_EXTRA_COMMANDS" />
+    <uses-permission android:name="android.permission.CHANGE_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.CAMERA" />
+    <uses-permission android:name="android.permission.FLASHLIGHT" />
+    <uses-feature android:name="android.hardware.camera" android:required="false" />
+    <application android:hardwareAccelerated="true" android:icon="@drawable/icon" android:label="@string/app_name" android:supportsRtl="true">
+        <activity android:label="@string/title_activity_welcome" android:launchMode="singleTop" android:name=".WelcomeActivity" android:windowSoftInputMode="adjustResize|stateVisible">
+        </activity>
+        <activity android:clearTaskOnLaunch="true" android:configChanges="orientation|keyboardHidden" android:exported="false" android:name="com.google.zxing.client.android.CaptureActivity" android:theme="@android:style/Theme.NoTitleBar.Fullscreen" android:windowSoftInputMode="stateAlwaysHidden">
+            <intent-filter>
+                <action android:name="com.google.zxing.client.android.SCAN" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity android:label="@string/share_name" android:name="com.google.zxing.client.android.encode.EncodeActivity">
+            <intent-filter>
+                <action android:name="com.phonegap.plugins.barcodescanner.ENCODE" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity android:label="@string/share_name" android:name="com.google.zxing.client.android.HelpActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity android:configChanges="orientation|keyboardHidden|keyboard|screenSize|locale" android:label="@string/activity_name" android:launchMode="singleTop" android:name=".MainActivity" android:screenOrientation="portrait" android:theme="@android:style/Theme.Black.NoTitleBar" android:windowSoftInputMode="adjustResize">
+            <intent-filter android:label="@string/launcher_name">
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <data android:scheme="wx508c51947e14aa82" />
+            </intent-filter>
+        </activity>
+        <activity android:configChanges="orientation|keyboardHidden|screenSize" android:label="@string/title_activity_fullscreen" android:name=".FullscreenActivity" android:theme="@style/FullscreenTheme">
+        </activity>
+        <activity android:exported="true" android:launchMode="singleTop" android:name=".wxapi.WXPayEntryActivity" />
+        <receiver android:name="net.sourceforge.simcpux.AppRegister">
+            <intent-filter>
+                <action android:name="com.tencent.mm.plugin.openapi.Intent.ACTION_REFRESH_WXAPP" />
+            </intent-filter>
+        </receiver>
+        <activity android:configChanges="orientation|keyboardHidden" android:name="cn.jpush.android.ui.PushActivity" android:theme="@android:style/Theme.Translucent.NoTitleBar">
+            <intent-filter>
+                <action android:name="cn.jpush.android.ui.PushActivity" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="com.anywide.hengxun.tribe" />
+            </intent-filter>
+        </activity>
+        <service android:enabled="true" android:exported="false" android:name="cn.jpush.android.service.DownloadService" />
+        <service android:enabled="true" android:exported="false" android:name="cn.jpush.android.service.PushService">
+            <intent-filter>
+                <action android:name="cn.jpush.android.intent.REGISTER" />
+                <action android:name="cn.jpush.android.intent.REPORT" />
+                <action android:name="cn.jpush.android.intent.PushService" />
+                <action android:name="cn.jpush.android.intent.PUSH_TIME" />
+            </intent-filter>
+        </service>
+        <receiver android:enabled="true" android:name="cn.jpush.android.service.PushReceiver">
+            <intent-filter android:priority="1000">
+                <action android:name="cn.jpush.android.intent.NOTIFICATION_RECEIVED_PROXY" />
+                <category android:name="com.anywide.hengxun.tribe" />
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.USER_PRESENT" />
+                <action android:name="android.net.conn.CONNECTIVITY_CHANGE" />
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.PACKAGE_ADDED" />
+                <action android:name="android.intent.action.PACKAGE_REMOVED" />
+                <data android:scheme="package" />
+            </intent-filter>
+        </receiver>
+        <receiver android:enabled="true" android:name="cn.jpush.phonegap.MyReceiver">
+            <intent-filter android:priority="1000">
+                <action android:name="cn.jpush.android.intent.NOTIFICATION_RECEIVED_PROXY" />
+                <category android:name="com.anywide.hengxun.tribe" />
+            </intent-filter>
+            <intent-filter>
+                <action android:name="cn.jpush.android.intent.REGISTRATION" />
+                <action android:name="cn.jpush.android.intent.UNREGISTRATION" />
+                <action android:name="cn.jpush.android.intent.MESSAGE_RECEIVED" />
+                <action android:name="cn.jpush.android.intent.NOTIFICATION_RECEIVED" />
+                <action android:name="cn.jpush.android.intent.NOTIFICATION_OPENED" />
+                <action android:name="cn.jpush.android.intent.ACTION_RICHPUSH_CALLBACK" />
+                <category android:name="com.anywide.hengxun.tribe" />
+            </intent-filter>
+        </receiver>
+        <receiver android:name="cn.jpush.android.service.AlarmReceiver" />
+        <meta-data android:name="JPUSH_CHANNEL" android:value="developer-default" />
+        <meta-data android:name="JPUSH_APPKEY" android:value="adf2e00357927448769c712d" />
+        <service android:name="com.umeng.update.net.DownloadingService" android:process=":DownloadingService">
+        </service>
+        <activity android:name="com.umeng.update.UpdateDialogActivity" android:theme="@android:style/Theme.Translucent.NoTitleBar">
+        </activity>
+        <meta-data android:name="UMENG_APPKEY" android:value="56285c9267e58e5af1000d83" />
+        <meta-data android:name="UMENG_CHANNEL" android:value="0000" />
+    </application>
+</manifest>

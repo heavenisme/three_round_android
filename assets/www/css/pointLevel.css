@@ -1,0 +1,25 @@
+.point-level-col-info-left{
+    height: 36px;
+    text-align: center;
+    font-size: 14px;
+}
+
+.point-level-col-info-right{
+    height: 36px;
+    text-align: center;
+    color: rgb(102, 187, 106);
+    font-size: 14px;
+}
+
+.point-level-col-btn{
+    text-align: center;
+    height: auto;
+}
+
+.point-level-btn{
+    margin-top: 0;
+    /*height: 36px;*/
+    width: 100%;
+    text-align: center;
+    font-size: 16px;
+}

@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/html">
+<head lang="en">
+    <meta charset="UTF-8">
+
+    <title>菜园管理</title>
+    <meta name="viewport"
+          content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
+    <link rel="stylesheet" href="../../css/ionic.css" type="text/css">
+    <script src="../../js/ionic.bundle.js"></script>
+    <!--<script src="js/app.js"></script>-->
+    <style>
+        html,body{
+        margin:0;
+        padding:0;
+        font-family: '微软雅黑';
+        }
+        .p{
+        padding-top:2%;
+        color: #8c8c8c;
+        margin:0 auto;
+        }
+        .photo{
+        width:12%;
+        /*height:10%;*/
+        background-size:100%;
+        background-repeat:no-repeat;
+        position:relative;
+        float:left;
+        margin-left:5%;
+        margin-top:7%;
+        }
+        .t{
+        float:left;
+        padding-top:2%;
+        color: #8c8c8c;
+        }
+        .mj{
+        padding-left:10%;
+        }
+        .jg{
+        padding-right:10%;
+        }
+        .nx{
+        margin: 0 auto;
+        }
+        #select {
+        margin: 0 auto;
+        background-color: #33cd5f;
+        border: none;
+        color: #ffffff;
+        }
+        .diming{
+        margin-left:5%;
+        }
+        .left{
+        width:50%;
+        height:10%;
+        }
+        .xinxi{
+        margin-left:7%;
+
+        }
+        .right{
+        width:50%;
+        height:10%;
+        float: right;
+        margin-top:-40px;
+
+        }
+        .img{
+        background-size:100%;
+        background-repeat:no-repeat;
+        width:31px;
+        height:40px;
+        position:absolute;
+        right:0;
+        top:20px;
+        }
+        .tx{
+        width:15%;
+        /*height:20px;*/
+        background-size:100%;
+
+        }
+        .name{
+        margin-left:17%;
+        position:absolute;
+        top:20%
+        }
+        .jibie{
+        margin-left:17%;
+        position:absolute;
+        top:50%
+        }
+        .phonepic{
+        background-size:100%;
+        background-repeat:no-repeat;
+        width:10%;
+        position:absolute;
+        left:30%;
+        bottom:0%;
+        }
+        .phone{
+        position:absolute;
+        left:44%;
+        bottom:0%;
+        }
+    </style>
+</head>
+<body ng-app="todo" ng-controller="TodoCtrl">
+<!--头部-->
+<div class="bar bar-header bar-balanced">
+    <select id="select">
+        <option>大鹏1</option>
+        <option>大鹏2</option>
+        <option>大鹏3</option>
+        <option selected="">大鹏名称</option>
+    </select>
+</div>
+
+<!--banner图-->
+<div class="item item-image">
+    <img src="../../img/banner.jpg">
+
+    <p style="position:absolute;bottom:2%;left:4%;font-size:0.9rem;color:#ffffff">
+        42c㎡
+    </p>
+
+    <p style="position:absolute;bottom:2%;right:4%;font-size:1rem;color:#ffffff">
+        大鹏名称</br>
+        T003
+    </p>
+
+</div>
+
+<!--选项卡-->
+<div class="tabs" style="position:relative;top:0%">
+    <a class="tab-item" href="#" style="color:#353535">
+        地块信息
+    </a>
+    <a class="tab-item" href="#" style="color:#838383">
+        联系方式
+    </a>
+</div>
+
+<!--地块信息内容-->
+<div class="content has-header" id="xinxi">
+
+    <ul class="list">
+
+        <li class="item" style="border-top:none;padding-top:8px;padding-bottom:2px;">
+            <div class="left">
+                <p class="diming" style="color:#434242;font-size:12px;">#001地块</p>
+
+                <p class="diming" style="color:#838383;font-size:10px;">购买时间:2020-6-10</p>
+
+                <p class="diming" style="color:#838383;font-size:10px;">有效期限:2020-6-10</p>
+            </div>
+            <div class="right">
+                <p class="xinxi" style="color:#838383;font-size:10px;">面积:42c㎡</p>
+
+                <p class="xinxi" style="color:#838383;font-size:10px;">价格：30000元</p>
+            </div>
+        </li>
+
+        <li class="item" style="border-top:none;padding-top:8px;padding-bottom:2px;">
+            <div class="left">
+                <p class="diming" style="color:#434242;font-size:12px;">#001地块</p>
+
+                <p class="diming" style="color:#ed2828;font-size:10px;">当前状态:未付款</p>
+
+                <p class="diming" style="color:#ed2828;font-size:10px;">截止日期:2015-10-18 17:30</p>
+            </div>
+            <div class="right">
+                <p class="xinxi" style="color:#838383;font-size:10px;">面积:42c㎡</p>
+
+                <p class="xinxi" style="color:#838383;font-size:10px;">价格：30000元</p>
+                <img src="../../img/fixed.png" class="img">
+            </div>
+        </li>
+    </ul>
+
+</div>
+
+
+<!--联系方式内容-->
+<!--<div class="content has-header" id="lianxi">-->
+
+<!--<ul class="list">-->
+
+<!--<li class="item" style="border-top:none;padding-top:8px;padding-bottom:10px;">-->
+<!--<img src="../../img/tx1.png" class="tx">-->
+<!--<p class="name" style="color:#434242;font-size:14px;">都市菜农</p>-->
+<!--<p class="jibie" style="color:#838383;font-size:8px;">级别</p>-->
+<!--<div style="width:50%;height:50%;position:absolute;right:10%;bottom:20px;">-->
+<!--<img src="../../img/phone.png" class="phonepic">-->
+<!--<p class="phone" style="color:#838383;font-size:8px;">158-8888-8888</p>-->
+<!--</div>-->
+<!--</li>-->
+
+<!--<li class="item" style="border-top:none;padding-top:8px;padding-bottom:2px;">-->
+<!--<img src="../../img/tx2.png" class="tx">-->
+<!--<p class="name" style="color:#434242;font-size:14px;">都市菜农</p>-->
+<!--<p class="jibie" style="color:#838383;font-size:8px;">级别</p>-->
+<!--<div style="width:50%;height:50%;position:absolute;right:10%;bottom:20px;">-->
+<!--<img src="../../img/phone.png" class="phonepic">-->
+<!--<p class="phone" style="color:#838383;font-size:8px;">158-8888-8888</p>-->
+<!--</div>-->
+<!--</li>-->
+
+<!--<li class="item" style="border-top:none;padding-top:8px;padding-bottom:2px;">-->
+<!--<img src="../../img/tx3.png" class="tx">-->
+<!--<p class="name" style="color:#434242;font-size:14px;">都市菜农</p>-->
+<!--<p class="jibie" style="color:#838383;font-size:8px;">级别</p>-->
+<!--<div style="width:50%;height:50%;position:absolute;right:10%;bottom:20px;">-->
+<!--<img src="../../img/phone.png" class="phonepic">-->
+<!--<p class="phone" style="color:#838383;font-size:8px;">158-8888-8888</p>-->
+<!--</div>-->
+<!--</li>-->
+
+<!--<li class="item" style="border-top:none;padding-top:8px;padding-bottom:2px;">-->
+<!--<img src="../../img/tx4.png" class="tx">-->
+<!--<p class="name" style="color:#434242;font-size:14px;">都市菜农</p>-->
+<!--<p class="jibie" style="color:#838383;font-size:8px;">级别</p>-->
+<!--<div style="width:50%;height:50%;position:absolute;right:10%;bottom:20px;">-->
+<!--<img src="../../img/phone.png" class="phonepic">-->
+<!--<p class="phone" style="color:#838383;font-size:8px;">158-8888-8888</p>-->
+<!--</div>-->
+<!--</li>-->
+
+<!--<li class="item" style="border-top:none;padding-top:8px;padding-bottom:2px;">-->
+<!--<img src="../../img/tx4.png" class="tx">-->
+<!--<p class="name" style="color:#434242;font-size:14px;">都市菜农</p>-->
+<!--<p class="jibie" style="color:#838383;font-size:8px;">级别</p>-->
+<!--<div style="width:50%;height:50%;position:absolute;right:10%;bottom:20px;">-->
+<!--<img src="../../img/phone.png" class="phonepic">-->
+<!--<p class="phone" style="color:#838383;font-size:8px;">158-8888-8888</p>-->
+<!--</div>-->
+<!--</li>-->
+
+<!--<li class="item" style="border-top:none;padding-top:8px;padding-bottom:2px;">-->
+<!--<img src="../../img/tx4.png" class="tx">-->
+<!--<p class="name" style="color:#434242;font-size:14px;">都市菜农</p>-->
+<!--<p class="jibie" style="color:#838383;font-size:8px;">级别</p>-->
+<!--<div style="width:50%;height:50%;position:absolute;right:10%;bottom:20px;">-->
+<!--<img src="../../img/phone.png" class="phonepic">-->
+<!--<p class="phone" style="color:#838383;font-size:8px;">158-8888-8888</p>-->
+<!--</div>-->
+<!--</li>-->
+
+
+<!--</ul>-->
+<!--</div>-->
+
+</body>
+</html>

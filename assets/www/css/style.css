@@ -1,0 +1,1097 @@
+/*=====================================================================
+/*种植模型，作业计划页面*/
+.times {
+	display:block;
+	margin:15px 0;
+}/*首先，我们要创建一个容器class*/
+.times ul {
+	margin-left:24%;
+	border-left:2px solid #ddd;
+}/*利用ul标签的特性，设置外边框左移25px，左边边框是2px粗的实心线，颜色一般要浅一点*/
+.times ul li {
+	width:100%;
+	margin-left:-12px;
+	line-height:20px;
+	font-weight:narmal;
+}/*一般情况，通过li标签控制圆点回到时间线上，然后控制要出现的文字大小和是否粗体*/
+.times ul li b {
+	align:center;
+	width:10px;
+	height:10px;
+	background:#fff;
+	border:2px solid #555;
+	margin:5px;
+	border-radius:6px;
+	-webkit-border-radius:6px;
+	-moz-border-radius:6px;
+	overflow:hidden;
+	display:inline-block;float:left;
+	margin-top: 40px;
+}/*利用处理加粗以外没有其它特别属性b标签做时间轴的圆点。*/
+.times ul li h2 {
+	font-size:20px;
+	line-height:20px;
+	color:#555;
+}/*设置h2标签的属性，让它来做时间显示，加一点边距，使时间显示离时间线远一点*/
+.times ul li span {
+	font-size: 20px;
+	margin-left:7px;
+	line-height: 20px;
+	color: #555;
+	float: left;
+	margin-left: -95px;
+	margin-top: 40px;
+}
+.times ul li:hover b {
+	border:2px solid #ff6600;
+}/*注意这一行，前面的li标签后面加了一个:hover伪属性，意思是鼠标移上来，激活后面的属性，这样可以设置鼠标移动到整个时间范围的时候，时间点和时间显示会变色*/
+.times ul li:hover span {
+	color:#ff6600;
+}/*同上*/
+.times ul li p {
+	padding-left:15px;
+	font-size:14px;
+	line-height:25px;
+}/*这里利用段落标签p做文字介绍*/
+
+.item-thumbnail-left{
+	border:none;
+}
+
+.col{
+	   width:300px;
+	   height:100px;
+	   overflow:hidden
+}
+.col img{
+	max-width:200px;
+	_width:expression(this.width > 250 ? "250px" : this.width);
+}
+
+
+/*========================================================
+/*种植模型选择页面*/
+.category-button {
+	background:none;
+	border:none;
+}
+.category-button img{
+	  width: 100%;
+    height:100%;
+    display:block;
+    position:relative;
+    text-align:center;
+    vertical-align:center;
+    display:-webkit-flex;
+    display:-webkit-box;
+    display:flex;
+    -webkit-flex-flow:row wrap;
+    -ms-flex-flow:row wrap;
+    flex-flow:row wrap;
+    -webkit-align-items:center;
+    -webkit-box-align:center;
+    -ms-flex-align:center;
+    align-items:center;
+	}
+
+/*========================================================
+/*种植模型查看详情*/
+body {
+  width:100%;
+  color: #9f9f9f;
+  background: #fff;
+  font-size: 1.10em;
+  font-family: 'Lato', Calibri, Arial, sans-serif;
+}
+.point-time {
+  content: "";
+  position: absolute;
+  width: 13px;
+  height: 13px;
+  top: 17px;
+  left: 20%;
+  background: #1c87bf;
+  margin-left: 10%;
+  border-radius: 50%;
+  box-shadow: 0 0 0 5px #fff;
+}
+
+.text-red {
+  color: #f6393f;
+}
+.text-green {
+  color: #95c91e;
+}
+.point-red {
+  background-color: #f6393f;
+}
+.point-green {
+  background-color: #95c91e;
+}
+.content {
+
+  width: 100%;
+  margin: 30px auto;
+}
+.content article {
+  width:100%;
+  position: relative;
+}
+.content article > h3 {
+  width: 100%;
+  height: 20px;
+  line-height: 20px;
+  text-align: right;
+  font-size: 1.4em;
+  color: #1d1d1d;
+  padding: 10px 0 20px;
+}
+.content article section {
+  padding: 0 0 17px;
+  position: relative;
+}
+.content article section:before {
+  content: "";
+  width: 5px;
+  top: 17px;
+  bottom: -17px;
+  left: 20%;
+  background: #fff;
+  position: absolute;
+  margin-left:11%;
+}
+.content article section:last-child:before {
+  display: none;
+}
+.content article section time {
+  width: 25%;
+  display: block;
+  position: absolute;
+}
+.content article section time > span {
+  display: block;
+  text-align: right;
+}
+.content article section aside {
+  color: #3a3a38;
+  margin-left: 30%;
+  padding-bottom: 15px;
+}
+.content article section .brief {
+  color: #9f9f9f;
+}
+/*========================================================
+/*首页*/
+	/*功能区按钮*/
+.category-button {
+	background:none;
+	border:none;
+}
+.category-button img{
+	width: 100%;
+    height:100%;
+    display:block;
+    position:relative;
+    text-align:center;
+    vertical-align:center;
+    display:-webkit-flex;
+    display:-webkit-box;
+    display:flex;
+    -webkit-flex-flow:row wrap;
+    -ms-flex-flow:row wrap;
+    flex-flow:row wrap;
+    -webkit-align-items:center;
+    -webkit-box-align:center;
+    -ms-flex-align:center;
+    align-items:center;
+	}
+	/*banner*/
+.box{
+    width: 100%;
+    height: 160px;
+}
+div > img{
+    width: 100%;
+    height: 100%;
+}
+
+
+
+/* 积分文字*/
+.credit
+{
+position:absolute;
+left:30%;
+top:100%;
+}
+
+/* 三寰无敌加强版按钮 */
+.button.button-anywide {
+  border-color: #66BB6A;
+  background-color: #66BB6A;
+  color: #fff;
+
+}
+
+/* bar */
+
+.bar.bar-anywide {
+  border-color: #66BB6A;
+  background-color: #66BB6A;
+  background-image: linear-gradient(0deg, #66BB6A, #66BB6A 50%, transparent 50%);
+  color: #fff;
+}
+.bar.bar-anywide .title {
+  color: #fff;
+}
+.bar.bar-anywide.bar-footer {
+  background-image: linear-gradient(180deg, #66BB6A, #66BB6A 50%, transparent 50%);
+}
+
+/* 品线颜色 */
+.item-divider-anywide {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  min-height: 22px;
+  background-color: #E4E4E4;
+  color: #222;
+  font-weight: 500;
+}
+
+/* 品线颜色 白色*/
+.item.item-divider-anywide-clear .badge {
+  top: 8px;
+}
+
+/* 品线颜色 */
+.item-divider-anywide-clear {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  min-height: 22px;
+  background-color: #FFFFFF;
+  color: #FFFFFF;
+  font-weight: 500;
+}
+
+/* 品线颜色 */
+.item.item-divider-anywide .badge {
+  top: 8px;
+}
+
+/* tabs颜色 */
+.tabs-striped.tabs-background-anywide .tabs {
+  background-color: #66BB6A;
+  background-image: none; }
+
+.anywide-bg {
+  background-color: #f3f3f3;
+  height:80px;
+}
+.anywide-bg img{
+	margin-left:23%;
+	width: 50%;
+    height:50%;
+    display:block;
+    position:relative;
+    text-align:center;
+    vertical-align:center;
+    display:-webkit-flex;
+    display:-webkit-box;
+    display:flex;
+    -webkit-flex-flow:row wrap;
+    -ms-flex-flow:row wrap;
+    flex-flow:row wrap;
+    -webkit-align-items:center;
+    -webkit-box-align:center;
+    -ms-flex-align:center;
+    align-items:center;
+	}
+}
+
+ ion-tabs.tabs-color-active-anywide .tab-item {
+  color: #fff; }
+  ion-tabs.tabs-color-active-anywide .tab-item.tab-item-active, ion-tabs.tabs-color-active-anywide .tab-item.active, ion-tabs.tabs-color-active-anywide .tab-item.activated {
+    color: #68b94f; }
+
+  background-image: none;
+}
+
+/*button-bar反应态*/
+.bar-anywide .button {
+  border-color: transparent;
+  background-color: #f3f3f3;
+  color: #000000; }
+  .bar-anywide .button:hover {
+    color: #fff;
+    text-decoration: transparent; }
+  .bar-anywide .button.active, .bar-anywide .button.activated {
+    border-color: transparent;
+    background-color: #68b94f;
+    box-shadow: inset 0 1px 4px rgba(0, 0, 0, 0.1); }
+
+  .bar-anywide .button.button-icon {
+    border-color: transparent;
+    background: none; }
+
+.bar-light .button.button-anywide {
+    border-color: transparent;
+    background: none;
+    box-shadow: none;
+    color: #444;
+    font-size: 17px; }
+
+.bar-light .button.active, .bar-light .button.activated {
+    border-color: #68b94f;
+    background-color: #fafafa;
+    box-shadow: inset 0 1px 4px rgba(0, 0, 0, 0.1); }
+
+.item-anywide {
+	border:none;
+	font-size:16px;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 0px;
+  min-height: 30px;
+  background-color: #fff;
+  color: #222;
+  font-weight: 500; }
+
+/**
+ * Popups
+ */
+.popup-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  background: rgba(0, 0, 0, 0);
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -moz-box;
+  display: -moz-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  -webkit-justify-content: center;
+  -moz-justify-content: center;
+  justify-content: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  -webkit-align-items: center;
+  -moz-align-items: center;
+  align-items: center;
+  z-index: 12;
+  visibility: hidden;
+
+  }
+  .popup-container.popup-showing {
+    visibility: visible; }
+  .popup-container.popup-hidden .popup {
+    -webkit-animation-name: scaleOut;
+    animation-name: scaleOut;
+    -webkit-animation-duration: 0.1s;
+    animation-duration: 0.1s;
+    -webkit-animation-timing-function: ease-in-out;
+    animation-timing-function: ease-in-out;
+    -webkit-animation-fill-mode: both;
+    animation-fill-mode: both;
+
+  }
+  .popup-container.active .popup {
+    -webkit-animation-name: superScaleIn;
+    animation-name: superScaleIn;
+    -webkit-animation-duration: 0.2s;
+    animation-duration: 0.2s;
+    -webkit-animation-timing-function: ease-in-out;
+    animation-timing-function: ease-in-out;
+    -webkit-animation-fill-mode: both;
+    animation-fill-mode: both;
+  }
+  .popup-container .popup {
+    width: 250px;
+    max-width: 100%;
+    max-height: 90%;
+    border-radius: 0px;
+    background-color: rgba(255, 255, 255, 0.9);
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -moz-box;
+    display: -moz-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-direction: normal;
+    -webkit-box-orient: vertical;
+    -webkit-flex-direction: column;
+    -moz-flex-direction: column;
+    -ms-flex-direction: column;
+    flex-direction: column;
+  border-radius: 10px;
+  -moz-border-radius: 10px;      /* Gecko browsers */
+    -webkit-border-radius: 10px;
+  }
+  .popup-container input, .popup-container textarea {
+    width: 100%; }
+
+.popup-head {
+  padding: 15px 25px;
+  border-bottom: 1px solid #eee;
+  text-align: center;
+  background-color:#68b94f;
+  border-radius: 10px 10px 0px 0px;
+
+  }
+
+.popup-title {
+  margin: 0;
+  padding: 0;
+  font-size: 16px;
+  color:#fff;
+  }
+
+.popup-sub-title {
+  margin: 15px 0 0 0;
+  padding: 0;
+  font-weight: normal;
+  font-size: 12px;
+}
+
+.popup-body {
+
+  padding:20px;
+  overflow: auto;
+  color:#68b94f;
+  font-size:15px;
+  text-align:center;
+
+}
+
+.popup-buttons {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -moz-box;
+  display: -moz-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-direction: normal;
+  -webkit-box-orient: horizontal;
+  -webkit-flex-direction: row;
+  -moz-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  /*padding: 15px;*/
+  min-height: 5px;
+
+  width:76%;
+  margin-left:12%;
+  margin-bottom: 10px;
+  /* Webkit browsers
+  margin-bottom:20px; */
+
+  }
+  .popup-buttons .button {
+    -webkit-box-flex: 1;
+    -webkit-flex: 1;
+    -moz-box-flex: 1;
+    -moz-flex: 1;
+    -ms-flex: 1;
+    flex: 1;
+    border:none;
+    display: block;
+    min-height: 25px;
+    border-radius: 10px;
+   -moz-border-radius: 10px;
+    -webkit-border-radius: 10px;
+    line-height: 20px;
+
+    background-color:#68b94f;
+    color:#fff;
+    font-size:13px;
+
+ /* Gecko browsers */
+    /*max-width:80px;*/
+    /*position:absolute;
+    left:39%;*/
+  }
+    .popup-buttons .button:last-child {
+      margin-right: 0px; }
+
+  .popup-open {
+    pointer-events: none; }
+  .popup-open.modal-open .modal {
+    pointer-events: none; }
+  .popup-open .popup-backdrop, .popup-open .popup {
+    pointer-events: auto; }
+
+  /*-----------------------2016/02/29  by liqian 采收计划-配送（deliveryWay.html）*/
+.delivery-bg{
+    background: #F2F2F2;
+}
+.delivery-title{
+    font-size: 1.25em;
+}
+.delivery-main{
+    padding: 10px 15px;
+}
+.delivery-way{
+    margin-left: 10px;
+}
+.delivery-way .delivery-way-group{
+    width: 100%;
+    overflow: hidden;
+}
+.delivery-way .delivery-way-group input{
+    width:20px;
+    height: 20px;
+    margin-top: 10px;
+    float: left;
+}
+.delivery-way .delivery-way-group .delivery-name{
+    font-size: 14px;
+    color: #000000;
+    float: left;
+    margin:10px 0 0 8px;
+}
+.delivery-red{
+    color: red;
+    font-size: 12px;
+}
+.delivery-address{
+    color:#bbbbbb;
+    margin-left: 20px;
+}
+.delivery-clear{
+    clear: both;
+}
+
+.delivery-way .delivery-way-group .delivery-list .item-select select{
+    max-width: 90%;
+    position: static;
+    padding: 0;
+}
+.delivery-way .delivery-way-group .delivery-list{
+    width: 90%;
+    margin: 10px 0 0px 20px;
+}
+
+.delivery-way .delivery-way-group .delivery-list .item-select{
+    margin-top: 10px;
+}
+.delivery-address p{
+    margin:0;
+    font-size: 12px;
+}
+.delivery-address .item{
+    border: none;
+    text-overflow: initial;
+    white-space: normal;
+    padding: 0 44px 0 0 ;
+    padding-left: 10px;
+    margin-top: 5px;
+}
+.delivery-address .item p{
+    text-overflow: initial;
+    white-space: normal;
+}
+.delivery-reminder{
+    border-top:1px solid #bbbbbb;
+    margin-top: 20px;
+}
+.delivery-reminder-title{
+    font-size: 13px;
+    color: #666;
+    margin-top: -10px !important;
+    text-align: center;
+    background: #fff;
+    width: 100px;
+    display: block;
+    margin: 0 auto;
+}
+.delivery-reminder p{
+    font-size: 12px;
+    color: #666666;
+}
+.delivery-reminder-font{
+    margin-top: 10px;
+}
+.delivery-no-address{
+    margin: 10px 10px;
+}
+.delivery-no-address p{
+    font-size: 14px;
+}
+.delivery-no-address p a{
+    color:#007aff;
+    font-size: 14px;
+    text-decoration: underline;
+}
+/*----------2016/02/29 by liqian 采购计划-地址管理（recoverAddress.html）*/
+.recover-address{
+    margin-left: 0;
+
+}
+.recover-address p{
+    color: #000;
+}
+.recover-address-list .item-radio .radio-icon{
+    padding: 26px 0 0 10px;
+    color: red;
+    left:0;
+    font-size:14px;
+    font-weight:lighter;
+}
+.recover-address-list .item-radio .item-content{
+     padding: 10px 0 10px 20px;
+ }
+ .recover-address-list{
+     margin-bottom: 0;
+ }
+.recover-address-list .item{
+    border-top: none;
+}
+
+/*------------------2016/03/01 by liqian 种植模型（modelChooose1.html）*/
+.model-chooose-nodata{
+    width: 90%;
+    margin: 0 auto;
+    margin-top: 20px;
+    font-size: 14px;
+    text-align: center;
+}
+
+/*----------------2016/03/02 by liqian 农事活动列表（activeList.html）*/
+.active-list-main{
+    width: 94%;
+    margin: 0 auto;
+    margin-top: 20px;
+}
+.active-list-date{
+    color:#bbbbbb;
+    font-size: 14px;
+    text-align: center;
+}
+.active-list-main table{
+    width: 100%;
+}
+.active-list-main table thead{
+    background: #28a54c;
+    text-align: center;
+}
+.active-list-main table td{
+    font-size: 12px;
+    color:#000;
+    padding:8px;
+}
+.active-list-main table tbody tr:nth-child(odd){
+    background: #F2F2F2;
+}
+.active-list-main table tbody tr:nth-child(even){
+    background: #F2F2F2;
+}
+.active-list-main table tr td{
+    border: 1px solid #000;
+}
+.active-list-main table tr td:first-child{
+    width:45%
+}
+.active-list-main table{
+    border: 1px solid #000;
+}
+/*----------------2016/03/02 by liqian 农事 我要预约（appointment.html）*/
+.appointment-box1{
+    background: #fff;
+    padding: 10px;
+    border-radius: 10px;
+}
+.appointment-box1 .appointment-box1-group{
+   overflow: hidden;
+    margin-top: 10px;
+}
+.appointment-box1 .appointment-box1-group label{
+    float: left;
+    font-size: 14px;
+    color:#000;
+    width:20%;
+    margin-top: 5px;
+}
+.appointment-box1 .appointment-box1-group input{
+    border: 1px solid #dddddd;
+    float: left;
+    margin-left: 10%;
+    width:70%;
+    padding-left: 10px;
+    color: #000;
+}
+.active-list-main .delivery-reminder-title{
+    background: #F2F2F2;
+}
+
+/*----------------2016/03/02 by liqian 农事 活动详情（activeDetail.html）*/
+.activeDetail-input{
+    border: none !important;
+    height: 27px !important;
+    line-height: 27px;
+    color:#666;
+    background: #fff !important;
+}
+.activeDetail-p{
+    text-align: center;
+}
+
+/*----------------2016/03/02 by liqian  我的店铺（myshop.html）*/
+.myshop-main{
+    width: 96%;
+    margin: 0 auto;
+}
+.myshop-box1{
+    width:100%;
+    background: #fff;
+    overflow: hidden;
+    padding:10px;
+}
+.myshop-box1 .user-img{
+    width:25%;
+    float: left;
+}
+.myshop-box1 .myshop-name{
+    width:73%;
+    float: right;
+    margin-top: 5%;
+}
+.myshop-box1 .myshop-name p{
+    color:#006600;
+}
+.myshop-box1 .myshop-name .shopname{
+    font-size: 15px;
+}
+.myshop-box1 .myshop-name .myname{
+    font-size: 14px;
+}
+.myshop-box2,.myshop-box3{
+    overflow: hidden;
+    margin-top: 5px;
+}
+.myshop-box2 div{
+    width:49%;
+    min-height: 50px;
+    background: #fff;
+    margin-top: 5px;
+    padding: 10px;
+}
+.myshop-box2 div:nth-child(odd){
+    float: left;
+}
+.myshop-box2 div:nth-child(even){
+    float: right;
+}
+.myshop-box2 div label{
+    color: #006600;
+    float: left;
+    width: 60%;
+    text-align: center;
+}
+.myshop-box2 div p{
+    color: #006600;
+    float: right;
+    width: 40%;
+    text-align: center;
+    font-size: 1.55em;
+    line-height: 40px;
+    padding: 0;
+    margin:0;
+}
+.myshop-box3 .myshop-box3-box{
+    padding: 10px;
+    width:49%;
+    min-height: 70px;
+    background: #fff;
+    margin-top: 5px;
+}
+.myshop-box3 .myshop-box3-box:nth-child(odd){
+    float: left;
+}
+.myshop-box3 .myshop-box3-box:nth-child(even){
+    float: right;
+}
+.myshop-box3 .ion-android-menu{
+    font-size: 1.95em;
+    color:#FF7F00;
+    float: left;
+    font-weight: bold;
+}
+.myshop-box3 label{
+    float: left;
+    font-size:  16px;
+    color: #006600;
+   margin-top: 6px;
+    margin-left: 20px;
+}
+.myshop-box3 .myshop-box3-box div{
+    width:110px;
+    margin: 0 auto;
+    overflow: hidden;
+    margin-top: 10px;
+}
+
+/*-----------------------2016/03/03 by liqian 店铺信息*/
+.shopMessage-box{
+    margin-top: 10px;
+    background: #fff;
+    padding:7px 10px;
+    overflow: hidden;
+    border-radius: 5px;
+}
+.shopMessage-box label{
+    float: left;
+    width: 20%;
+    margin-top: 8px;
+}
+.shopMessage-box input{
+    float: left;
+    width: 80%;
+    font-size: 14px;
+    padding-left: 10px;
+}
+.shopMessage-box input:focus{
+    border:1px solid #ddd;
+}
+#changeShop-bg{
+    width: auto;
+    margin-top: 0px;
+    padding: 7px 0;
+}
+.shopMessage-right{
+    float: right;
+    font-size: 1.75em;
+}
+.shop-introduce{
+    background: #fff;
+    padding:10px;
+    margin-top: 10px;
+}
+.shop-introduce textarea{
+    width: 100%;
+    height:50px;
+    overflow-y:visible;
+}
+.shop-introduce div{
+    padding:0;
+    font-size: 14px;
+    margin-top: 5px;
+    color:#000;
+}
+.shop-introduce div:focus{
+    border: 1px solid #ddd;
+}
+
+
+/*------------------2016/03/03 by liqian 上架管理*/
+.shelfManagement .col{
+    height: auto;
+}
+.shelfManagement-bg{
+    border: 1px solid #F2F2F2;
+    background:#E0EEE0;
+    border-radius: 5px;
+    padding-bottom: 10px;
+    overflow: hidden;
+}
+
+.shelfManagement-bg .shelfManagement-img-box{
+    width:90%;
+    margin: 0 auto;
+    margin-top: 5%;
+}
+.shelfManagement-img-box p{
+    font-size: 14px;
+    color:#000;
+    margin: 0;
+}
+.shelfManagement{
+    width:98%;
+    margin:0 auto;
+}
+.shelfManagement-bg{
+    margin-top: 10px;
+}
+.shelfManagement-bg:nth-child(odd){
+    width: 48%;
+    float: left;
+}
+.shelfManagement-bg:nth-child(even){
+    width: 49%;
+    float: right;
+}
+
+/*--------------2016/03/04 by liqian 商品管理*/
+.productFont{
+    display: table;
+}
+.productFont-row{
+    display: table-row;
+}
+.productFont-cell{
+    display: table-cell;
+    vertical-align: middle;
+}
+.productFont-cell:nth-child(2){
+    padding-left: 10px;
+}
+
+/**---------------------------------by liqian 商品详情*/
+.productDetai-main{
+    width: 96%;
+    margin: 0 auto;
+    margin-top: 20px;
+}
+.productDetai-title{
+    overflow: hidden;
+}
+.productDetai-title label{
+    float: left;
+    color: #000;
+    margin-top: 10px;
+}
+.productDetai-title input{
+    border: 1px solid #000;
+    float: left;
+    margin-left: 20px;
+    padding-left: 20px;
+    width: 70%;
+}
+.productDetai-font{
+    margin-top: 20px;
+}
+.productDetai-font label{
+    color: #000;
+}
+.productDetai-font div{
+    font-size: 14px;
+    margin-top: 10px;
+    color:#006600;
+
+}
+.productDetai-font div:focus{
+    border: 1px solid #dddddd;
+    padding: 10px;
+}
+
+/*-----------------by liqian 价格管理*/
+.priceManagement-main{
+    width: 98%;
+    margin: 0 auto;
+}
+.priceManagement-main table{
+    font-size: 13px;
+    color:#000;
+    margin: 20px auto;
+    width: 100%;
+}
+.priceManagement-main thead{
+    background: #fff;
+    text-align: center;
+}
+.priceManagement-main table td{
+   /* height: 40px;
+    line-height: 40px;*/
+    vertical-align:middle;
+    text-align: center;
+    padding: 8px 2px 6px;
+    width:25%;
+}
+.priceManagement-main table tbody tr:nth-child(even){
+    background: #fff;
+}
+.priceManagement-main table tbody tr:nth-child(odd){
+    background: #C1FFC1;
+}
+
+
+/*------------2016/03/04 by liqian 部落市场滚动字幕*/
+@-webkit-keyframes scrollText1 {
+    0%{
+        opacity: 0;
+    }
+    25%{
+        opacity: 0.5;
+    }
+    50%{
+        opacity: 1;
+    }
+    75%{
+        opacity: 0.5;
+    }
+    100%{
+        opacity: 0;
+    }
+}
+
+@keyframes scrollText1 {
+    0%{
+        opacity: 0;
+    }
+    25%{
+        opacity: 0.5;
+    }
+    50%{
+        opacity: 1;
+    }
+    75%{
+        opacity: 0.5;
+    }
+    100%{
+        opacity: 0;
+    }
+}
+#content{
+    -webkit-animation:scrollText1 3s infinite;
+    animation:scrollText1 3s infinite;
+}
+.tribeMarket-box3{
+    position: fixed;
+    top: 44px;
+    width: 100%;
+    height: 30px;
+    overflow: hidden;
+    background: rgba(84,139,84,0.6);
+    z-index: 999;
+}
+
+/*.tribeMarket-border3{*/
+    /*top: 0px;*/
+    /*-webkit-animation:scrollText1 10s infinite  cubic-bezier(1,0,0.5,0) ;*/
+    /*animation:scrollText1 10s infinite  cubic-bezier(1,0,0.5,0) ;*/
+/*}*/
+
+.tribeMarket-box3 p{
+    height: 30px;
+    padding-left: 10px;
+    margin: 0;
+    line-height: 30px;
+    font-size: 14px;
+    color:#fff;
+}
+
+#content:hover{
+    animation-play-state:paused;
+    -webkit-animation-play-state:paused;
+}
+
+.tribe-box{
+    width:49%;
+    height:auto;
+    border: 1px solid #F2F2F2;
+    background:#E0EEE0;
+    border-radius: 5px;
+    padding:5px;
+}
+.tribe-box:nth-child(odd){
+    float: left;
+}
+.tribe-box:nth-child(even){
+    float: right;
+}
+/*.unvisible{
+    display: none !important;
+}*/

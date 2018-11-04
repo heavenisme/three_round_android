@@ -1,0 +1,41 @@
+<ion-view hide-nav-bar="false" title="已售订单">
+  <ion-content class="has-header" style="background-color: #F2F2F2" >
+    <!--全部订单列表-->
+    <div style="margin-top: 10px;color: #000;">
+      <!--<div style="margin-top: 10px;color: #000;" ng-show="data.currState==0">-->
+      <div style="background-color: #fff;margin-bottom: 10px;" ng-repeat="item in content" >
+        <div style="padding: 10px 13px 0;">
+          <div class="my-order-top" style="overflow: hidden">
+            <p style="float: left;color: #7C7C7C;font-size: 14px">{{item.buyer_name}}</p>
+            <p ng-if = "item.order_status==1" style="float: right;color: #66BB6A;font-size: 14px;">待付款</p>
+            <p ng-if = "item.order_status==2" style="float: right;color: #66BB6A;font-size: 14px;">待发货</p>
+            <p ng-if = "item.order_status==4" style="float: right;color: #66BB6A;font-size: 14px;">待收货</p>
+            <p ng-if = "item.order_status==9" style="float: right;color: #66BB6A;font-size: 14px;">交易完成</p>
+          </div>
+          <div class="my-order-middle" style="overflow: hidden">
+            <img style="width: 80px;height: 80px;float: left;" ng-src="{{handlePath(item.image_path,item.image_file,true)}}"/>
+            <div style="float: right;overflow: hidden;width: 70%;">
+              <span style="">{{item.commodity_name}}</span>
+              <p style="float: right;">￥{{item.commodity_price}}元</p>
+            </div><br/>
+            <p style="float:right;text-align:right;width: 70%;">×{{item.commodity_number}}</p>
+          </div>
+          <div class="my-order-bottom" style="overflow: hidden;font-size: 14px;color: #7c7c7c;">
+            <p style="float: left">{{item.create_time| date:'yyyy-MM-dd HH:mm:ss'}}</p>
+            <p style="float: right">合计:{{item.total_price - item.delivery_cost}}元</p>
+          </div>
+        </div>
+        <!--&lt;!&ndash;付款和确认按钮&ndash;&gt;-->
+        <!--<div class="my-order-button" style="overflow: hidden;border-top: 1px solid #eeeeee;" ng-if = "item.order_status==1" >-->
+          <!--<p style="float:right;margin-right:10px;margin-top:10px;background-color: #66BB6A;border-radius: 5px;color: #fff;padding: 7px 10px 4px;"-->
+             <!--ng-click="goPayOrder(item.order_id,item.order_number,item.total_price,item.delivery_cost,item.delivery_on,item.delivery_type)">去 付 款</p>-->
+        <!--</div>-->
+        <!--<div class="my-order-button" style="overflow: hidden;border-top: 1px solid #eeeeee;" ng-if = "item.order_status==4" >-->
+          <!--<p style="float:right;margin-right:10px;margin-top:10px;background-color: #66BB6A;border-radius: 5px;color: #fff;padding: 7px 10px 4px;"-->
+             <!--ng-click="confirmOrderGoods(item.order_id)">确认收货</p>-->
+        <!--</div>-->
+      </div>
+    </div>
+    <ion-infinite-scroll on-infinite="infinite()" ng-if="haveMore"></ion-infinite-scroll>
+  </ion-content>
+</ion-view>

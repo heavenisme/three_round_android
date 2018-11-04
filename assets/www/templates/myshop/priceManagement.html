@@ -1,0 +1,32 @@
+<!--价格管理-->
+<div class="bar bar-header bar-anywide">
+    <button class="button button-clear ion-chevron-left button-anywide" ng-click="gotoHome()">&nbsp;&nbsp;&nbsp;&nbsp;</button>
+    <h1 class="title">价格管理</h1>
+</div>
+<ion-view hide-nav-bar="true" view-title="价格管理">
+    <ion-content class="has-header" style="background: #F2F2F2" ng-init="getPriceInfo()">
+        <div class="priceManagement-main">
+            <table>
+                <thead>
+                <tr>
+                    <td>品种</td>
+                    <td>耘客市场价格</td>
+                    <td>市民大集价格</td>
+                    <td>三寰指导价格</td>
+                </tr>
+                </thead>
+                <tbody>
+                <tr ng-repeat="item in content">
+                    <td>{{item.crop_name}}</td>
+                    <td>{{item.tribe_price}}</td>
+                    <td>{{item.open_price}}</td>
+                    <td>{{item.crop_price}}</td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </ion-content>
+</ion-view>
+
+
+

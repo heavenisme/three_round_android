@@ -1,0 +1,63 @@
+<div class="bar bar-header bar-anywide">
+    <button class="button button-clear ion-chevron-left button-anywide" ng-click="goBack()">&nbsp;&nbsp;&nbsp;&nbsp;</button>
+    <h1 class="title" >种植模型详情</h1>
+</div>
+
+<ion-view title="种植模型详情
+" hide-nav-bar="true">
+    <meta name="format-detection" content="telephone=no" />
+    <ion-content class="has-header" has-bouncing="false" ng-init="requestPlaningDetail()">
+
+        <div ng-repeat="item in data.planting">
+
+            <div style="float: left;position: absolute;margin-top: 20px;text-align:right;margin-left: 4%">
+                <h4 style="font-weight: bold;font-size: 12px">{{data.planting[$index].startAlias.substr(0,5)}}</h4>
+                <h4 style="font-weight: bold;font-size: 12px;margin-top: -15%;padding: 0">{{data.planting[$index].startAlias.substr(5,10)}}</h4>
+                <!--<p style="font-size: 12px;text-align: center">{{data.planting[$index].name}}</p>-->
+            </div>
+            <div style="float: left;position: absolute;margin-left: 21%;">
+                <img src="img/gray1.png" style="height: 101px" ng-if="data.planting[$index].kind == 1"/>
+                <img src="img/green1.png" style="height: 101px" ng-if="data.planting[$index].kind == 2"/>
+                <img src="img/red1.png" style="height: 101px" ng-if="data.planting[$index].kind == 3"/>
+            </div>
+
+            <div style="margin-left: 29%;">
+                <label class="item item-avatar" style="border-left: none;">
+                    <img ng-src="{{handlePath(data.planting[$index].image)}}" style="width: 100%;height: auto;">
+                    <h2 style="font-weight: bold;font-size: 14px;margin-top: 5%" ng-if="data.planting[$index].kind == 1">育苗期</h2>
+                    <h2 style="font-weight: bold;font-size: 14px;margin-top: 5%" ng-if="data.planting[$index].kind == 2">营养生长期</h2>
+                    <h2 style="font-weight: bold;font-size: 14px;margin-top: 5%" ng-if="data.planting[$index].kind == 3">采收期</h2>
+                    <p style="font-size: 12px;margin-top: 10px;margin-bottom: -5px">{{data.planting[$index].start}}~{{data.planting[$index].end}}</p>
+                    <p style="font-size: 12px;">种植比例{{data.planting[$index].percent*100}}%</p>
+                    <p style="font-size: 14px;float: left;margin-left: -50px;margin-top: -22px">{{data.planting[$index].name}}</p>
+                </label>
+            </div>
+        </div>
+        <!--<article>
+            <section ng-repeat="item in data.planting">
+                <span class="point-time point-red"></span>
+                <time datetime="2015-03">
+                    <span>{{data.planting[$index].startAlias}}</span>
+                    <span ng-if="data.planting[$index].kind == 1">播种期</span>
+                    <span ng-if="data.planting[$index].kind == 2">生长期</span>
+                    <span ng-if="data.planting[$index].kind == 3">采收期</span>
+                </time>
+
+                &lt;!&ndash;===============ID===============&ndash;&gt;
+                &lt;!&ndash; {{data.planting[$index].kind}} &ndash;&gt;
+
+                <aside style="margin-left:40%">
+                    <a class="item item-avatar" href="#">
+                      <img src="img/shit.png">
+                      <p class="things" style="margin-left:10px;">{{data.planting[$index].name}}</p>
+                      <p class="brief" style="word-wrap:break-word;">
+                        {{data.planting[$index].start}}~{{data.planting[$index].end}}
+                      </p>
+                    </a>
+                </aside>
+            </section>
+
+        </article>-->
+
+    </ion-content>
+</ion-view>

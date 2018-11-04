@@ -1,0 +1,21 @@
+<ion-view hide-nav-bar="false" view-title="关于我们">
+    <ion-nav-buttons side="left">
+        <button class="button button-clear ion-chevron-left button-anywide" ng-click="gotoHome()">&nbsp;&nbsp;&nbsp;&nbsp;</button>
+    </ion-nav-buttons>
+<!--<ion-content class="has-header" scroll="true" overflow-scroll="true">-->
+    <img src="img/Our.jpg" style="width:100%;height:100%;position:absolute;top:2%;left:0%;background-size:100%" ng-if="ios == false">
+    <img src="img/Our.jpg" style="width:100%;height:100%;position:absolute;top:5%;left:0%;background-size:100%" ng-if="ios == true">
+    <iframe ng-src="{{data.src}}" style="font-family:'微软雅黑';width:80%;height:50%;position:absolute;left:10%;top:25%;color:#000000;line-height:15px;" ng-if="ios == false"></iframe>
+    <iframe ng-src="{{data.src}}" style="font-family:'微软雅黑';width:80%;height:50%;position:absolute;left:10%;top:30%;color:#000000;line-height:15px;" ng-if="ios == true"></iframe>
+    <!--<div style="font-family:'微软雅黑';width:80%;height:50%;position:absolute;left:10%;top:25%;color:#000000;line-height:15px;" ng-if="ios == false">
+        <p style="text-indent:15px;font-size:16px;">会耕部落由大连三寰农业服务有限公司开发、运营，为市民提供建立在“互联网+” 基础上的家庭安全蔬菜解决方案、消费投资方案和现实版的都市菜园。</p></br>
+        <p style="text-indent:15px;font-size:16px;">大连三寰农业服务有限公司是三寰集团全资子公司，成立于2015年，致力于提供专业、现代、标准化的农业服务。涵盖农业项目咨询、策划、运营，以及农业技术、管理服务输出，同时具备农产品种植、销售、流通、加工等全产业价值链延伸服务，以大连为中心，建立覆盖全国乃至全球的服务网络，通过标准化的服务管理及因地制宜的落地管理，提供一站式安全食品解决方案。</p>
+    </div>
+    <div style="font-family:'微软雅黑';width:80%;height:50%;position:absolute;left:10%;top:30%;color:#000000;line-height:15px;" ng-if="ios == true">
+        <p style="text-indent:15px;font-size:16px;">会耕部落由大连三寰农业服务有限公司开发、运营，为市民提供建立在“互联网+” 基础上的家庭安全蔬菜解决方案、消费投资方案和现实版的都市菜园。</p></br>
+        <p style="text-indent:15px;font-size:16px;">大连三寰农业服务有限公司是三寰集团全资子公司，成立于2015年，致力于提供专业、现代、标准化的农业服务。涵盖农业项目咨询、策划、运营，以及农业技术、管理服务输出，同时具备农产品种植、销售、流通、加工等全产业价值链延伸服务，以大连为中心，建立覆盖全国乃至全球的服务网络，通过标准化的服务管理及因地制宜的落地管理，提供一站式安全食品解决方案。</p>
+    </div>
+    <p style="position:absolute;bottom:0px;left:20%;font-family:'微软雅黑';font-size:18px;color:#000000;line-height:20px;text-align:center" >Copyright© 2015<br>
+        大连三寰农业服务有限公司</p>-->
+<!--</ion-content>-->
+</ion-view>

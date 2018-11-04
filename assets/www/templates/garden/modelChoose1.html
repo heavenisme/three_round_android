@@ -1,0 +1,73 @@
+<!-- 哥们！！！别用jQuery啊！！！ -->
+<script type="text/javascript">
+    function $(id){
+        return document.getElementById(id)
+    }
+    function getHeight() {
+        alert($("leftbox").offsetHeight + "px");
+        $("rightbox").style.height=$("leftbox").offsetHeight + "px";
+    }
+</script>
+<body onload="getHeight()">
+
+<div class="bar bar-header bar-anywide">
+    <button class="button button-clear ion-chevron-left button-anywide" ng-click="goBack()">&nbsp;&nbsp;&nbsp;&nbsp;</button>
+    <h1 class="title" >种植模型</h1>
+</div>
+
+<ion-view title="种植模型" hide-nav-bar="true">
+
+    <!-- <ion-content  class="has-header" ng-init="getPlanting()"> -->
+    <ion-content class="has-header" style="background-color: #F2F2F2">
+        <p ng-if="data.nowState" class="model-chooose-nodata">已无可选种植模型，请与三寰农业服务公司联系。</p>
+        <table style="width: 100%">
+            <tr ng-repeat="item in data.content" style="border-bottom: 1px solid #CCC;top: 20px;width: 100%">
+                <td style="width: 10%;text-align: center;vertical-align: middle">
+                    <input type="radio" name="group" ng-click="plantModelClick(item.plan_id)" ng-disabled="!data.isChief" style="width: 20px;height:20px;border-radius: 100%"/>
+                </td>
+                <td style="width: 70%;padding-bottom: 10px;padding-top: 10px;">
+                    <img ng-repeat="tmp in item.planting_crop" ng-src="{{handlePath(tmp.crop_image,true)}}" style="width: 30%;height: auto;padding-left: 10px;"/>
+                </td>
+                <td ng-click="modeldetail(item.plan_id)" style="width: 10%;text-align: center;vertical-align: middle">
+                    <i class="ion-chevron-right"></i>
+                </td>
+            </tr>
+            <!--<tr style="border-bottom: 1px solid #CCC;top: 20px;">
+                <td style="width: 10%;text-align: center;vertical-align: middle">
+                    <input type="radio" name="group"/>
+                </td>
+                <td style="width: 70%;padding-bottom: 10px;padding-top: 10px;">
+                    <img src="img/tiangua.png" alt="" style="width: 30%;height: 50%;padding-left: 10px;"/>
+                    <img src="img/tiangua.png" alt="" style="width: 30%;height: 50%;padding-left: 10px;"/>
+                    <img src="img/tiangua.png" alt="" style="width: 30%;height:50%;padding-left: 10px;"/>
+                    <img src="img/tiangua.png" alt="" style="width: 30%;height:50%;padding-left: 10px;"/>
+
+                </td>
+                <td style="width: 10%;text-align: center;vertical-align: middle">
+                    <i class="ion-chevron-right"></i>
+                </td>
+            </tr>
+
+            <tr style="border-bottom: 1px solid #CCC;top: 20px;">
+                <td style="width: 10%;text-align: center;vertical-align: middle">
+                    <input type="radio" name="group"/>
+                </td>
+                <td style="width: 70%;padding-bottom: 10px;padding-top: 10px;">
+                    <img src="img/tiangua.png" alt="" style="width: 30%;height: 50%;padding-left: 10px;"/>
+                    <img src="img/tiangua.png" alt="" style="width: 30%;height:50%;padding-left: 10px;"/>
+                    <img src="img/tiangua.png" alt="" style="width: 30%;height:50%;padding-left: 10px;"/>
+
+                </td>
+                <td style="width: 10%;text-align: center;vertical-align: middle">
+                    <i class="ion-chevron-right"></i>
+                </td>
+            </tr>-->
+
+
+        </table>
+    </ion-content>
+    <ion-footer-bar  class="bar-balanced" ng-if="data.isChief">
+        <h1 class="title" ng-click="vote()">确认选择</h1>
+    </ion-footer-bar>
+</ion-view>
+</body>

@@ -1,0 +1,202 @@
+<div class="tabs-striped tabs-top tabs-background-anywide tabs-color-light">
+    <div class="tabs">
+        <a ng-click="orderTabClick(0)" ng-class="{'true': 'tab-item active', 'false': 'tab-item inactive'}[data.isActive.all]">全部</a>
+        <a class="tab-item" ng-click="orderTabClick(1)" ng-class="{'true': 'tab-item active', 'false': 'tab-item inactive'}[data.isActive.now]">待付款</a>
+        <a class="tab-item " ng-click="orderTabClick(2)" ng-class="{'true': 'tab-item active', 'false': 'tab-item inactive'}[data.isActive.join]">待发货</a>
+        <a class="tab-item " ng-click="orderTabClick(3)" ng-class="{'true': 'tab-item active', 'false': 'tab-item inactive'}[data.isActive.close]">待收货</a>
+    </div>
+</div>
+
+<ion-header-bar class="bar-anywide">
+    <div class="buttons">
+        <button class="button button-clear ion-chevron-left button-anywide" ng-click="gotoHome()">&nbsp;&nbsp;&nbsp;&nbsp;</button>
+    </div>
+    <h1 class="title">我的订单</h1>
+</ion-header-bar>
+
+<ion-view hide-nav-bar="true" title="我的订单">
+    <!-- <ion-nav-buttons side="left">
+        <button class="button button-clear ion-chevron-left button-anywide" ng-click="gotoHome()">&nbsp;&nbsp;&nbsp;&nbsp;</button>
+    </ion-nav-buttons> -->
+
+    <ion-content class="has-header has-subheader" style="background-color: #F2F2F2" ng-hide="isNull">
+
+        <!--全部订单列表-->
+        <!-- <div style="margin-top: 10px;color: #000;" ng-show="data.currState==0" ng-init="getMyOrderAll()" > -->
+        <div style="margin-top: 10px;color: #000;" ng-show="data.currState==0">
+                <div style="background-color: #fff;margin-bottom: 10px;" ng-repeat="item in content" >
+                    <div style="padding: 10px 13px 0;">
+                        <div class="my-order-top" style="overflow: hidden">
+                            <p style="float: left;color: #7C7C7C;font-size: 14px">{{item.shop_name}}</p>
+                            <p ng-if = "item.order_status==1" style="float: right;color: #66BB6A;font-size: 14px;">待付款</p>
+                            <p ng-if = "item.order_status==2" style="float: right;color: #66BB6A;font-size: 14px;">待发货</p>
+                            <p ng-if = "item.order_status==4" style="float: right;color: #66BB6A;font-size: 14px;">待收货</p>
+                            <p ng-if = "item.order_status==9" style="float: right;color: #66BB6A;font-size: 14px;">交易完成</p>
+                        </div>
+                        <div class="my-order-middle" style="overflow: hidden">
+                            <img style="width: 80px;height: 80px;float: left;" ng-src="{{handlePath(item.image_path,item.image_file,true)}}"/>
+                            <div style="float: right;overflow: hidden;width: 70%;">
+                                <!--<span style="">千禧一号</span>-->
+                                <span style="">{{item.commodity_name}}</span>
+                                <p style="float: right;">￥{{item.commodity_price}}元</p>
+                            </div><br/>
+                            <p style="float:right;text-align:right;width: 70%;">×{{item.commodity_number}}</p>
+                            <!--<p style="float:right;text-align:right;width: 70%;font-size: 12px;">{{item.create_time | date:'yyyy-mm-dd'}}</p>-->
+                        </div>
+                        <div class="my-order-bottom" style="overflow: hidden;font-size: 14px;color: #7c7c7c;">
+                            <p style="float: left">{{item.create_time| date:'yyyy-MM-dd HH:mm:ss'}}</p>
+                            <p style="float: right">合计:{{item.total_price}}元<span ng-if="item.paid==1">(含运费)</span></p>
+                        </div>
+                    </div>
+                    <!--付款和确认按钮-->
+                    <div class="my-order-button" style="overflow: hidden;border-top: 1px solid #eeeeee;" ng-if = "item.order_status==1" >
+                        <p style="float:right;margin-right:10px;margin-top:10px;background-color: #66BB6A;border-radius: 5px;color: #fff;padding: 7px 10px 4px;"
+                           ng-click="goPayOrder(item.order_id,item.order_number,item.total_price,item.delivery_cost,item.delivery_on,item.delivery_type)">去 付 款</p>
+                    </div>
+                    <div class="my-order-button" style="overflow: hidden;border-top: 1px solid #eeeeee;" ng-if = "item.order_status==4" >
+                        <p style="float:right;margin-right:10px;margin-top:10px;background-color: #66BB6A;border-radius: 5px;color: #fff;padding: 7px 10px 4px;"
+                           ng-click="confirmOrderGoods(item.order_id, item.seller_id)">确认收货</p>
+                    </div>
+                </div>
+        </div>
+
+        <!--待付款订单列表-->
+        <div style="margin-top: 10px;color: #000;" ng-show="data.currState==1">
+            <!--box1-->
+            <div style="background-color: #fff;margin-bottom: 10px;" ng-repeat="item in pendingPaymentList">
+                <div style="padding: 10px 13px 0;">
+                    <div class="my-order-top" style="overflow: hidden">
+                        <p style="float: left;color: #7C7C7C;font-size: 14px">{{item.shop_name}}</p>
+                    </div>
+                    <div class="my-order-middle" style="overflow: hidden">
+                        <img style="width: 80px;height: 80px;float: left;" ng-src="{{handlePath(item.image_path,item.image_file,true)}}"/>
+                        <div style="float: right;overflow: hidden;width: 70%;">
+                            <!--<span style="">千禧一号</span>-->
+                            <span style="">{{item.commodity_name}}</span>
+                            <p style="float: right;">￥{{item.commodity_price}}元</p>
+                        </div><br/>
+                        <p style="float:right;text-align:right;width: 70%;">×{{item.commodity_number}}</p>
+                    </div>
+                    <div class="my-order-bottom" style="overflow: hidden;font-size: 14px;color: #7c7c7c;">
+                        <p style="float: left">{{item.create_time| date:'yyyy-MM-dd HH:mm:ss'}}</p>
+                        <p style="float: right">合计:{{item.total_price}}元<span ng-if="item.paid==1">(含运费)</span></p>
+                    </div>
+                </div>
+                <!--付款和确认按钮-->
+                <div class="my-order-button" style="overflow: hidden;border-top: 1px solid #eeeeee;">
+                    <p style="float:right;margin-right:10px;margin-top:10px;background-color: #66BB6A;border-radius: 5px;color: #fff;padding: 7px 10px 4px;"
+                       ng-click="goPayOrder(item.order_id,item.order_number,item.total_price,item.delivery_cost,item.delivery_on)">去 付 款</p>
+                </div>
+            </div>
+        </div>
+        <!--待付款订单列表结束-->
+
+        <!--待发货订单列表-->
+        <div style="margin-top: 10px;color: #000;" ng-show="data.currState==2">
+            <!--box1-->
+            <div style="background-color: #fff;margin-bottom: 10px;" ng-repeat="item in readyToShipList">
+                <div style="padding: 10px 13px 0;">
+                    <div class="my-order-top" style="overflow: hidden">
+                        <p style="float: left;color: #7C7C7C;font-size: 14px">{{item.shop_name}}</p>
+                    </div>
+                    <div class="my-order-middle" style="overflow: hidden">
+                        <img style="width: 80px;height: 80px;float: left;" ng-src="{{handlePath(item.image_path,item.image_file,true)}}"/>
+                        <div style="float: right;overflow: hidden;width: 70%;">
+                            <!--<span style="">千禧一号</span>-->
+                            <span style="">{{item.commodity_name}}</span>
+                            <p style="float: right;">￥{{item.commodity_price}}元</p>
+                        </div><br/>
+                        <p style="float:right;text-align:right;width: 70%;">×{{item.commodity_number}}</p>
+                    </div>
+                    <div class="my-order-bottom" style="overflow: hidden;font-size: 14px;color: #7c7c7c;">
+                        <p style="float: left">{{item.create_time| date:'yyyy-MM-dd HH:mm:ss'}}</p>
+                        <p style="float: right">合计:{{item.total_price}}元<span ng-if="item.paid==1">(含运费)</span></p>
+                    </div>
+                </div>
+                <!--付款和确认按钮-->
+<!--                <div class="my-order-button" style="overflow: hidden;border-top: 1px solid #eeeeee;">
+                    <p style="float:right;margin-right:10px;margin-top:10px;background-color: #66BB6A;border-radius: 5px;color: #fff;padding: 7px 10px 4px;">去 付 款</p>
+                </div>-->
+            </div>
+        </div>
+        <!--待发货订单列表结束-->
+
+        <!--确认收货订单列表---开始-->
+        <div style="margin-top: 10px;color: #000;" ng-show="data.currState==3">
+            <!--box1-->
+            <div style="background-color: #fff;margin-bottom: 10px;" ng-repeat="item in receiptOfGoodsList" >
+                <div style="padding: 10px 13px 0;">
+                    <div class="my-order-top" style="overflow: hidden">
+                        <p style="float: left;color: #7C7C7C;font-size: 14px">{{item.shop_name}}</p>
+                        <p ng-if = "item.order_status==1" style="float: right;color: #66BB6A;font-size: 14px;">待付款</p>
+                        <p ng-if = "item.order_status==2" style="float: right;color: #66BB6A;font-size: 14px;">待发货</p>
+                        <p ng-if = "item.order_status==4" style="float: right;color: #66BB6A;font-size: 14px;">待收货</p>
+                        <p ng-if = "item.order_status==9" style="float: right;color: #66BB6A;font-size: 14px;">交易完成</p>
+                    </div>
+                    <div class="my-order-middle" style="overflow: hidden">
+                        <img style="width: 80px;height: 80px;float: left;" ng-src="{{handlePath(item.image_path,item.image_file,true)}}"/>
+                        <div style="float: right;overflow: hidden;width: 70%;">
+                            <!--<span style="">千禧一号</span>-->
+                            <span style="">{{item.commodity_name}}</span>
+                            <p style="float: right;">￥{{item.commodity_price}}元</p>
+                        </div><br/>
+                        <p style="float:right;text-align:right;width: 70%;">×{{item.commodity_number}}</p>
+                    </div>
+                    <div class="my-order-bottom" style="overflow: hidden;font-size: 14px;color: #7c7c7c;">
+                        <p style="float: left">{{item.create_time| date:'yyyy-MM-dd HH:mm:ss'}}</p>
+                        <p style="float: right">合计:{{item.total_price}}元<span ng-if="item.paid==1">(含运费)</span></p>
+                    </div>
+                </div>
+                <!--付款和确认按钮-->
+                <div class="my-order-button" style="overflow: hidden;border-top: 1px solid #eeeeee;">
+                    <p style="float:right;margin-right:10px;margin-top:10px;background-color: #66BB6A;border-radius: 5px;color: #fff;padding: 7px 10px 4px;"
+                       ng-click="confirmOrderGoods(item.order_id,  item.seller_id)">确认收货</p>
+                </div>
+            </div>
+
+        </div>
+        <!--确认收货订单列表---结束-->
+        <!--<div class="list" ng-repeat="item in data.orderList.data" ng-show="data.currState === item.orderstate || data.currState == 0" >-->
+           <!-- <div class="list">
+            <div class="item item-divider-anywide"></div>
+
+            <div class="item item-icon-left" herf="javascript:void(0)" ng-click="myBalanceClick()">
+                <i class="icon ion-social-octocat" style="font-size: 24px;">
+                    <h2>三寰集团农业服务部</h2>
+                </i>
+                <span class="item-note">{{getCurrOrderState(item.orderstate)}}</span>
+            </div>
+
+            <a class="item item-avatar" href="#" ng-repeat="buf in item.goodsInfo">
+                <img src="img/tomato.jpg">
+                <h2>{{buf.summary}}</h2>
+                <p>￥{{buf.goodsprice}}</p>
+                <span class="item-note">x{{buf.quantity}}</span>
+            </a>
+
+            <div class="item" style="height:78px">
+                <span class="item-note">共{{item.goodsInfo.length}}件商品&nbsp;&nbsp;&nbsp;实付：￥{{item.orderprice}}</span>
+                <br/>
+                <div class="item-note" ng-if="item.orderstate == 1">
+                    <button class="button button-small button-balanced button-outline" ng-click="cancelOrder(item.orderid)">&nbsp;&nbsp;&nbsp;取消订单&nbsp;&nbsp;&nbsp;</button>
+                    <button class="button button-small button-balanced button-outline" ng-click="payoff(item.orderid, item.orderprice, 'xxxxxxxxx')">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;支付&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</button>
+                </div>
+            </div>
+        </div>-->
+        <!--<div class="list" style="align:center;" ng-show="!hasCurrStateOrder()" >-->
+        <!--<p>没有当前状态的订单</p>-->
+        <!--</div>-->
+        <!--<div class="list" style="align:center;border:1px solid red;position:absolute;top:0" ng-show="!hasCurrStateOrder()" >-->
+        <!--</div>-->
+    </ion-content>
+    <div style="text-align:center;margin-top: 30px;" ng-show="isNull">
+        <p><i style="color:#77BF60">&nbsp;&nbsp;</i></p>
+        <p><i style="color:#77BF60">&nbsp;&nbsp;</i></p>
+        <p><i style="color:#77BF60">&nbsp;&nbsp;</i></p>
+        <br>
+        <img src="img/dsbl-order_03.png" style="height:30%;width:30%;background-size:100%;">
+        <br>
+        <p><i style="color:#77BF60">亲，您还没有订单</i></p>
+        <p><i style="color:#77BF60">请先进行商品购买</i></p>
+    </div>
+</ion-view>

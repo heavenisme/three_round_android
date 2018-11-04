@@ -1,0 +1,47 @@
+﻿<div class="tabs-striped tabs-top tabs-background-anywide tabs-color-light" ng-controller="MyVoteCtrl">
+    <div class="tabs">
+        <a ng-click="onTabClick(0)" ng-class="{'true': 'tab-item active', 'false': 'tab-item inactive'}[data.isActive.all]">全部</a>
+        <a class="tab-item" ng-click="onTabClick(1)" ng-class="{'true': 'tab-item active', 'false': 'tab-item inactive'}[data.isActive.now]">进行中</a>
+        <a class="tab-item " ng-click="onTabClick(2)" ng-class="{'true': 'tab-item active', 'false': 'tab-item inactive'}[data.isActive.join]">已参与</a>
+        <a class="tab-item " ng-click="onTabClick(3)" ng-class="{'true': 'tab-item active', 'false': 'tab-item inactive'}[data.isActive.close]">已关闭</a>
+        <a class="tab-item " ng-click="onTabClick(4)" ng-class="{'true': 'tab-item active', 'false': 'tab-item inactive'}[data.isActive.play]">已发起</a>
+    </div>
+</div>
+
+<ion-view title="投票管理">
+    <ion-nav-buttons side="left">
+        <button class="button button-clear ion-chevron-left button-anywide" ng-click="gotoHome()">&nbsp;&nbsp;&nbsp;&nbsp;</button>
+    </ion-nav-buttons>
+    
+    <ion-content class="has-header">
+
+        <div class="list has-header">
+
+            <a ng-if="data.voteState == 2" class="item" ng-click="goToModelVote()">
+                <h2>酋长发起种植模型投票</h2>
+                <span class="item-note">
+                    <h3 style="text-align:right">&nbsp;</h3>
+                    <h3 style="text-align:right">&nbsp;</h3>
+                </span>
+            </a>
+
+            <a class="item" ng-repeat="buf in data.myVoteList" ng-click="goToVote(buf)">
+                <h2>{{buf.voteTitle}}</h2>
+                <span class="item-note">
+                    <h3 style="text-align:right">{{buf.voteSum}}人投票</h3>
+                    <h3 style="text-align:right">{{buf.voteStartDate}}</h3>
+                </span>
+            </a>
+
+           <!--  <a class="item" ng-click="goToVote()">
+                <h2>酋长发起投票</h2>
+                <span class="item-note">
+                    <h3 style="text-align:right">12人投票</h3>
+                    <h3 style="text-align:right">2015年10月18日发起</h3>
+                </span>
+            </a> -->
+
+        </div>
+
+    </ion-content>
+</ion-view>

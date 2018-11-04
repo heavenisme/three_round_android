@@ -1,0 +1,27 @@
+<div class="bar bar-header bar-anywide">
+    <button class="button button-clear ion-chevron-left button-anywide" ng-click="goBack()">&nbsp;&nbsp;&nbsp;&nbsp;</button>
+    <h1 class="title" >种植模型</h1>
+</div>
+<ion-view title="种植模型" hide-nav-bar="true">
+	<!-- <ion-content  class="has-header" ng-init="getPlanting()"> -->
+	<ion-content class="has-header">
+
+        <table style="width: 100%">
+            <tr ng-repeat="item in data.content.plantingPlan" style="border-bottom: 1px solid #CCC;top: 20px;width: 100%">
+                <td style="width: 10%;text-align: center;vertical-align: middle">
+                    <input type="radio" name="group" ng-click="plantModelClick(item.plan_id)" ng-disabled="!(data.content.choice == false && data.content.chief == true)"/>
+                </td>
+                <td style="width: 70%;padding-bottom: 10px;padding-top: 10px;">
+                    <img ng-repeat="tmp in item.planting_crop" ng-src="{{handlePath(tmp.crop_image,true)}}" style="width: 30%;height: auto;padding-left: 10px;"/>
+                </td>
+                <td ng-click="modeldetail(item.plan_id)" style="width: 10%;text-align: center;vertical-align: middle">
+                    <i class="ion-chevron-right"></i>
+                </td>
+            </tr>
+        </table>
+
+	</ion-content>
+    <ion-footer-bar  class="bar-balanced" ng-if="data.content.choice == false && data.content.chief == true">
+        <h1 class="title" ng-click="vote()">确认选择</h1>
+    </ion-footer-bar>
+</ion-view>

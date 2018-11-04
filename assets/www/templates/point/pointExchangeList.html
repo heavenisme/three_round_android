@@ -1,0 +1,21 @@
+<ion-view view-title="积分兑换">
+    <ion-nav-buttons side="right">
+        <button class="button button-clear button-anywide" style="font-size: 14px;" ng-click="onPointRecordClick()">我的兑换</button>
+    </ion-nav-buttons>
+
+
+    <ion-content>
+        <div style="text-align: center;font-size: 12px;">（点一点可兑换~）</div>
+        <div class="list">
+            <a class="item" style="padding-bottom:6px;" ng-repeat="item in data.itemList" ng-click="onListClick(item)">
+                <h2 style="margin-bottom:8px;">{{item.item_name}}</h2>
+                <span class="item-note">
+                    <p style="float:left;">剩余个数: </p>
+                    <p style="float:left; color:#000;">{{item.remaining_number}}</p>
+                </span>
+                <p style="float:left;">所需积分: </p>
+                <p style="float:left; color:#000;">{{item.required_point}}</p>
+            </a>
+        </div>
+    </ion-content>
+</ion-view>

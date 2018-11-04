@@ -1,0 +1,320 @@
+-<style type="text/css">
+
+.pos_mkdb
+{
+position:absolute;
+left:8.6%;
+top:77%;
+width: 25.3%;
+height: 14.2%;
+}
+
+.pos_yqwb
+{
+position:absolute;
+left:38%;
+top:83%;
+width: 22.3%;
+height: 12.7%;
+}
+
+.pos_smsc
+{
+position:absolute;
+left:76.8%;
+top:83.8%;
+width: 20%;
+height: 11%;
+}
+
+.pos_bljh
+{
+position:absolute;
+left:55.5%;
+top:65.7%;
+width: 18.3%;
+height: 10.6%;
+}
+
+.pos_ndcd
+{
+position:absolute;
+left:72%;
+top:76%;
+width: 13.6%;
+height: 7.7%;
+}
+
+.pos_qipao1
+{
+position:absolute;
+left:72%;
+top:100%;
+}
+
+.pos_qipao2
+{
+position:absolute;
+left:36%;
+top:100%;
+}
+
+.pos_qipao3
+{
+position:absolute;
+left:18%;
+top:100%;
+}
+
+.pos_qipao4
+{
+position:absolute;
+left:81%;
+top:100%;
+}
+
+</style>
+-->
+<!-- 主页 -->
+<!--<ion-view view-title="主页" hide-nav-bar="true" >
+
+    <ion-content scroll=false>
+
+        <img src="img/test/dsbl-main-h1237.png" style="width:100%;"  ng-click="egg()">-->
+        <!-- <img src="img/dsbl-nb.gif" style="width:100%;"> -->
+
+        <!--==============================================-->
+        <!--<div class="pos_qipao4 stylie4">
+            <img src="img/test/qipao4.png"></div>
+
+        <div class="pos_qipao2 stylie2">
+            <img src="img/test/qipao2.png"></div>-->
+        <!--==============================================-->
+
+        <!--<div class="row" ng-if="ios == true">
+
+            <div class="pos_mkdb" ng-click="selectZoneClick()">
+                <img  src="img/test/btn_mkdb.png"></div>
+
+            <div class="pos_yqwb">
+                <img src="img/test/btn_yqwb.png"></div>
+
+            <div class="pos_smsc">
+                <img src="img/test/btn_smsc.png"></div>
+
+            <div class="pos_bljh" ng-click="gotoGarden()">
+                <img src="img/test/btn_ndcd.png"></div>
+
+            <div class="pos_ndcd">
+                <img src="img/test/btn_bljh.png"></div>
+
+        </div>-->
+
+        <!--<div class="row" ng-if="ios == false">-->
+         <!--<div class="row">
+
+            <div class="pos_mkdb" ng-click="selectZoneClick()">
+                <img src="img/btn_mkdb.png"></div>
+
+            <div class="pos_yqwb">
+                <img src="img/btn_yqwb.png" ng-click="gotoPlay()"></div>
+
+            <div class="pos_smsc">
+                <img src="img/btn_smsc.png" ng-click="gotoMarket()"></div>
+
+            <div class="pos_bljh" ng-click="gotoGarden()">
+                <img src="img/btn_ndcd.png"></div>
+
+            <div class="pos_ndcd unvisible">
+                <img src="img/btn_bljh.png" ng-click="exchangeTribal()"></div>
+
+        </div>-->
+
+        <!--==============================================-->
+        <!--<div class="pos_qipao3 stylie3">
+            <img src="img/test/qipao3.png"></div>
+
+        <div class="pos_qipao1 stylie1">
+            <img src="img/test/qipao1.png"></div>-->
+        <!--==============================================-->
+
+
+
+    <!--</ion-content>
+</ion-view>-->
+<style>
+    .bg-box{
+        background: url("img/home/bg1.png") no-repeat;
+        background-size: cover;
+    }
+    /*iphone 5*/
+    @media screen and (max-height: 568px) {
+            .main-box{
+                width: 90%;
+                margin: 0 auto;
+                overflow: hidden;
+                margin-top:70%;
+                position: absolute;
+                left:0;
+                top:0;
+                right:0;
+            }
+            .left-box img{
+                height: 70px;
+                width: auto;
+            }
+            .left-box img:nth-child(2){
+                margin-top: 10px;
+            }
+            .left-box{
+                float: left;
+                width: 32%;
+                text-align: right;
+            }
+            .right-box{
+                float: right;
+                width: 55%;
+                margin-right: 10%;
+                margin-top: 15px;
+            }
+            .bottom-box{
+                overflow: hidden;
+                clear: both;
+                padding-top: 10px;
+            }
+            .bottom-box img{
+                height: 70px;
+                width: auto;
+                float: left;
+            }
+            .bottom-box img:nth-child(1){
+                margin-left: 23px;
+            }
+            .bottom-box img:nth-child(2){
+                margin-left: 15px;
+            }
+            .bottom-box img:nth-child(3){
+                margin-left: 15px;
+            }
+    }
+    /*iphone 4*/
+    @media screen and (max-height: 480px) {
+        .main-box{
+            width: 90%;
+            margin: 0 auto;
+            overflow: hidden;
+            margin-top: 60%;
+            position: absolute;
+            left:0;
+            top:0;
+            right:0;
+        }
+        .left-box img{
+            height: 70px;
+            width: auto;
+        }
+        .left-box img:nth-child(2){
+            margin-top: 7px;
+        }
+        .left-box{
+            float: left;
+            width: 30%;
+            text-align: right;
+        }
+        .right-box{
+            float: right;
+            width: 55%;
+            margin-right: 10%;
+            margin-top:15px;
+
+        }
+        .bottom-box{
+            overflow: hidden;
+            clear: both;
+            padding-top: 10px;
+        }
+        .bottom-box img{
+            height: 70px;
+            width: auto;
+            float: left;
+        }
+        .bottom-box img:nth-child(1){
+            margin-left: 17px;
+        }
+        .bottom-box img:nth-child(2){
+            margin-left: 15px;
+        }
+        .bottom-box img:nth-child(3){
+            margin-left:15px;
+        }
+    }
+    /*其它*/
+    @media screen and (min-height: 569px) {
+      .main-box{
+            width: 90%;
+            margin: 0 auto;
+            overflow: hidden;
+            margin-top:70%;
+            position: absolute;
+            left:0;
+            top:0;
+            right:0;
+            padding-bottom: 20px;
+        }
+        .left-box img{
+            width: 80%;
+        }
+        .left-box img:nth-child(2){
+            margin-top: 12%;
+        }
+        .left-box{
+            float: left;
+            width: 32%;
+            text-align: right;
+        }
+        .right-box{
+            float: right;
+            width: 56%;
+            margin-right: 6%;
+            margin-top: 5%;
+        }
+        .bottom-box{
+            overflow: hidden;
+            clear: both;
+            padding-top: 4%;
+        }
+        .bottom-box img{
+            width: 26%;
+            float: left;
+        }
+        .bottom-box img:nth-child(1){
+            margin-left: 6.5%;
+        }
+        .bottom-box img:nth-child(2){
+            margin-left: 5%;
+        }
+        .bottom-box img:nth-child(3){
+            margin-left: 5%;
+        }
+    }
+</style>
+<ion-view  hide-nav-bar="true">
+    <ion-content  class="bg-box">
+        <div class="main-box">
+            <div class="top-box">
+                <div class="left-box">
+                    <img src="img/home/mkdb.png" ng-click="selectZoneClick()">
+                    <img src="img/home/wdcy.png"  ng-click="gotoGarden()">
+                </div>
+                <div class="right-box">
+                    <img src="img/home/logo.png"/>
+                </div>
+            </div>
+            <div class="bottom-box">
+                <img src="img/home/blkh.png" ng-click="gotoPlay()">
+                <img src="img/home/smdj.png" ng-click="gotoMarket()">
+                <img src="img/home/yksc.png" ng-click="exchangeTribal()">
+            </div>
+        </div>
+    </ion-content>
+</ion-view>

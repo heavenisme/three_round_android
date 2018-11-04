@@ -1,0 +1,62 @@
+<!-- 我的余额-->
+<ion-view hide-nav-bar="false" view-title="我的余额" >
+
+<!--不能滑动部分-->
+    <!--<div class="bar bar-subheader" style="color: #ffffff;height: 200px">-->
+        <div style="width: 100px;height: 100px;background: #68b94f;
+        -moz-border-radius: 50%;-webkit-border-radius: 50%;border-radius: 50%;
+        margin-left: auto;margin-right: auto;margin-top:20%;margin-bottom: -5%" ng-init="getBalance()">
+            <h5 style="color:#FFF;text-align:center;position:relative;top:30%;"> 余额（元） </h5>
+            <h4 style="color:#FFF;text-align:center;position:relative;top:21%;"> {{data.userAmount}} </h4>
+        </div>
+        <!--提现-->
+        <div style="top:10px;text-align:center;padding-top:20px;margin-bottom: -5px;background-size:100%">
+            <button style="width: 129px;height: 50px;border: none;background-color: #ffffff; display:none">
+                <img src="img/dsbl-surplus_cash.png" ng-click="tixian()" style="width:70%;height: 70%;background-size:100%"/>
+            </button>
+        </div>
+        <div style="width: 129px;height: 50px;"  ng-if="ios == true"></div>
+        <label class="item item-icon-right" style="text-align:center;color:#dddddd;border:none;">
+         <span style="width: 100%;">
+             <hr style="width:40%;border-top:none;column-rule: #dddddd;position:absolute;left:0;float:left">
+             <hr style="width:40%;color:#dddddd;border-top:none;position:absolute;right:0;float:left">
+             <p style="position:absolute;left:40%;width: 20%;">交易明细</p>
+         </span>
+        </label>
+    <!--</div>-->
+
+    <!--滑动部分-->
+    <ion-content scrollbar-y=true style="background-color: #ffffff; top: 242px; " ng-init="loadMore()">
+
+        <!--<ion-refresher on-refresh="doRefresh()"-->
+                       <!--on-infinite="doLoad()"-->
+                       <!--pulling-text="下拉刷新"-->
+                       <!--refreshing-text="Refreshing!"-->
+                       <!--refreshing-icon="ion-loading-b">-->
+        <!--</ion-refresher>-->
+
+        <ion-list>
+            <ion-item ng-repeat="item in data.transactionRecords">
+                <!--<label class="item item-icon-right" style="border-top:none;">-->
+                <p style="color: #555555">{{item.tradeDescription}}
+                    <span class="item-note" style="color:#68b94f;" ng-show="item.platformType == 1">账户</span>
+                    <span class="item-note" style="color:#68b94f;" ng-show="item.platformType == 2">微信</span>
+                    <span class="item-note" style="color:#68b94f;" ng-show="item.platformType == 3">支付宝</span>
+                    <span class="item-note" style="color:#68b94f;" ng-show="item.platformType == 4">财付通</span>
+                </p >
+                <!--<h2 style="color: #555555">{{item.tradeDescription}}</h2>-->
+                <!--<h2 style="color:#68b94f;float: left;position: absolute;right: 5%;margin-top: -6%;" ng-show="item.platformType == 1">账户</h2>-->
+                <!--<h2 style="color:#68b94f;float: left;position: absolute;right: 5%;margin-top: -6%;" ng-show="item.platformType == 2">微信</h2>-->
+                <!--<h2 style="color:#68b94f;float: left;position: absolute;right: 5%;margin-top: -6%;" ng-show="item.platformType == 3">支付宝</h2>-->
+                <!--<h2 style="color:#68b94f;float: left;position: absolute;right: 5%;margin-top: -6%;" ng-show="item.platformType == 4">财付通</h2>-->
+                <p style="color: #a4a4a4">{{item.tradeTime.substring(0,16)}}
+                        <span class="item-note" style="color:#68b94f;" ng-show="item.tradeType == 2 || item.tradeType == 3 || item.tradeType == 5">-{{item.tradeAmount}}</span>
+                        <span class="item-note" style="color:#dc5252;" ng-show="item.tradeType == 1 || item.tradeType == 4 || item.tradeType == 6">+{{item.tradeAmount}}</span>
+                </p>
+                <!--</label>-->
+            </ion-item>
+        </ion-list>
+        <ion-infinite-scroll ng-if="data.moredata" on-infinite="loadMore()" distance="1%" ></ion-infinite-scroll>
+    </ion-content>
+
+</ion-view>

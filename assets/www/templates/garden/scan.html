@@ -1,0 +1,55 @@
+<style>
+    .taskBox{background-color: #ffffff;padding-top:15px;}
+    .taskBox p{color:#333333;}
+    .taskBox p span{color: #aeaeae;}
+    .taskImg{width:100%;overflow: hidden;}
+    .taskImg ul{overflow: hidden;width: 100%;}
+    .taskImg ul li{float: left;width:20%;margin-left: 4%;}
+    .taskImg ul li img{width:100%;}
+    .img-btn{position: absolute;z-index: 999;top:40%;font-size: 1.8em;color: #ffffff}
+    .left-btn{left:2%}
+    .right-btn{right:2%;}
+</style>
+<script id="my-modal.html" type="text/ng-template">
+  <div class="modal" style="background-color: rgba(0, 0, 0, 0.7)" ng-click="closeModal()">
+    <ion-content ng-click="closeModal()">
+      <!--TODO 此处应当使用poitionY除以2-->
+      <br/><br/><br/><br/><br/><br/>
+      <ion-slide-box show-pager="false" active-slide="data.curImg">
+        <ion-slide  ng-repeat="temp in data.tasklist[data.clickImgIndex].imageUrls">
+          <i class="ion-chevron-left img-btn left-btn" ng-click="leftClick()"></i>
+          <i class="ion-chevron-right img-btn right-btn" ng-click="rightClick()"></i>
+          <img ng-src="{{handlePath(temp, false)}}" style="width: 100%;padding-bottom: 10%;padding-top: 2%;" ng-click="closeModal()">
+        </ion-slide>
+      </ion-slide-box>
+    </ion-content>
+  </div>
+</script>
+<div class="bar bar-header bar-anywide">
+    <button class="button button-clear ion-chevron-left button-anywide" ng-click="gotoHome()">&nbsp;&nbsp;&nbsp;&nbsp;</button>
+    <h1 class="title" >作物详情</h1>
+</div>
+<ion-view view-title="作物详情" hide-nav-bar="true">
+    <ion-content class="has-header" style="background-color: #f2f2f2;" ng-init="init()">
+        <p ng-show="data.flag" style="font-size: 16px;text-align: center;margin-top: 50%">暂无数据</p>
+        <div class="taskList" style="width:92%;margin:0 auto;" ng-repeat="item in data.tasklist" ng-show="!data.flag">
+            <div style="height: 50px;line-height: 50px;font-weight: bold;color: #000000">
+<!--                {{item.actual_start_on | date:'yyyy-MM-dd'}}~{{item.actual_end_on | date:'yyyy-MM-dd'}}-->
+                {{item.actual_start_on | date:'yyyy-MM-dd'}}
+            </div>
+            <div class="taskBox" >
+                <p style="padding-left: 15px"><span>作业：</span>{{item.work_item_name}}</p>
+                <p style="padding-left: 15px" ng-show="item.material_name"><span>物资：</span>{{item.material_name}}</p>
+                <p style="padding-left: 15px" ng-show="!item.material_name"><span>物资：</span>无</p>
+                <div class="taskImg" style="border-bottom: 1px solid #e5e5e5;padding-bottom: 10px;">
+                    <ul ng-repeat="temp in item.imageUrls track by $index" style="display: inline">
+                        <li style="width: 30% !important;height: 70px !important;margin-left: 5px;margin-top: 5px;">
+                            <img ng-src="{{handlePath(temp,false)}}" width="100%" height="100%" ng-click="openModal(item.index, $index)" ng-if="$index < 6"/>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <ion-infinite-scroll ng-if="data.moredata" on-infinite="init()" distance="1%" immediate-check="false"></ion-infinite-scroll>
+    </ion-content>
+</ion-view>

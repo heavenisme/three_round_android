@@ -1,0 +1,70 @@
+<link rel="stylesheet" href="css/progressStyle.css">
+
+<ion-view view-title="种植模型投票">
+    <ion-content>
+
+        <div class="row">
+            <h2>“酋长”发起投票【种植模型投票】</h2>
+        </div>
+
+        <br>
+
+        <div ng-repeat="buf in data.voteresult">
+
+            <div class="row" style="height:50px" ng-click="select($index)">
+
+                <div ng-if = "!data.isVoted">
+                    <button ng-class="{'true': 'ion-ios-checkmark button icon-left button-clear button-assertive', 'false': 'ion-ios-circle-outline button icon-left button-clear button-assertive'}[buf.select]">种植模型：{{buf.plan_id}}</button>
+                </div>
+
+                <div ng-if = "data.isVoted">
+                    <button class="button button-clear button-assertive">种植模型：{{buf.plan_id}}</button>
+                </div>
+
+            </div>
+
+            <!-- <div class="row">
+                <div class="col col-80">
+                    <progress id='progress' value='50' max='100' style="color: #000000; background-color: #000000;"></progress>    
+                </div>
+                <div class="col">
+                    <h4>{{buf.vote_result}}</h4>
+                </div>
+            </div> -->
+            <div class="progress">
+                <span class="green" style="{{getStyle($index)}}">
+                    <span>{{buf.vote_result}}</span>
+                </span>
+            </div>
+
+            <!-- <section class="container" style="width:100%;">
+                <div class="progress">
+                  <span style="width: 20%;"><span>20%</span></span>
+                </div>
+
+                <div class="progress">
+                  <span class="green" style="width: 40%;"><span>40%</span></span>
+                </div>
+
+                <div class="progress">
+                  <span class="orange" style="width: 60%;"><span>60%</span></span>
+                </div>
+
+                <div class="progress">
+                  <span class="red" style="width: 80%;"><span>80%</span></span>
+                </div>
+
+                <div class="progress">
+                  <span class="blue" style="width: 100%;"><span>100%</span></span>
+                </div>
+            </section> -->
+
+        </div>
+
+        <div class="row" ng-if = "!data.isVoted">
+            <button class="button button-block button-anywide" ng-click="vote()">投票</button>
+        </div>
+
+    </div>
+</ion-content>
+</ion-view>

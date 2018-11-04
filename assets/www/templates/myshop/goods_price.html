@@ -1,0 +1,56 @@
+
+<!-- 采收计划反馈页 -->
+<style>
+    .tips{border-top:1px solid #bbbbbb;margin-top: 30%;}
+    .tips h3{
+        font-size: 13px;
+        color: #666;
+        margin-top: -10px !important;
+        text-align: center;
+        background: #f2f2f2;
+        width: 100px;
+        display: block;
+        margin: 0 auto;}
+    .tips p{font-size: 12px;
+        color: #666666;}
+</style>
+
+<div class="bar bar-header bar-anywide">
+    <button class="button button-clear ion-chevron-left button-anywide" ng-click="gotoHome()">&nbsp;&nbsp;&nbsp;&nbsp;</button>
+    <h1 class="title">商品价格</h1>
+</div>
+
+<ion-view hide-nav-bar="true" view-title="商品价格">
+
+    <ion-content class="has-header" style="padding: 0 15px;background-color: #F2F2F2">
+        <div style="padding:10px 0;color: #000000">
+            <h2 style="font-size: 1.25em">{{data.crop_name}}</h2>
+            <label style="padding-top: 5px">
+                <p style="text-indent: 2em;">剩余：{{data.surplus}}斤</p>
+            </label>
+        </div>
+        <div style="margin-left: 5%"><small style="display: block;float: left;margin-top:2px;margin-right: 3px;color: #000;">耘客市场</small>
+            <input type="number" style="border: 1px solid #CCCCCC;width: 50px;height: 25px;float: left" ng-model="params.tribe_weight" />
+            <label style="font-size: 12px;color: #000000;float: left;margin:5px 0 0 3px;">（斤）</label>
+            <input type="number" style="border: 1px solid #CCCCCC;width: 50px;height: 25px;float: left" ng-model="params.tribe_price"/>
+            <label style="font-size: 12px;color: #000000;float: left;margin:5px 0 0 3px;">（元/斤）</label>
+        </div></br>
+        <div style="margin-left: 5%;margin-top: 5%"><small style="display: block;float: left;margin-right: 3px;color: #000;margin-top:2px;">市民大集</small>
+            <input type="number" style="border: 1px solid #CCCCCC;width: 50px;height: 25px;float: left" ng-model="params.open_weight"/>
+            <label style="font-size: 12px;color: #000000;float: left;margin:5px 0 0 3px;">（斤）</label>
+            <input type="number" style="border: 1px solid #CCCCCC;width: 50px;height: 25px;float: left" ng-model="params.open_price"/>
+            <label style="font-size: 12px;color: #000000;float: left;margin:5px 0 0 3px;">（元/斤）</label>
+        </div>
+        <div class="tips">
+            <h3>温馨提示</h3>
+            <div style="margin-top: 10px;">
+                <p>1.耘客市场、市民大集开放时，将按照该设置价格自动上架；如此处未设置过价格，将按照同品种其他耘客出售最低价格上架；如未有同品种出售，则按照三寰指导价格自动上架。</p>
+                <p>2.上架到市场的蔬菜，如在市场关闭时仍未全部售出，未售出部分将按照三寰指导价格自动回收。</p>
+            </div>
+        </div>
+    </ion-content>
+
+    <ion-footer-bar  class="bar-balanced" ng-click="putGoodsPrice()" >
+        <h1 class="title">发布</h1>
+    </ion-footer-bar>
+</ion-view>

@@ -1,0 +1,71 @@
+<!--我的店铺-->
+<div class="bar bar-header bar-anywide">
+    <button class="button button-clear ion-chevron-left button-anywide" ng-click="gotoHome()">&nbsp;&nbsp;&nbsp;&nbsp;</button>
+    <h1 class="title">我的店铺</h1>
+    <button class="button button-clear button-light"  ng-click="goToShopMessage()" style="color:#ffffff;">
+        <p style="font-size: 12px">设置</p>
+    </button>
+</div>
+<ion-view hide-nav-bar="true" view-title="我的店铺" ng-init="getMyShop_Info()">
+    <ion-content class="has-header" style="background: #F2F2F2">
+        <div class="myshop-main">
+            <div class="myshop-box1">
+                <div class="user-img">
+                    <img src="./img/myshop/test/userLogo.png"/>
+                </div>
+                <div class="myshop-name">
+                    <p class="shopname">店铺名称：{{container[0].shop_name}}</p>
+                    <p class="myname">我的昵称：{{container[0].userName}}</p>
+                </div>
+            </div>
+            <div class="myshop-box2">
+                <div>
+                    <label>今日单数<br/>(耘客市场)</label>
+                    <p>{{container[0].b_danshu}}</p>
+                </div>
+                <div>
+                    <label>今日入账<br/>(耘客市场)</label>
+                    <p>{{container[0].b_ruzhang}}</p>
+                </div>
+                <div>
+                    <label>今日单数<br/>(市民大集)</label>
+                    <p>{{container[0].k_danshu}}</p>
+                </div>
+                <div>
+                    <label>今日入账<br/>(市民大集)</label>
+                    <p>{{container[0].k_ruzhang}}</p>
+                </div>
+            </div>
+            <hr/>
+            <div class="myshop-box3">
+                <div class="myshop-box3-box" ng-click="goToProductManagement(container[0].shop_id)">
+                    <div>
+                        <i class="ion-android-menu"></i>
+                        <label>商品管理</label>
+                    </div>
+                </div>
+                <div class="myshop-box3-box" ng-click="goToPriceManagement(container[0].shop_id)">
+                    <div>
+                        <i class="ion-android-menu"></i>
+                        <label>价格管理</label>
+                    </div>
+                </div>
+                <div class="myshop-box3-box" ng-click="goToShelfManagement(container[0].shop_id)">
+                    <div>
+                        <i class="ion-android-menu"></i>
+                        <label>上架管理</label>
+                    </div>
+                </div>
+                <div class="myshop-box3-box" ng-click="goToMySelledOrder()">
+                    <div>
+                        <i class="ion-android-menu"></i>
+                        <label>已售订单</label>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </ion-content>
+</ion-view>
+
+
+

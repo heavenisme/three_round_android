@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html style="height:100%;">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
+    <!--解决ios自动将数字解析成电话号码-->
+    <meta name="format-detection" content="telephone=no" />
+    <title></title>
+
+    <link href="lib/ionic/css/ionic.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
+    <link href="css/font/style.css" rel="stylesheet">
+
+    <link href="css/homeStyle.css" rel="stylesheet">
+    <link href="css/greenhouse-style.css" rel="stylesheet">
+    <link href="css/pointLevel.css" rel="stylesheet">
+
+    <!-- IF using Sass (run gulp sass first), then uncomment below and remove the CSS includes above
+    <link href="css/ionic.app.css" rel="stylesheet">
+    -->
+    <!-- ionic/angularjs js -->
+    <script src="lib/ionic/js/ionic.bundle.js"></script>
+
+    <!-- cordova script (this will be a 404 during development) -->
+    <script src="cordova.js"></script>
+
+    <script src="cordova_plugins.js"></script>
+
+    <script src="js/Common/PushFSM.js"></script>
+
+    <script src="js/angular-ios9-uiwebview.patch.js"></script>
+
+    <script src="js/AppConfig.js"></script>
+    <script src="js/ErrorCode.js"></script>
+    <script src="js/Common/functions.js"></script>
+
+    <!-- your app's js -->
+    <script src="js/app.js"></script>
+
+    <script src="js/Directive/Directive.js"></script>
+
+    <script src="js/Controller/TabHomeController.js"></script>
+    <script src="js/Controller/TabMyController.js"></script>
+	<script src="js/Controller/TabGardenController.js"></script>
+	<script src="js/Controller/TabShopingCartController.js"></script>
+    <script src="js/Controller/MyInfoControllers.js"></script>
+    <script src="js/Controller/MainControllers.js"></script>
+    <script src="js/Controller/PlantModelController.js"></script>
+    <script src="js/Controller/PlantModelDetailController.js"></script>
+    <script src="js/Controller/RechargeControllers.js"></script>
+    <script src="js/Controller/SelectGreenhouseController.js"></script>
+    <script src="js/Controller/GreenhouseDataController.js"></script>
+    <script src="js/Controller/MyMessageController.js"></script>
+    <script src="js/Controller/MessageDescController.js"></script>
+    <script src="js/Controller/MessageDirController.js"></script>
+    <script src="js/Controller/AboutController.js"></script>
+    <script src="js/Controller/AppSetController.js"></script>
+    <script src="js/Controller/MyAccountController.js"></script>
+    <script src="js/Controller/MyVoteController.js"></script>
+    <script src="js/Controller/SelectLeaderController.js"></script>
+    <script src="js/Controller/MyOrderController.js"></script>
+    <script src="js/Controller/PlanVoteSelectController.js"></script>
+    <script src="js/Controller/TabController.js"></script>
+    <script src="js/Controller/MyBalanceController.js"></script>
+    <script src="js/Controller/MyTribeController.js"></script>
+    <script src="js/Controller/ChiefVoteController.js"></script>
+    <script src="js/Controller/ChiefSelectModelController.js"></script>
+    <script src="js/Controller/ModelDetailExController.js"></script>
+    <script src="js/Controller/PersonalInfoController.js"></script>
+    <script src="js/Controller/FeedBackController.js"></script>
+    <script src="js/Controller/AgreeHouseController.js"></script>
+    <script src="js/Controller/TaskDescController.js"></script>
+    <script src="js/Controller/TaskListController.js"></script>
+    <script src="js/Controller/MiniatureController.js"></script>
+    <script src="js/Controller/GoodsDesignController.js"></script>
+    <script src="js/Controller/RecoverPlanController.js"></script>
+    <script src="js/Controller/PackController.js"></script>
+    <script src="js/Controller/DeliveryWayController.js"></script>
+    <script src="js/Controller/TribeActiveController.js"></script>
+    <script src="js/Controller/ActiveDescController.js"></script>
+    <script src="js/Controller/HistoryActiveController.js"></script>
+    <script src="js/Controller/ActiveRegisterController.js"></script>
+    <script src="js/Controller/TribeMarketController.js"></script>
+    <script src="js/Controller/InsidePriceController.js"></script>
+    <script src="js/Controller/ActiveListController.js"></script>
+    <script src="js/Controller/AppointmentController.js"></script>
+    <script src="js/Controller/ActiveDetailController.js"></script>
+    <script src="js/Controller/MyShopController.js"></script>
+    <script src="js/Controller/ShopMessageController.js"></script>
+    <script src="js/Controller/ShopBgController.js"></script>
+    <script src="js/Controller/StoreOfferController.js"></script>
+    <script src="js/Controller/MarketDescController.js"></script>
+    <script src="js/Controller/SellStoreController.js"></script>
+    <script src="js/Controller/ShelfManagementController.js"></script>
+    <script src="js/Controller/ProductManagementController.js"></script>
+    <script src="js/Controller/ProductDetailController.js"></script>
+    <script src="js/Controller/PriceManagementController.js"></script>
+    <script src="js/Controller/RecoverListController.js"></script>
+    <script src="js/Controller/GoodsPriceController.js"></script>
+    <script src="js/Controller/ScanController.js"></script>
+    <script src="js/Controller/HistoryActiveControllerDesc.js"></script>
+    <script src="js/Controller/PointControllers.js"></script>
+    <script src="js/Controller/MySelledOrderController.js"></script>
+
+    <script src="js/Service/MainServices.js"></script>
+    <script src="js/Service/PayService.js"></script>
+    <script src="js/Service/GardenService.js"></script>
+    <script src="js/Service/UserService.js"></script>
+    <script src="js/Service/GreenhouseService.js"></script>
+    <script src="js/Service/OrderService.js"></script>
+    <script src="js/Service/ShoppingCartService.js"></script>
+    <script src="js/Service/MyBalanceService.js"></script>
+    <script src="js/Service/MyTribeService.js"></script>
+    <script src="js/Service/MessageService.js"></script>
+    <script src="js/Service/TaskService.js"></script>
+    <script src="js/Service/MiniatureService.js"></script>
+    <script src="js/Service/GoodsDesignService.js"></script>
+    <script src="js/Service/RecoverService.js"></script>
+    <script src="js/Service/TribeMarketService.js"></script>
+    <script src="js/Service/TribeActiveService.js"></script>
+    <script src="js/Service/MyShopService.js"></script>
+    <script src="js/Service/MyOrderService.js"></script>
+    <script src="js/Service/ScanService.js"></script>
+    <script src="js/Service/FarmingActiveService.js"></script>
+    <script src="js/Service/PointService.js"></script>
+
+</head>
+<body ng-app="starter" class="platform-android platform-cordova platform-webview" style="height: 100%">
+    <!--
+      The nav bar that will be updated as we navigate between views.上方标题栏
+    -->
+
+    <ion-nav-bar class="bar-anywide">
+        <!--<ion-nav-back-button class="button-anywide ion-chevron-left"></ion-nav-back-button>-->
+        <ion-nav-back-button class="button button-clear ion-chevron-left" style="color: #ffffff">&nbsp;&nbsp;&nbsp;</ion-nav-back-button>
+        <ion-nav-buttons side="right">
+            <button ng-if="rootIsLogined()" class="button button-clear button-anywide" ng-click="goToMsg()">
+                <div style="width: 24px; height: 20px;" >
+                    <img ng-if="!isHaveNewMessage" src="img/dsbl-main-message.png">
+                    <img ng-if="isHaveNewMessage" src="img/dsbl-main-message_red.png">
+                </div>
+            </button>
+        </ion-nav-buttons>
+    </ion-nav-bar>
+
+    <!--
+      The views will be rendered in the <ion-nav-view>
+    directive below
+      Templates are in the /templates folder (but you could also
+      have templates inline in this html file if you'd like).
+    -->
+    <ion-nav-view style="height:100%;"></ion-nav-view>
+
+</body>
+</html>

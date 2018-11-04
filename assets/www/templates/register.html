@@ -1,0 +1,87 @@
+<!-- 注册页 -->
+
+<!-- 该方法可以隐藏导航栏<ion-view hide-nav-bar="true" />
+-->
+
+<!--获取焦点时，输入框变色-->
+<style>
+    .changeBor:hover{
+        outline:1px solid #66BB6A;
+        border: none;
+    }
+</style>
+
+<div class="bar bar-header bar-anywide">
+    <button class="button button-clear ion-chevron-left button-anywide" ng-click="goBack()">&nbsp;&nbsp;&nbsp;&nbsp;</button>
+    <h1 class="title" >用户注册</h1>
+</div>
+
+
+<ion-view view-title="用户注册" hide-nav-bar="true">
+
+	<!-- 此处可以定制导航栏
+	<ion-nav-buttons side="left">
+	<button class="button" ng-click="doSomething()">I'm a button on the left of the navbar!</button>
+</ion-nav-buttons>
+-->
+<ion-content class="has-header">
+
+    <div class="padding">
+        <label class="item item-input changeBor">
+            <input type="number" placeholder="手机号" ng-model="data.phoneNumber" minlength="11" maxlength="11" required>
+        </label>
+    </div>
+	<!--<div class="list list-inset" >
+		<label class="item item-input changeBor">
+			<input type="number" placeholder="手机号" ng-model="data.phoneNumber" style="align: left" minlength="11" maxlength="11" required>
+        </label>
+	</div>-->
+
+    <div class="row padding">
+        <label class="item item-input changeBor" style="width: 60%">
+            <input type="text" placeholder="验证码" ng-model="data.checkNumber" style="width: 100%;">
+        </label>
+        <button class="button button-anywide" ng-disabled="isDisabled" ng-click="active()" style="margin-left:5px;width: 40%;float: right">{{clock.now}}</button>
+    </div>
+	<!--<div class="list list-inset">
+
+        <div class="row padding" style="margin-left: -5px">
+            <label class="item item-input col-30 changeShort" style="width: 60%">
+                <input type="text" placeholder="手机校验码" ng-model="data.checkNumber" style="width: 100%;" minlength="6" maxlength="6">
+            </label>
+            <button class="button button-anywide" ng-disabled="isDisabled" ng-click="active()" style="margin-left:5px;width: 40%;float: right">{{clock.now}}</button>
+        </div>
+	</div>-->
+
+	<div class="padding">
+		<label class="item item-input changeBor">
+            <span class="input-label">登陆密码</span>
+			<input type="password" placeholder="请输入6-20个字符" ng-model="data.password">
+        </label>
+	</div>
+
+	<div class="padding">
+		<label class="item item-input changeBor">
+            <span class="input-label">请确认密码</span>
+			<input type="password" placeholder="请输入6-20个字符" ng-model="data.againPassword">
+        </label>
+	</div>
+
+    <br>
+	<div class="padding">
+		<button class="button button-block button-anywide" ng-click="register()">注册</button>
+	</div>
+
+	<!--<row class="padding">
+		<button class="button button-clear" style="font-size: 14px">注册即视为同意</button>
+		<button class="button button-clear" ng-click="protocol()" style="color: #66BB6A">《三寰会耕部落会员注册协议》</button>
+	</row>-->
+
+    <div style="text-align: center">
+        <label style="text-align: center">注册即视为同意</label><br>
+        <label ng-click="protocol()" style="color: #66BB6A;text-align: center;">《三寰会耕部落会员注册协议》</label>
+    </div>
+
+</ion-content>
+
+</ion-view>

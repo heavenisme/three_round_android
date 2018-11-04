@@ -1,0 +1,248 @@
+<!--<ion-view view-title="菜园管理">-->
+    <!--<ion-content>-->
+
+        <!--<section>-->
+            <!--<ion-slide-box does-continue="true" auto-play="true" slide-interval="2000" on-slide-changed="slideHasChanged($index)">-->
+                <!--<ion-slide>-->
+                    <!--<div class="box" style="width:100%;height:200px;background:url('img/s1.png') center 0 no-repeat;text-align:center;background-size:100% 200px"></div>-->
+                <!--</ion-slide>-->
+                <!--<ion-slide>-->
+                    <!--<div class="box" style="width:100%;height:200px;background:url('img/s2.png') center 0 no-repeat;text-align:center;background-size:100% 200px"></div>-->
+                <!--</ion-slide>-->
+                <!--<ion-slide>-->
+                    <!--<div class="box" style="width:100%;height:200px;background:url('img/s3.png') center 0 no-repeat;text-align:center;background-size:100% 200px"></div>-->
+                <!--</ion-slide>-->
+                <!--<ion-slide>-->
+                    <!--<div class="box" style="width:100%;height:200px;background:url('img/s4.png') center 0 no-repeat;text-align:center;background-size:100% 200px"></div>-->
+                <!--</ion-slide>-->
+            <!--</ion-slide-box>-->
+        <!--</section>-->
+<!--<ion-list>-->
+
+
+
+
+
+            <!--<div class="row">-->
+
+                <!--<div class="col anywide-bg" ng-click="modelClick()">-->
+    				<!--<img src="img/sh-fashion-garden_06.png">-->
+    				<!--<div style="font-size:13px;color:#43a1e0;margin-left:23%">种植模型</div> -->
+                <!--</div>&nbsp;-->
+
+                <!--<div class="col anywide-bg" ng-click="changePlanClick()">   -->
+    				<!--<img src="img/sh-fashion-garden_09.png">-->
+    				<!--<div style="font-size:13px;color:#969696;margin-left:23%">变动计划</div> -->
+                <!--</div>&nbsp;-->
+
+                <!--<div class="col anywide-bg" ng-click="getPlanClick()">   -->
+                    <!--<img src="img/sh-fashion-garden_12.png">-->
+    				<!--<div style="font-size:13px;color:#f7d300;margin-left:23%">采收计划</div>-->
+                <!--</div>-->
+
+            <!--</div>-->
+
+		 <!-- -->
+		 <!-- -->
+        <!--<div class="row" style="padding-top:3px;">-->
+
+            <!--<div class="col anywide-bg" ng-click="taskPlanClick()">-->
+                <!--<img src="img/sh-fashion-garden_21.png">-->
+				<!--<div style="font-size:13px;color:#f7931c;margin-left:23%">作业计划</div>-->
+            <!--</div>&nbsp;-->
+
+            <!--<div class="col anywide-bg" ng-click="destoryPlanClick()"> -->
+                <!--<img src="img/sh-fashion-garden_24.png">-->
+				<!--<div style="font-size:13px;color:#454d52;margin-left:23%">历史计划</div>-->
+            <!--</div>&nbsp;-->
+
+            <!--<div class="col anywide-bg" >           -->
+                <!--<img src="img/sh-fashion-garden_27.png">-->
+				<!--<div style="font-size:13px;color:#ff3d3d;margin-left:23%">消息中心</div>-->
+            <!--</div>-->
+
+        <!--</div>-->
+
+<!--</ion-list>-->
+    <!--</ion-content>-->
+<!--</ion-view>-->
+
+<style type="text/css">
+    .wide-as-needed {
+        overflow: scroll;
+        white-space: nowrap;
+        height:25%;
+    }
+    .scroll {
+        min-width: 100%;
+    }
+    .picture {
+       /* padding:0px; */
+        width:130px;
+        height:100px;
+        padding-bottom:0px;
+        position:relative;
+    }
+    .vertical-container{
+        display: -webkit-flex;
+        display: flex;
+        -webkit-align-items: center;
+        align-items: center;
+    }
+    .box-shadow{
+      -webkit-box-shadow:0 0 20px #000000;
+      -moz-box-shadow:0 0 20px #000000;
+      box-shadow:0 0 20px #000000;
+    }
+    .picCss{
+        position: relative;
+        display: inline-block;
+        width:130px; 
+        height:100px; 
+        margin: 6px;
+        padding:0px;
+    }
+    .pos_tz{
+        position:absolute;
+        left:0%;
+        top:0%;
+        width: 40%;
+    }
+    .a{border:1px solid #8c8c8c }
+   .ahref:hover{letter-spacing:3px;}
+   
+nav {
+    margin: 38px auto;
+    text-align: center;
+}
+nav ul ul {
+   display: none;
+}
+
+nav ul li:hover > ul {
+    display: block;
+}
+nav ul ul{
+    text-align:center
+}
+nav ul li:hover {
+    background: #66BB6A;
+   
+}
+nav ul li:hover a {
+    color: #fff;
+     border-bottom:1px solid #fff;
+     width:120px;
+}
+
+nav ul li a {
+    display: block; padding: 15px 0px;
+    color: #fff; text-decoration: none;
+}
+             
+</style>
+
+
+<div class="bar bar-header bar-anywide">
+<!--    <h1 class="title" ng-click="openSelectPopover($event)">我也不清楚号大棚 ▼</h1>-->
+<!--    <button class="button button-clear button-light" ng-click="openPopover($event)" style="color:#ffffff;">-->
+<!--        <i class="icon ion-more"></i>-->
+<!--    </button>-->
+<nav>
+    <ul>
+     <li><h1 class="title" style="margin-top:0px;">Photoshop1</h1>
+            <ul>
+                <li><a href="#"   class="ahref">一号大棚</a></li>
+                <li><a href="#"  class="ahref">二号大棚</a></li>
+                <li><a href="#"  class="ahref">三十号大棚</a>
+            
+            </ul>
+        </li>
+    </ul>
+</nav>
+</div>
+
+<ion-view view-title="菜园管理△" hide-nav-bar="true">
+
+    <ion-content class="has-header" scroll="false">
+
+        <div style="text-align:center;" ng-if="data.picList.length <= 0" ng-click="eggClick()">
+            <br>
+            <img src="img/shopping_none.png" style="height:50%;width:50%;background-size:100%;">
+            <br>
+            <p><font color="#77BF60">多点击我几次，我再让你看</font></p>
+        </div>
+
+        <!-- 大图 -->
+        <div style="width:100%; height:75%;position:relative" ng-if="data.picList.length > 0">
+            <img ng-src="{{handlePath(data.picList[data.lastSelectPic].image_path)}}" style="width:100%;background-size: 100%;"/>
+            <p style="float: left;bottom: -7px;position: absolute;left:4px;
+            width: 100%;
+            background-color: #475132;
+            filter:alpha(opacity=50);
+            -moz-opacity:0.5;
+            opacity:0.5;">
+            拍摄时间：{{data.picList[data.lastSelectPic].create_date}}
+            <br>{{data.picList[data.lastSelectPic].subject}}</p>
+        </div>
+
+        <!-- 滚动缩略图-->
+        <ion-scroll direction="x" class="wide-as-needed vertical-container" ng-if="data.picList.length > 0">
+
+                <div ng-repeat="buf in data.picList track by $index"  class="picCss" ng-click="picClick($index)">
+
+                    <img ng-show="$index == data.lastSelectPic"  ng-src="{{handlePath(buf.thumbnail_path)}}" class="box-shadow" style="width:100%; height:100%; border-radius: 10px;"></img>
+
+                    <img ng-show="$index != data.lastSelectPic"  ng-src="{{handlePath(buf.thumbnail_path)}}" style="width:100%; height:100%; border-radius: 10px;"></img>
+
+                </div>
+
+        </ion-scroll>
+
+        <!-- 通知层 -->
+        <div class="pos_tz">
+            <img src="img/dsbl-garden_see.png">
+        </div>
+
+    </ion-content>
+
+    <!-- 更多下拉框 -->
+    <script id="my-popover.html" type="text/ng-template">
+        <ion-popover-view style="margin-top:10px;width: 160px;height:0px;">
+            <ul class="list" >
+                <a class="item item-icon-left" href="#" style="background-color:#000000;opacity:0.3;">
+                    <img src="img/sh-fashion-garden_24.png" class="icon" alt="" style="width:40px;height:30px;top: 10px" />
+                   <p style="color: #ffffff;">做过什么</p>
+                </a>
+
+                <a class="item item-icon-left" href="#" style="background-color:#000000;opacity:0.3;">
+                    <img src="img/sh-fashion-garden_06.png" class="icon" alt="" style="width:40px;height:30px;top: 10px"/>
+                    <p style="color: #ffffff;">种点什么</p>
+                </a>
+
+            </ul>
+        </ion-popover-view>
+    </script>
+
+    <!-- 选择大棚下拉框 -->
+<!--    <script id="select-popover.html" type="text/ng-template">-->
+<!--        <ion-popover-view style="margin-top:0px; height: 150px;width: 170px;background-color:#66bb6a;text-align:center;">-->
+<!--            <ion-content style="background-color:#D8D8D8;position:absolute;top:0px;">-->
+<!--            -->
+<!--   <ion-list>-->
+<!--                    <ion-item  ng-click="selectGardenHouse(buf.house_id)" style="background-color:#66BB6A;color: #ffffff;"  >-->
+<!--                         <a href='#' class="ahref">12344444</a>-->
+<!--                    </ion-item>-->
+<!--                    <ion-item   ng-click="selectGardenHouse(buf.house_id)" style="background-color:#66BB6A;color: #ffffff"  >-->
+<!--                    <a href='#' class="ahref">24444</a>                  </ion-item>-->
+<!--                    <ion-item  ng-click="selectGardenHouse(buf.house_id)" style="background-color:#66BB6A;color: #ffffff"  >-->
+<!--                    <a href='#' class="ahref">344444</a>                    </ion-item>-->
+<!--                    <ion-item  ng-repeat="buf in data.greenHouseList" ng-click="selectGardenHouse(buf.house_id)" style="background-color:#66BB6A;color: #ffffff"  >-->
+<!--                    <a href='#' class="ahref">44444444</a></ion-item>-->
+<!---->
+<!--                </ion-list>-->
+<!--            </ion-content>-->
+<!--        </ion-popover-view>-->
+<!--    </script>-->
+
+</ion-view>

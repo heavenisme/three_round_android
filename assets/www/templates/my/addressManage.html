@@ -1,0 +1,42 @@
+<!-- 地址管理 -->
+
+<ion-view view-title="地址管理">
+
+	<ion-content class="has-footer" ng-init="requestAddresses()">
+
+		<div class="list">
+
+			<li ng-repeat="buf in data.addressList">
+
+				<div class="item item-text-wrap">
+					<h2>{{buf.name}} &nbsp;&nbsp;&nbsp;&nbsp; {{buf.tel}}</h2>
+					<h3 class='padding-top'>{{buf.address}}</h3>
+				</div>
+
+				<div class="padding-left">
+
+					<button ng-model="data.addressList" ng-class="{'true': 'ion-ios-checkmark button icon-left button-clear button-assertive', 'false': 'ion-ios-circle-outline button icon-left button-clear button-assertive'}[buf.isDefault]" ng-click="defaultAddressClick(buf.addressId)">默认地址</button>
+
+					<button ng-model="data.addressList" class="button icon-left button-clear ion-ios-compose-outline" 			ng-click="editAddressClick(buf.addressId)">编辑</button>
+
+					<button ng-model="data.addressList" class="button icon-left button-clear ion-ios-trash-outline" 			ng-click="deleteAddressClick(buf.addressId)">删除</button>
+
+				</div>
+
+				<!-- 空格线 -->
+				<div class="item item-divider"></div>
+
+			</li>
+
+		</div>
+
+	</ion-content>
+
+	<!-- 页脚 -->
+	<div class="bar bar-footer bar-stable" style="height:72px; padding-top: 0px;" >
+		<button class="button button-full button-anywide padding-left padding-right"     ng-click="createAddressClick()"> <i class="icon ion-plus"></i>
+			&nbsp;新建地址
+		</button>
+	</div>
+
+</ion-view>

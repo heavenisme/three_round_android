@@ -1,0 +1,38 @@
+<!--农事活动-我要预约-->
+<div class="bar bar-header bar-anywide">
+    <button class="button button-clear ion-chevron-left button-anywide" ng-click="gotoHome()">&nbsp;&nbsp;&nbsp;&nbsp;</button>
+    <h1 class="title">活动详情</h1>
+</div>
+<ion-view hide-nav-bar="true" view-title="活动详情">
+    <ion-content class="has-header" class="delivery-bg">
+        <div class="active-list-main">
+            <div class="appointment-box1">
+                <div class="appointment-box1-group">
+                    <label>预约日期</label>
+                    <input type="date" value="2014-01-20" >
+                </div>
+                <div class="appointment-box1-group">
+                    <label>联系方式</label>
+                    <input type="number" value="13664298801" >
+                </div>
+            </div>
+            <div class="delivery-reminder">
+                <h3 class="delivery-reminder-title">活动说明</h3>
+                <div class="delivery-reminder-font"></div>
+                <p> 1.只能预约当前日期开始的未来7天。</p>
+                <p> 2.根据农业作物的特殊性和及时性，工作人员会在预约日期开始前1-2天回复活动详情。</p>
+                <p>3.可以在活动日期当天7：00前取消活动预约。</p>
+                <p> 4.预约并参加耕作活动会获得一定积分，积分规则详见积分详情。</p>
+                <p> 5.在没有取消预约活动的情况下，如果没有参加预约活动，则扣除一定积分。</p>
+                <p> 6.因空间、工具等限制，建议每家庭最多携带5人前来，感谢配合</p>
+            </div>
+        </div>
+    </ion-content>
+
+    <ion-footer-bar  class="bar-balanced">
+        <h1 class="title" ng-click="goToAppointment()">确认预约</h1>
+    </ion-footer-bar>
+</ion-view>
+
+
+

@@ -1,0 +1,38 @@
+
+<ion-view view-title="应用设置" >
+    <ion-nav-buttons side="left">
+        <button class="button button-clear ion-chevron-left button-anywide" ng-click="gotoHome()">&nbsp;&nbsp;&nbsp;&nbsp;</button>
+    </ion-nav-buttons>
+    
+    <ion-content style="background-color: #F2F2F2">
+        <div class="list">
+
+            <!-- 消息设置 -->
+            <a class="item item-icon-left item-icon-right" herf="javascript:void(0)" ng-click="settingClick()" style="display:none;">
+                <i class="icon"><h2>&nbsp;消息设置</h2></i>  
+                <span class="item-note">不想被打扰？</span>
+                <i class="icon ion-ios-arrow-right"></i>
+            </a>
+
+            <!-- 账户安全 -->
+            <a class="item item-icon-left item-icon-right" herf="javascript:void(0)" ng-click="accountSafeClick()">
+                <i class="icon"><h2>&nbsp;账户与安全</h2></i> 
+                <span class="item-note">三寰360卫士</span>
+                <i class="icon ion-ios-arrow-right"></i>
+            </a>
+
+            <!-- 检查更新 -->
+            <a class="item item-icon-left item-icon-right" herf="javascript:void(0)" ng-click="checkVersion()">
+                <i class="icon"><h2>&nbsp;检查更新</h2></i>
+                <span class="item-note" ng-init="getVersion()">{{data.currVersion}}</span>
+                <i class="icon ion-ios-arrow-right"></i>
+            </a>
+
+        </div>
+    </ion-content>
+
+    <!-- 安全退出 -->
+    <ion-footer-bar  class="bar-assertive">
+        <h1 class="title" ng-click="logout()">安全退出</h1>
+    </ion-footer-bar>
+</ion-view>

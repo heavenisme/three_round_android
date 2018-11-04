@@ -1,0 +1,28 @@
+<ion-view view-title="我要兑换">
+    <ion-content>
+        <div class="list">
+            <label class="item item-input">
+                <span class="input-label">兑换物品</span>
+                <input type="text" disabled="disabled" ng-value="data.item.item_name">
+            </label>
+            <label class="item item-input">
+                <span class="input-label">兑换个数</span>
+                <input type="number" ng-model="data.count">
+            </label>
+            <label class="item item-input">
+                <span class="input-label">所需积分</span>
+                <input type="number" disabled="disabled"  ng-value="data.item.required_point * data.count">
+            </label>
+            <label class="item item-input">
+                <span class="input-label">当前积分</span>
+                <input type="number" disabled="disabled"  ng-value="data.userPoint"> <!-- TODO -->
+            </label>
+        </div>
+
+        <div class="padding">
+            <button class="button button-balanced button-block" ng-click="onExchangeClick()">
+                确认兑换
+            </button>
+        </div>
+    </ion-content>
+</ion-view>

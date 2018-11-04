@@ -1,0 +1,47 @@
+<ion-view view-title="积分等级">
+    <ion-nav-buttons side="left">
+        <button class="button button-clear ion-chevron-left button-anywide" ng-click="gotoHome()">&nbsp;&nbsp;&nbsp;&nbsp;</button>
+    </ion-nav-buttons>
+
+    <ion-content class="pointLevel">
+        <div class="row">
+            <div class="col point-level-col-info-left">  当前等级</div>
+            <div class="col point-level-col-info-right">{{data.info.level}}级 {{data.info.level_name}}</div>
+        </div>
+        <div class="row">
+            <div class="col point-level-col-info-left">累计积分</div>
+            <div class="col point-level-col-info-right">{{data.info.total_points}}</div>
+        </div>
+        <div class="row">
+            <div class="col point-level-col-info-left">距离升级还需</div>
+            <div ng-if="data.info.interval_start - data.info.total_points >= 0" class="col point-level-col-info-right">{{data.info.interval_start - data.info.total_points}}</div>
+            <div ng-if="data.info.interval_start - data.info.total_points < 0" class="col point-level-col-info-right">-</div>
+        </div>
+        <div class="row">
+            <div class="col point-level-col-info-left">已兑换积分</div>
+            <div class="col point-level-col-info-right">{{data.info.total_points - data.info.remaining_points}}</div>
+        </div>
+        <div class="row">
+            <div class="col point-level-col-info-left">剩余积分</div>
+            <div class="col point-level-col-info-right">{{data.info.remaining_points}}</div>
+        </div>
+
+        <div class="row">
+            <div class="col point-level-col-btn"><a class="button button-anywide point-level-btn" ng-click="onExchangeClick()">积分兑换</a></div>
+            <div class="col point-level-col-btn"><a class="button button-anywide point-level-btn" ng-click="onGuideClick()">等级说明</a></div>
+        </div>
+
+        <div class="list list-inset"><!--  -->
+            <div class="item item-divider" style="text-align:center;">
+                积分明细
+            </div>
+
+            <div class="item" ng-repeat="item in data.history track by $index" style="padding-top:10px;padding-bottom:10px;">
+                <div>{{item.change_reason}}</div>
+                <span style="color:#989898;float:left;font-size: 15px;"> {{item.create_time | date: 'yyyy-MM-dd HH:mm'}}</span>
+                <span ng-if="item.point > 0" class="item-note" style="color:#dc5252;font-size:18px;">+{{item.point}}</span>
+                <span ng-if="item.point < 0" class="item-note" style="color:#68b94f;font-size:18px;">{{item.point}}</span>
+            </div>
+        </div>
+    </ion-content>
+</ion-view>

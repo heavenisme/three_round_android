@@ -1,0 +1,36 @@
+<!--农趣活动（部落活动页面）-->
+
+<div class="bar bar-header bar-anywide">
+    <button class="button button-clear ion-chevron-left button-anywide" ng-click="gotoHome()">&nbsp;&nbsp;&nbsp;&nbsp;</button>
+    <h1 class="title">农趣活动</h1>
+    <button class="button button-clear button-light"  ng-click="historyActive()" style="color:#ffffff;">
+        <p style="font-size: 12px">历史活动</p>
+    </button>
+</div>
+
+<ion-view view-title="农趣活动" hide-nav-bar="true">
+    <ion-content class="has-header" style="background-color: #F2F2F2" ng-init="getTribeActive()">
+        <div style="width: 92%;margin: 0 auto;background-color: #ffffff;border-radius: 10px;margin-top: 15px" ng-repeat="list in data.list">
+            <div style="padding: 10px;">
+                <img ng-src="{{handlePath(list.party_poster,3)}}" alt=""/>
+                <label style="color: #000">{{list.party_title}}</label>
+            </div>
+            <div style="border-top: 1px solid #ddd"></div>
+            <div style="position: relative;top:0;left:0;height:45px;" ng-click="activeDetail(list.party_id)">
+                <p style="position: absolute;right:5%;bottom: 5%;color: #66bb6a;font-size: 14px;">
+                    查看详情&nbsp<i class="icon ion-ios-arrow-right"></i></p>
+            </div>
+        </div>
+        <!--<div style="width: 92%;margin: 0 auto;background-color: #ffffff;border-radius: 10px;margin-top: 15px">
+            <div style="padding: 10px;">
+                <img src="img/nongqu/nong2.png" alt=""/>
+                <label style="color: #000">趣味南瓜秀，一起来happy！ 等你</label>
+            </div>
+            <div style="border-top: 1px solid #ddd"></div>
+            <div style="position: relative;top:0;left:0;height:45px;" ng-click="activeDetail()">
+                <p style="position: absolute;right:5%;bottom: 5%;color: #66bb6a;font-size: 14px;">
+                    查看详情&nbsp<i class="icon ion-ios-arrow-right"></i></p>
+            </div>
+        </div>-->
+    </ion-content>
+</ion-view>

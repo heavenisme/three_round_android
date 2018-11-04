@@ -1,0 +1,178 @@
+<style type="text/css">
+    .wide-as-needed {
+    overflow: scroll;
+    white-space: nowrap;
+    height:25%;
+    }
+    .scroll {
+    min-width: 100%;
+    }
+    .picture {
+    /* padding:0px; */
+    width:130px;
+    height:100px;
+    padding-bottom:0px;
+    position:relative;
+    }
+    .vertical-container{
+    display: -webkit-flex;
+    display: flex;
+    -webkit-align-items: center;
+    align-items: center;
+    }
+    .box-shadow{
+    -webkit-box-shadow:0 0 20px #000000;
+    -moz-box-shadow:0 0 20px #000000;
+    box-shadow:0 0 20px #000000;
+    }
+    .picCss{
+    position: relative;
+    display: inline-block;
+    width:130px;
+    height:100px;
+    margin: 6px;
+    padding:0px;
+    }
+    .pos_tz{
+    position:absolute;
+    left:0%;
+    top:0%;
+    width: 40%;
+    }
+    .a{border:1px solid #8c8c8c }
+</style>
+
+
+<div class="bar bar-header bar-anywide">
+    <h1 class="title" ng-click="openSelectPopover($event)" style="width: 120px;text-align: center;margin: 0 auto" ng-if="ios == false">{{data.title}}</h1>
+    <h1 class="title" ng-click="openSelectPopover($event)" style="width: 120px;text-align: center;margin: 20px auto" ng-if="ios == true">{{data.title}}</h1>
+    <button class="button button-clear button-light" ng-if="data.greenHouseList.length > 0" ng-click="openPopover($event)" style="color:#ffffff; font-size:16px;">农事历程
+    </button>
+    <button ng-if="rootIsLogined()" class="button button-clear button-anywide" ng-click="goToMsg()">
+        <div style="width: 24px; height: 20px;" >
+            <img ng-if="!isHaveNewMessage" src="img/dsbl-main-message.png">
+            <img ng-if="isHaveNewMessage" src="img/dsbl-main-message_red.png">
+        </div>
+    </button>
+</div>
+
+<ion-view view-title="菜园管理" hide-nav-bar="{{getState(tribe.greenHouseList.length)}}">
+
+    <ion-content class="has-header" scroll="false" ng-show="data.isInit">
+
+        <!-- 没有土地时 -->
+        <div style="text-align:center;" ng-if="data.greenHouseList.length <= 0" >
+            <p><font color="#77BF60">&nbsp;&nbsp;</font></p>
+            <p><font color="#77BF60">&nbsp;&nbsp;</font></p>
+            <p><font color="#77BF60">&nbsp;&nbsp;</font></p>
+            <br>
+            <img src="img/dsbl-garden_nogarden.png" style="height:50%;width:50%;background-size:100%;">
+            <br>
+            <p><font color="#77BF60">&nbsp;&nbsp;亲，请先购买土地</font></p>
+            <p><font color="#77BF60">然后可以进入菜园管理</font></p>
+        </div>
+
+        <!-- 没有大棚的现场照片时 -->
+        <div style="text-align:center;" ng-if="data.picList.length <= 0 && data.greenHouseList.length > 0" >
+            <p><font color="#77BF60">&nbsp;&nbsp;</font></p>
+            <p><font color="#77BF60">&nbsp;&nbsp;</font></p>
+            <p><font color="#77BF60">&nbsp;&nbsp;</font></p>
+            <br>
+            <img src="img/dsbl-garden_nogarden.png" style="height:50%;width:50%;background-size:100%;">
+            <br>
+            <p><font color="#77BF60">亲，大棚土地正在拍摄中</font></p>
+            <p><font color="#77BF60">&nbsp;&nbsp;请耐心等待哦</font></p>
+        </div>
+
+        <!--大图片滑动-->
+        <ion-slide-box style="width: 100%;height: 75%;" ng-if="data.picList.length > 0 && data.greenHouseList.length > 0" on-slide-changed="slideHasChanged($index)" active-slide="myActiveSlide" show-pager="false">
+            <ion-slide ng-repeat="bigPic in data.picList track by $index" >
+                <img ng-src="{{handlePath(bigPic.image_url, false)}}" style="width: 100%;height: 100%" orientable/>
+                <div style="top:0px;position: absolute;height: 100%">
+                    <img src="img/dsbl-garden_06.png"/>
+                    <p style="position:absolute;color:#ffffff;float: left;left: 1%;bottom: 8px;">
+                        拍摄时间：{{data.picList[data.lastSelectPic].create_time | date:'yyyy-MM-dd'}}
+                        <br>照片描述：{{data.picList[data.lastSelectPic].description}}
+                    </p>
+                </div>
+            </ion-slide>
+        </ion-slide-box>
+
+        <!-- 滚动缩略图-->
+        <ion-scroll direction="y" class="wide-as-needed vertical-container" ng-if="data.picList.length > 0 && data.greenHouseList.length > 0" id="sroll-img" style="margin-left:0px;">
+
+            <div ng-repeat="buf in data.picList track by $index"  class="picCss" ng-click="picClick($index)" id="picImg">
+
+                <img ng-show="$index == data.lastSelectPic"  ng-src="{{handlePath(buf.image_url, true)}}" class="box-shadow" style="width:100%; height:100%; border-radius: 10px;"/>
+
+                <img ng-show="$index != data.lastSelectPic"  ng-src="{{handlePath(buf.image_url, true)}}" style="width:100%; height:100%; border-radius: 10px;"/>
+            </div>
+        </ion-scroll>
+
+        <!-- TODO 快来看看吧-快来决定吧通知层 -->
+        <!-- <div class="pos_tz" ng-if="data.picList.length > 0">
+            <img src="img/dsbl-garden_see.png" style="width: 100%;height: 30%">
+        </div> -->
+    </ion-content>
+
+    <!-- 更多下拉框 -->
+    <script id="my-popover.html" type="text/ng-template">
+        <ion-popover-view style="margin-top:10px;width:160px;height:0px;">
+            <ul class="list" >
+                <a  ng-if="data.nowState == 2" class="item item-icon-left" ng-click="goingToPlant()" on-touch="onTouch(1)" on-release="onRelease(1)" style="background-color:#000000;opacity:0.7;">
+                <!--ng-show="data.nowState == 2"-->
+                    <img src="img/plant-what.png" id="img1" class="icon" alt="" style="width:30px; height:30px; top: 10px;opacity:100;"/>
+                    <p id="text1" style="color: #ffffff;">种点什么</p>
+                </a>
+<!--                <a ng-if="data.nowState == 3" class="item item-icon-left" ng-click="gotoModel()" on-touch="onTouch(2)" on-release="onRelease(2)" style="background-color:#000000;opacity:0.7;">
+                    &lt;!&ndash;ng-show="data.nowState == 1 || data.nowState == 3"&ndash;&gt;
+                    <img src="img/planted-what.png" id="img2" class="icon" alt="" style="width: 30px; height: 30px;top: 10px;opacity:100;"/>
+                    <p id="text2" style="color: #ffffff;">种了什么</p>
+                </a>-->
+                <a class="item item-icon-left" ng-click="gotoModel()" on-touch="onTouch(2)" on-release="onRelease(2)" style="background-color:#000000;opacity:0.7;">
+                    <img src="img/planted-what.png" id="img2" class="icon" alt="" style="width: 30px; height: 30px;top: 10px;opacity:100;"/>
+                    <p id="text2" style="color: #ffffff;">种了什么</p>
+                </a>
+                <a ng-if="data.nowGoodsDesignState" class="item item-icon-left" ng-click="goingToDo()" on-touch="onTouch(3)" on-release="onRelease(3)" style="background-color:#000000;opacity:0.7;">
+                    <img src="img/do-what.png" class="icon" id="img3" alt="" style="width: 30px; height: 30px;top: 10px;opacity:100;" />
+                    <p id="text3" style="color: #ffffff;">做点什么</p>
+                </a>
+                <a ng-if="data.nowTaskState" class="item item-icon-left" ng-click="gotoHistory()" on-touch="onTouch(4)" on-release="onRelease(4)" style="background-color:#000000;opacity:0.7;">
+                    <!--ng-if="data.nowState == 2" -->
+                    <img src="img/did-what.png" class="icon" id="img4" alt="" style="width: 30px; height: 30px;top: 10px;opacity:100;" />
+                    <p id="text4" style="color: #ffffff;">做了什么</p>
+                </a>
+                <a ng-if="data.nowChiefState" class="item item-icon-left" ng-click="voteChief()" on-touch="onTouch(5)" on-release="onRelease(5)" style="background-color:#000000;opacity:0.7;">
+                    <img src="img/vote-chief.png" class="icon" id="img5" alt="" style="width: 30px; height: 30px;top: 10px;opacity:100;"/>
+                    <p id="text5" style="color: #ffffff;">酋长选举</p>
+                </a>
+                <a ng-if="data.nowMiniatureState" class="item item-icon-left" ng-click="cropShadow()" on-touch="onTouch(6)" on-release="onRelease(6)" style="background-color:#000000;opacity:0.7;">
+                    <img src="img/plant-mini.png" class="icon" id="img6" alt="" style="width: 30px; height: 30px;top: 10px;opacity:100;"/>
+                    <p id="text6" style="color: #ffffff;">作物缩影</p>
+                </a>
+                <a ng-if="data.nowRecoverState" class="item item-icon-left unvisible" ng-click="recover()" on-touch="onTouch(7)" on-release="onRelease(7)" style="background-color:#000000;opacity:0.7;">
+                    <img src="img/caishou.png" class="icon" id="img7" alt="" style="width: 30px; height: 30px;top: 10px;opacity:100;"/>
+                    <p id="text7" style="color: #ffffff;">采收计划</p>
+                </a>
+                <a ng-if="data.nowFarmingActiveState" class="item item-icon-left unvisible" ng-click="farming()" on-touch="onTouch(8)" on-release="onRelease(8)" style="background-color:#000000;opacity:0.7;">
+                    <img src="img/nongshi.png" class="icon" id="img7" alt="" style="width: 30px; height: 30px;top: 10px;opacity:100;"/>
+                    <p id="text7" style="color: #ffffff;">农事活动报名</p>
+                </a>
+            </ul>
+        </ion-popover-view>
+    </script>
+
+    <!-- 选择大棚下拉框 -->
+    <script id="select-popover.html" type="text/ng-template">
+        <ion-popover-view style="margin-top:0px; height: {{getHeight(data.greenHouseList.length)}}px;width: 170px">
+            <ion-content style="background-color:#D8D8D8;margin-top: 0px;padding-top: 0px">
+                <ion-list>
+                    <ion-item  ng-repeat="buf in data.greenHouseList" ng-click="selectGardenHouse(buf.house_id, buf.house_no,buf.house_name)" style="background-color:#66BB6A;color: #ffffff"  >
+                        {{buf.house_name}}
+                    </ion-item>
+                </ion-list>
+            </ion-content>
+        </ion-popover-view>
+    </script>
+
+</ion-view>

@@ -1,0 +1,177 @@
+<ion-view view-title="我的" hide-nav-bar="false" >
+
+    <ion-content style="background-color: #E4E4E4;">
+        <!--img下的ng-click="headChange($event)" 更换头像点击事件-->
+        <div ng-if="data.isLogined" class="item-thumbnail-left" style="background:url('img/dsbl-main-mine_image.png');text-align:center;width:100%;height:200px;">
+            <img ng-src="{{data.image}}" ng-click="uploadHeader($event)" style="width:277px;position:absolute;margin-left:35%;border-radius:600px;margin-top: 2%">
+
+            <h4 ng-click="showPopup($event)">
+                <div style="width: 100%;text-align: center;margin-left: -17%;color:#000;margin-top:100px;">&nbsp;{{data.nickname}}&nbsp;&nbsp;<i class="icon ion-edit "></i></div>
+            </h4>
+            <h5>
+                <div style="width: 100%;text-align: center;margin-left: -20%;color:#000;" ng-if="data.pointInfo.level">lv{{data.pointInfo.level}}&nbsp;&nbsp;{{data.pointInfo.level_name}}</div>
+                <!--<div style="width: 100%;text-align: center;margin-left: -20%;color:#000;" ng-if="!data.pointInfo.level">lv0&nbsp;&nbsp;{{data.pointInfo.level_name}}</div>-->
+            </h5>
+            <h5 ng-click="showPopup($event)">
+                <div style="width: 100%;text-align: center;margin-left: -20%;color:#000;">{{data.signature || '空空如也，还没有签名~'}}</div>
+            </h5>
+            <!-- <h5 ng-if="data.signature == ''" ng-click="showPopup($event)">
+                <div style="width: 100%;text-align: center;margin-left: -20%;color:#000;">空空如也，还没有签名~</div>
+            </h5> -->
+            <!--<h5 ng-if="data.signature != ''" ng-click="showPopup($event)" style="float: left;margin-left:4%"><div style="color:#000;">{{data.signature}}</div></h5>
+            <h5 ng-if="data.signature == ''" ng-click="showPopup($event)" style="float: left;margin-left:4%"><div style="color:#000;">空空如也，还没有签名~</div></h5>-->
+            <!-- <h5>&nbsp;</h5> -->
+            <div ng-if="data.isHaveGreenHouse">
+                <button ng-if="!data.isSignon" ng-click="onSignonClick()" class="button button-small button-outline button-positive" style="height:20px; min-height:10px; line-height:100%; position:absolute; right:16px; top:164px;">
+                    签到
+                </button>
+                <button ng-if="data.isSignon" disabled="disabled" class="button button-small button-outline button-positive" style="height:20px; min-height:10px; line-height:100%; position:absolute; right:16px; top:164px;">
+                    已签到
+                </button>
+            </div>
+
+            <br>
+        </div>
+
+        <div ng-if="!data.isLogined" style="background:url('img/dsbl-main-mine_image.png');background-size:100%;height: 135px;text-align:center;">
+            <br>
+            <h3>欢迎来到三寰·会耕部落</h3>
+            <button class="button button-clear" ng-click="login()" style="color: #000000">
+                登录/注册
+            </button>
+            <br>
+            <br>
+        </div>
+
+        <div class="list">
+
+            <div class="item item-divider-anywide"></div>
+
+            <!-- 我的订单 -->
+            <a class="item item-icon-left item-icon-right" herf="javascript:void(0)" ng-click="myOrderClick()" style="background-color:#FFFFFF;">
+                <i class="icon">
+                    <h2>我的订单</h2>
+                </i>
+                <span class="item-note">查看全部已购订单</span>
+                <i class="icon ion-ios-arrow-right"></i>
+            </a>
+
+            <div class="item row" style="height:65px;background-color:#FFFFFF;width: auto;display:none">
+                <div class="col" style="text-align:center;">
+                    <button class="button button-small button-icon icon ion-ios-list-outline" ng-click="myOrderClick(1)"><br>待付款</button>
+                </div>
+                <div class="col" style="text-align:center;">
+                    <button class="button button-small button-icon icon ion-ios-briefcase-outline" ng-click="myOrderClick(2)"><br>待发货</button>
+                </div>
+                <div class="col" style="text-align:center;">
+                    <button class="button button-small button-icon icon ion-ios-paperplane-outline" ng-click="myOrderClick(3)"><br>待收货</button>
+                </div>
+                <div class="col" style="text-align:center;">
+                    <button class="button button-small button-icon icon ion-ios-nutrition-outline" ng-click="myOrderClick(4)"><br>待评价</button>
+                </div>
+                <div class="col" style="text-align:center;">
+                    <button class="button button-small button-icon icon ion-ios-lightbulb-outline" ><br>退款/售后</button>
+                </div>
+            </div>
+
+            <div class="item item-divider-anywide"></div>
+
+            <!-- 我的钱包 -->
+            <a class="item item-icon-left item-icon-right" herf="javascript:void(0)" ng-click="myAccountClick()" style="background-color:#FFFFFF">
+                <i class="icon">
+                    <h2>我的资产</h2>
+                </i>
+                <span class="item-note">余额?明细?任你看</span>
+                <i class="icon ion-ios-arrow-right"></i>
+            </a>
+
+            <!-- 积分等级 -->
+            <a ng-if="data.isHaveGreenHouse" class="item item-icon-left item-icon-right" herf="javascript:void(0)" ng-click="pointLevelClick()" style="background-color:#FFFFFF">
+                <i class="icon">
+                    <h2>积分等级</h2>
+                </i>
+                <span class="item-note">拿积分，换礼品</span>
+                <i class="icon ion-ios-arrow-right"></i>
+            </a>
+
+            <!-- 我的大棚 -->
+            <a class="item item-icon-left item-icon-right" href="javascript:void(0)" ng-click="myGreenhouseClick()" style="background-color:#FFFFFF">
+                <i class="icon">
+                    <h2>我的部落</h2>
+                </i>
+                <span class="item-note">我的部落，我的伙伴</span>
+                <i class="icon ion-ios-arrow-right"></i>
+            </a>
+            <!-- 我的店铺 -->
+            <!--ng-click="myShopClick()"-->
+            <!--<a class="item item-icon-left item-icon-right " herf="javascript:void(0)"  style="background-coos == false" ng-if="ios == false">-->
+            <a class="item item-icon-left item-icon-right " ng-click="myShopClick()" herf="javascript:void(0)"  style="background-coos == false" >
+               <i class="icon">
+                    <h2>我的店铺</h2>
+                </i>
+                <span class="item-note">打理店铺，轻松赚钱</span>
+                <i class="icon ion-ios-arrow-right"></i>
+            </a>
+            <a class="item item-icon-left item-icon-right" herf="javascript:void(0)" ng-click="scanBarcode()" style="background-color:#FFFFFF;">
+                <i class="icon">
+                    <h2>扫一扫</h2>
+                </i>
+                <span class="item-note">扫一下，扫出作物一生</span>
+                <i class="icon ion-ios-arrow-right"></i>
+            </a>
+            <div class="item item-divider-anywide"></div>
+
+            <!-- 个人资料 -->
+            <a class="item item-icon-left item-icon-right" herf="javascript:void(0)" ng-click="myInfoClick()" style="background-color:#FFFFFF;display:none">
+                <i class="icon">
+                    <h2>个人资料</h2>
+                </i>
+                <span class="item-note">&nbsp;</span>
+                <i class="icon ion-ios-arrow-right"></i>
+            </a>
+            <!-- 应用设置 -->
+            <a class="item item-icon-left item-icon-right" herf="javascript:void(0)" ng-click="appSetClick()" style="background-color:#FFFFFF">
+                <i class="icon">
+                    <h2>应用设置</h2>
+                </i>
+                <span class="item-note">退出登录、修改密码</span>
+                <i class="icon ion-ios-arrow-right"></i>
+            </a>
+
+
+            <div class="item item-divider-anywide"></div>
+
+            <!-- 帮助与反馈 -->
+            <a class="item item-icon-left item-icon-right" herf="javascript:void(0)" ng-click="helpClick()" style="background-color:#FFFFFF;display:none">
+                <i class="icon">
+                    <h2>帮助与反馈</h2>
+                </i>
+                <span class="item-note">不会用？有问题？点我</span>
+                <i class="icon ion-ios-arrow-right"></i>
+            </a>
+
+            <!-- <div class="item item-divider-anywide" ng-if="ios == false"></div> -->
+
+            <!-- 关于我们 -->
+            <a class="item item-icon-left item-icon-right" herf="javascript:void(0)" ng-click="aboutClick()" style="background-color:#FFFFFF">
+                <i class="icon">
+                    <h2>关于我们</h2>
+                </i>
+                <span class="item-note">&nbsp;</span>
+                <i class="icon ion-ios-arrow-right"></i>
+            </a>
+            <!-- <div class="item item-divider-anywide" style="padding-top:0;padding-bottom:0;border-bottom:none;"></div> -->
+        </div>
+    </ion-content>
+
+    <!--<script id="templates/popup.html" type="text/ng-template">
+        <div class="card">
+            <div class="item">
+                <label style="margin-left: 10px">昵称</label> <input type="text" ng-model="data.bufName" style="width: 100%;margin-top:-25px;margin-left:20%">
+            </div>.
+            <div class="item item-text-wrap">
+                <label>签名</label><textarea style="width: 100%;margin-top:-25px;margin-left:20%"></textarea>
+            </div>
+        </div>
+    </script>-->
+</ion-view>

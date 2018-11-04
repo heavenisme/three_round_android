@@ -1,0 +1,52 @@
+<!--农事活动-活动列表-->
+<style>
+    .on{
+        background: red !important;
+    }
+</style>
+<div class="bar bar-header bar-anywide">
+    <button class="button button-clear ion-chevron-left button-anywide" ng-click="gotoHome()">&nbsp;&nbsp;&nbsp;&nbsp;</button>
+    <h1 class="title">未来一周农事安排</h1>
+    <button class="button" style="float: right;background: transparent;border: none" ng-click="goMyAppoint()">我的预约</button>
+</div>
+<ion-view hide-nav-bar="true" view-title="未来一周农事安排">
+    <ion-content class="has-header" class="delivery-bg">
+        <div class="active-list-main" ng-init="init()">
+            <h3 class="active-list-date">{{data.list.data[0].timeFrom}}~{{data.list.data[0].timeTo}}</h3>
+            <p style="text-align: center;font-size: 12px;">（点一点可预约农事活动）</p>
+            <table>
+                <thead>
+                <tr>
+                    <td>日期</td>
+                    <td>作业内容</td>
+                </tr>
+                </thead>
+                <tbody>
+                <tr ng-repeat="list in data.list.data" ng-click="goToAppointment(list.farm_work_id,list.start_time,list.finish_time,list.start_on,list.finish_on,list.work_content,list.point)">
+                    <td style="font-size:11px; text-align: center;">{{list.start_time}}~{{list.finish_time | date:'yyyy-MM-dd'}}</td>
+                    <td style="font-size:11px; text-align: center;">{{list.work_items}}</td>
+                </tr>
+                <!--<tr>
+                    <td>2016年3月23日~2016年1月24日</td>
+                    <td>除草、浇水</td>
+                </tr>
+                <tr>
+                    <td>2016年3月23日~2016年1月24日</td>
+                    <td>除草、浇水</td>
+                </tr>
+                <tr>
+                    <td>2016年3月23日~2016年1月24日</td>
+                    <td>除草、浇水</td>
+                </tr>-->
+                </tbody>
+            </table>
+        </div>
+    </ion-content>
+
+    <!--<ion-footer-bar  class="bar-balanced">-->
+        <!--<h1 class="title" ng-click="goToAppointment()">我要预约</h1>-->
+    <!--</ion-footer-bar>-->
+</ion-view>
+
+
+

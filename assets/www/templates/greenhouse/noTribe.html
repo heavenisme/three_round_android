@@ -1,0 +1,51 @@
+<!--<ion-view view-title="我的部落">-->
+    <!--<ion-content>-->
+        <!--<div style="position:absolute; top:50%; left:50%;">-->
+            <!--&lt;!&ndash;style="width:0;height:0;position:absolute;top:50%;left:50%;">&ndash;&gt;-->
+            <!--<img src="img/greenchid.png" style="width:91px; height:69px; background-size:100%; text-align: center">-->
+            <!--&lt;!&ndash;style="width:91px;height:69px;position:absolute;top:-130px;left:-34.5px;background-size:100%"&ndash;&gt;-->
+
+            <!--<div style="font-size:16px; color:#68b94f; text-align: center; position:absolute; left:-55px; top:-55px;">-->
+                <!--&lt;!&ndash;style="width:150px;height:40px;position:absolute;left:-55px;top:-55px;font-size:16px;color:#68b94f;text-align:center;">&ndash;&gt;-->
+                <!--亲，你还不是耘客，</br>请先购买土地。-->
+                <!--亲，你还不是耘客，</br>请先购买土地。-->
+            <!--</div>-->
+        <!--</div>-->
+    <!--</ion-content>-->
+<!--</ion-view>-->
+
+<!-- 选择大棚下拉框 -->
+<script id="select-popover.html" type="text/ng-template">
+    <ion-popover-view style="margin-top:0px; height: {{getHeight(tribe.myGreenHouse.length)}}px;width: 170px">
+        <ion-content style="background-color:#D8D8D8;margin-top: 0px;padding-top: 0px">
+            <ion-list>
+                <ion-item ng-click="closeSelectPopover(item)" ng-repeat="item in tribe.myGreenHouse" style="background-color:#66BB6A;color: #ffffff"  >
+                    {{item.house_name}}
+                </ion-item>
+
+            </ion-list>
+        </ion-content>
+    </ion-popover-view>
+</script>
+
+<div class="bar bar-header bar-anywide">
+    <button class="button button-clear ion-chevron-left button-anywide" ng-click="gotoHome()">&nbsp;&nbsp;&nbsp;&nbsp;</button>
+    <h1 class="title" >{{ data.title }}</h1>
+</div>
+<ion-view title="{{ data.title }}" hide-nav-bar="true">
+    <!--<ion-nav-buttons side="left">-->
+        <!--<button class="button button-clear ion-chevron-left button-anywide" ng-click="gotoHome()">&nbsp;&nbsp;&nbsp;&nbsp;</button>-->
+    <!--</ion-nav-buttons>-->
+    <ion-content  class="has-header" scroll="false">
+        <div style="text-align:center;" >
+            <p><font color="#77BF60">&nbsp;&nbsp;</font></p>
+            <p><font color="#77BF60">&nbsp;&nbsp;</font></p>
+            <p><font color="#77BF60">&nbsp;&nbsp;</font></p>
+            <br>
+            <img src="img/greenchid.png" style="height:50%;width:50%;background-size:100%;">
+            </br>
+            <p><font color="#77BF60">亲，你还不是耘客</font></p>
+            <p><font color="#77BF60">&nbsp;请先购买土地</font></p>
+        </div>
+    </ion-content>
+</ion-view>

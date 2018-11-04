@@ -1,0 +1,16 @@
+<!--店铺背景-->
+<div class="bar bar-header bar-anywide">
+    <button class="button button-clear ion-chevron-left button-anywide" ng-click="gotoHome()">&nbsp;&nbsp;&nbsp;&nbsp;</button>
+    <h1 class="title">店铺背景</h1>
+</div>
+<ion-view hide-nav-bar="true" view-title="店铺背景">
+    <ion-content class="has-header" style="background: #F2F2F2" ng-init ="getMyShop_Info()">
+        <img ng-src="{{handlePath(content.image_path,content.image_file,false)}}" ng-click="changeShopBg()"/>
+    </ion-content>
+<!--    <ion-footer-bar  class="bar-balanced">
+            <h1 class="title" ng-click="updateShopInfo()">更换</h1>
+        </ion-footer-bar>-->
+</ion-view>
+
+
+

@@ -1,0 +1,74 @@
+<ion-view hide-nav-bar="true" title="{{data.title}}">
+	<!-- <ion-nav-buttons side="left">
+        <button class="button button-clear ion-chevron-left button-anywide" ng-click="goBack()">&nbsp;&nbsp;&nbsp;&nbsp;</button>
+    </ion-nav-buttons> -->
+	<ion-header-bar class="bar-anywide">
+		<div class="buttons">
+			<button class="button button-clear ion-chevron-left button-anywide" ng-click="goBack()">&nbsp;&nbsp;&nbsp;&nbsp;</button>
+		</div>
+		<h1 class="title">{{data.title}}</h1>
+	</ion-header-bar>
+	<ion-content style="background-color: #F2F2F2">
+		<div class="list">
+			<a class="item item-icon-right" ng-click="switcher(2)">
+				<div class="row">
+					<div class="pay">
+						<img src="img/dsbl-pay_03.png" style="width:30px;height:30px;background-size:100%;margin-top:5px;"></div>
+					<div> <i class="pay"><h2>&nbsp;&nbsp;&nbsp;微信支付</h2></i>
+						<br>
+						<p style="margin-top:-20px;">&nbsp;&nbsp;&nbsp;推荐有微信账户的用户使用</p>
+					</div>
+					<div> <i class="icon ion-ios-arrow-right"style="color:#66BB6A"></i>
+					</div>
+				</div>
+			</a>
+			<a class="item item-icon-right" ng-click="switcher(3)" ng-if="false">
+				<div class="row">
+					<div class="pay">
+						<img src="img/dsbl-pay_06.png"  style="width:30px;height:30px;background-size:100%;margin-top:5px;"></div>
+					<div>
+						<i class="pay"><h2>&nbsp;&nbsp;&nbsp;支付宝</h2></i>
+						<br>
+						<p style="margin-top:-20px;">&nbsp;&nbsp;&nbsp;推荐有支付宝账号的用户使用</p>
+					</div>
+					<div>
+						<i class="icon ion-ios-arrow-right" style="color:#66BB6A"></i>
+					</div>
+				</div>
+			</a>
+
+            <a class="item item-icon-right"  ng-click="switcher(4)" ng-if="false">
+
+				<div class="row">
+					<div class="pay">
+						<img src="img/dsbl-pay_08.png"  style="width:30px;height:30px;background-size:100%;margin-top:5px;"></div>
+					<div>
+						<i class="pay"><h2>&nbsp;&nbsp;&nbsp;财付通</h2></i>
+						<br>
+						<p style="margin-top:-20px;">&nbsp;&nbsp;&nbsp;推荐有财付通账号的用户使用</p>
+					</div>
+					<div>
+						<i class="icon ion-ios-arrow-right" style="color:#66BB6A"></i>
+					</div>
+				</div>
+			</a>
+
+            <div class="item item-divider-anywide" style="background-color:#F2F2F2; border-bottom: none;"></div>
+			<a class="item item-icon-right" ng-if="data.currMode == 0" ng-click="switcher(1)">
+                <div class="row">
+                    <div class="pay">
+                        <img src="img/dsbl-pay_10.png"  style="width:30px;height:30px;background-size:100%;margin-top:5px;"></div>
+                    <div ng-init="getBalance()">
+                        <i class="pay"><h2>&nbsp;&nbsp;&nbsp;账户余额支付</h2></i>
+                        <br>
+                        <p style="margin-top:-20px;">&nbsp;&nbsp;&nbsp;当前余额：{{data.userAmount}} 元</p>
+                    </div>
+                    <div>
+                        <i class="icon ion-ios-arrow-right" style="color:#66BB6A"></i>
+                    </div>
+                </div>
+
+			</a>
+		</div>
+	</ion-content>
+</ion-view>

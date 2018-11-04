@@ -1,0 +1,46 @@
+<!--农趣活动（活动详情页面）-->
+<style>
+    .active-box1 h2{
+        font-size: 14px;
+    }
+    .active-box1 p{
+        font-size: 14px;
+    }
+    .active-box1{
+        background: #fff;
+        padding:10px 10px 40px 10px;
+        margin:10px 10px 40px 10px;
+    }
+</style>
+<div class="bar bar-header bar-anywide">
+    <button class="button button-clear ion-chevron-left button-anywide" ng-click="gotoHome()">&nbsp;&nbsp;&nbsp;&nbsp;</button>
+    <h1 class="title">活动详情</h1>
+</div>
+
+<ion-view hide-nav-bar="true" view-title="活动详情">
+    <ion-content class="has-header" style="background: #F2F2F2">
+        <div>
+            <img ng-src="{{handlePath(data.detail.party_poster,3)}}"/>
+        </div>
+        <div class="active-box1">
+            <h2>{{data.detail.party_title}}</h2>
+            <p>活动时间：{{data.detail.start_on_format}}</p>
+            <p>活动费用：(现金){{data.detail.cost_adult}}元/位<span ng-if="data.detail.cost_point">，(积分){{data.detail.cost_point}}积分/位</span></p>
+            <p>报名截止时间：{{data.detail.enroll_end_on_format}}</p>
+        </div>
+        <div class="active-box1" style="display:none">
+            <p>活动介绍：</p>
+            <p>{{data.detail.party_content}}</p>
+        </div>
+        <div class="active-box1" style="display:none">
+            <p>活动规则：</p>
+            <p>{{data.detail.reminder}}</p>
+        </div>
+    </ion-content>
+    <ion-footer-bar  class="bar-balanced" ng-show="data.flag==0">
+        <h1 class="title" ng-click="signUp()">立即报名</h1>
+    </ion-footer-bar>
+    <ion-footer-bar  class="bar-balanced" style="background-color:#E0E0E0;" ng-show="data.flag==1">
+        <h1 class="title">已报名</h1>
+    </ion-footer-bar>
+</ion-view>

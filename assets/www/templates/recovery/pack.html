@@ -1,0 +1,53 @@
+
+<!-- 采收计划反馈页 -->
+<style>
+    .tips{border-top:1px solid #bbbbbb;margin-top: 30%;}
+    .tips h3{
+        font-size: 13px;
+        color: #666;
+        margin-top: -10px !important;
+        text-align: center;
+        background: #f2f2f2;
+        width: 100px;
+        display: block;
+        margin: 0 auto;}
+    .tips p{font-size: 12px;
+        color: #666666;}
+</style>
+<div class="bar bar-header bar-anywide">
+    <button class="button button-clear ion-chevron-left button-anywide" ng-click="gotoHome()">&nbsp;&nbsp;&nbsp;&nbsp;</button>
+    <h1 class="title">{{data.title}}</h1>
+</div>
+
+<ion-view hide-nav-bar="true" view-title="{{data.title}}">
+
+    <ion-content class="has-header" style="padding: 0 15px;background-color: #F2F2F2">
+        <div style="padding:10px 0;color: #000000">
+            <h2 style="font-size: 1.25em">包装方式</h2>
+        </div>
+        <div  ng-init="getPack()">
+            <div style="margin-left: 5%;width: 100%;overflow: hidden;margin-top: 20px;" ng-repeat="item in data.recoverWay">
+                <input type="radio" name="group" style="width: 20px;height: 20px;float:left;" id="{{item.package_id}}" ng-click="selectPackWay(item.package_id,item.package_price)" ng-checked="item.package_id == data.RadioFlag" />
+                <label style="float: left;color: #000000">&nbsp;&nbsp;{{item.package_name}}（￥{{item.package_price}}）</label>
+            </div>
+            <!--<div style="margin-left: 5%;margin-top: 5%">-->
+                <!--<input type="radio" name="group" style="width: 15px;height: 15px;float:left;"/>-->
+                <!--<label style="float: left;color: #000000">&nbsp;&nbsp;定制礼盒包装（￥25.0）</label>-->
+            <!--</div>-->
+            <div class="tips">
+                <h3>温馨提示</h3>
+                <div style="margin-top: 10px;">
+                    <!--<p>1.需要蔬菜配送服务的客户，如果在采收当日的12点前反馈，则可以当天送达蔬菜；如果在12点以后16点前反馈，则只能在次日送达蔬菜。</p>-->
+                    <!--<p>  2.用于交易的蔬菜将直接上架到耘客个人店铺中。</p>-->
+                    <!--<p>  3.需要自提的客户，请在采收当日12点前反馈。</p>-->
+                    <!--<p>4.快递公司：顺丰。邮费到付</p>-->
+                    <p>{{data.reminder}}</p>
+                </div>
+            </div>
+        </div>
+    </ion-content>
+
+    <ion-footer-bar  class="bar-balanced">
+        <h1 class="title" ng-click="next()">下一步</h1>
+    </ion-footer-bar>
+</ion-view>

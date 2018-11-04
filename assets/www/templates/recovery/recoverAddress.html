@@ -1,0 +1,30 @@
+<!--采收计划反馈-收货地址-->
+<div class="bar bar-header bar-anywide">
+    <button class="button button-clear ion-chevron-left button-anywide" ng-click="gotoHome()">&nbsp;&nbsp;&nbsp;&nbsp;</button>
+    <h1 class="title">收货地址</h1>
+    <button ng-click="editAddressClick()" class="button badge-balanced">编辑</button>
+</div>
+<ion-view hide-nav-bar="true" view-title="收货地址">
+    <ion-content class="has-header" class="delivery-bg" ng-init="requestAddresses()">
+        <div class="list recover-address-list" ng-repeat="address in data.addressList" ng-click="checkThisAddress(address)">
+            <label class="item item-radio">
+                <input type="radio"name="group">
+                <div class="item-content">
+                    <div class="list delivery-address recover-address delivery-clear">
+                        <a class="item item-icon-right"href="#">
+                            <i class="icon ion-ios-arrow-right"></i>
+                            <p>{{address.name}} <apan>{{address.phone}}</apan></p>
+                            <p>{{address.address}}</p>
+                        </a>
+                    </div>
+                </div>
+                <i class="radio-icon ion-checkmark"></i></label>
+        </div>
+    </ion-content>
+    <ion-footer-bar  class="bar-balanced">
+        <h1 class="title"  ng-click="createAddressClick()"> <i class="icon ion-plus"></i>&nbsp;新建收货地址</h1>
+    </ion-footer-bar>
+</ion-view>
+
+
+

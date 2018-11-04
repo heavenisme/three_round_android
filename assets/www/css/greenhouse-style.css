@@ -1,0 +1,36 @@
+html,body{
+    margin:0;
+    padding:0;
+    font-family: '微软雅黑';
+}
+.h6{
+    padding-top:2%;
+    color: #8c8c8c;
+}
+.photo{
+    width:12%;
+    /*height:10%;*/
+    background-size:100%;
+    background-repeat:no-repeat;
+    position:relative;
+    float:left;
+    margin-left:5%;
+    margin-top:7%;
+}
+.text{
+    margin:0 auto;
+}
+.t{
+float:left;
+    padding-top:2%;
+    color: #8c8c8c;
+}
+.mj{
+ padding-left:10%;
+}
+.jg{
+    padding-right:10%;
+}
+.nx{
+    margin: 0 auto;
+}

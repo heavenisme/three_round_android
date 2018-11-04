@@ -1,0 +1,39 @@
+<ion-view view-title="我的资产" >
+    <ion-nav-buttons side="left">
+        <button class="button button-clear ion-chevron-left button-anywide" ng-click="gotoHome()">&nbsp;&nbsp;&nbsp;&nbsp;</button>
+    </ion-nav-buttons>
+    
+    <ion-content style="background-color: #F2F2F2">
+
+        <div class="list" ng-init="getBalance()">
+
+            <!-- 余额 -->
+            <a class="item item-icon-left item-icon-right" herf="javascript:void(0)" ng-click="myBalanceClick()"> 
+                <div class="icon /*ion-social-yen*/">
+                    <h2>&nbsp;余额</h2>
+                </div> 
+                <span class="item-note">{{data.userAmount}} 元</span>
+                <i class="icon ion-ios-arrow-right"></i>
+            </a>
+
+            <!-- 积分 -->
+            <a class="item item-icon-left item-icon-right" herf="javascript:void(0)" ng-click="myPointClick()" ng-if="false">
+                <i class="icon /*ion-cash*/"><h2>&nbsp;积分</h2></i>
+                <span class="item-note">还没有积分</span>
+                <i class="icon ion-ios-arrow-right"></i>
+            </a>
+
+            <!-- 充值 -->
+            <a class="item item-icon-left item-icon-right" herf="javascript:void(0)" ng-click="msgClick()">
+                <i class="icon /*ion-card*/">
+                    <h2>&nbsp;充值</h2>
+                </i>
+                <span class="item-note">&nbsp;</span>
+                <i class="icon ion-ios-arrow-right"></i>
+            </a>
+
+        </div>
+
+    </ion-content>
+    
+</ion-view>

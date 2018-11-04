@@ -1,0 +1,82 @@
+<!--农趣活动（立即报名页面）-->
+<div class="bar bar-header bar-anywide">
+    <button class="button button-clear ion-chevron-left button-anywide" ng-click="gotoHome()">&nbsp;&nbsp;&nbsp;&nbsp;</button>
+    <h1 class="title">活动报名</h1>
+</div>
+<ion-view hide-nav-bar="true" view-title="活动报名">
+    <ion-content class="has-header" style="background-color: #F2F2F2">
+        <div style="width: 92%;background-color: #ffffff;margin:15px auto 0 auto;border-radius: 10px" ng-init="init()">
+            <div style="padding:10px 0 5px 15px">
+                <label style="float: left;color: #000;font-size: 14px;padding-top: 4px">报名人&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
+                <input type="text" style="width: 50%;border: 1px solid #dddddd;border-radius: 5px;height: 32px;line-height: 32px" ng-model="data.people"/>
+            </div>
+            <div style="padding:10px 0 5px 15px">
+                <label style="float: left;color: #000;font-size: 14px;padding-top: 4px">联系方式&nbsp;&nbsp;&nbsp;</label>
+                <input type="text" style="width: 50%;border: 1px solid #dddddd;border-radius: 5px;height: 32px;line-height: 32px" ng-model="data.contact"/>
+            </div>
+
+            <!-- 积分报名 -->
+            <ion-checkbox ng-disabled="!info.costPoint" ng-model="data.isPointChecked" ng-change="changeNum()" style="padding-top:6px;padding-bottom:6px;margin:0px;border-width:0;">积分报名(现有积分: {{data.userPoint}}分)</ion-checkbox>
+
+            <div ng-if="data.isPointChecked" style="padding:10px 0 5px 15px;overflow: hidden">
+                <label style="float: left;color: #000;font-size: 14px;padding-top: 4px">
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    参加人数&nbsp;&nbsp;&nbsp;</label>
+                <div>
+                    <input type="number" style="width: 10%;border: 1px solid #dddddd;border-radius: 5px;height: 25px;line-height: 25px;float: left" ng-model="data.number_adult_point" ng-change="changeNum()"/>
+                    <span style="float: left;font-size: 12px;padding-top: 4px">（成人, {{info.costPoint}}分/人）</span>
+                </div>
+            </div>
+
+            <!-- 现金报名 -->
+            <ion-checkbox ng-model="data.isMoneyChecked" ng-change="changeNum()" style="padding-top:6px;padding-bottom:6px;margin:0px;border-width:0;">现金报名</ion-checkbox>
+
+            <div ng-if="data.isMoneyChecked" style="padding:10px 0 5px 15px;overflow: hidden">
+                <label style="float: left;color: #000;font-size: 14px;padding-top: 4px">
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    参加人数&nbsp;&nbsp;&nbsp;</label>
+                <div>
+                    <input type="number" style="width: 10%;border: 1px solid #dddddd;border-radius: 5px;height: 25px;line-height: 25px;float: left" ng-model="data.number_adult" ng-change="changeNum()"/>
+                    <span style="float: left;font-size: 12px;padding-top: 4px">（成人, {{info.costAdult}}元/人）</span>
+                </div>
+            </div>
+
+            <!-- 携带儿童 -->
+            <div style="padding:10px 0 5px 15px;overflow: hidden">
+                <label style="float: left;color: #000;font-size: 14px;padding-top: 4px">携带儿童&nbsp;&nbsp;&nbsp;</label>
+                <div>
+                    <input type="number" style="width: 10%;border: 1px solid #dddddd;border-radius: 5px;height: 25px;line-height: 25px;float: left" ng-model="data.number_child" ng-change="changeNum()"/>
+                    <span style="float: left;font-size: 12px;padding-top: 4px">（4-12岁儿童, 免费）</span>
+                </div>
+            </div>
+
+            <!-- END -->
+
+
+            <!-- <div style="padding:10px 0 5px 15px;overflow: hidden">
+                <label style="float: left;color: #000;font-size: 14px;padding-top: 4px">参加人数&nbsp;&nbsp;&nbsp;</label>
+                <div>
+                    <input type="number" style="width: 10%;border: 1px solid #dddddd;border-radius: 5px;height: 25px;line-height: 25px;float: left" ng-model="data.number_adult" ng-change="changeNum()"/>
+                    <span style="float: left;font-size: 12px;padding-top: 4px">（成人）</span>
+                </div>
+                <div>
+                    <input type="number" style="width: 10%;border: 1px solid #dddddd;border-radius: 5px;height: 25px;line-height: 25px;float: left;" ng-model="data.number_child" ng-change="changeNum()"/>
+                    <span style="font-size: 12px;padding-top: 4px;float: left">（4-12岁儿童）</span>
+                </div>
+            </div> -->
+            <div style="padding:10px 0 5px 15px">
+                <label style="float: left;color: #000;font-size: 14px;padding-top: 4px;float: left">支付金额&nbsp;&nbsp;&nbsp;</label>
+                <!--<p style="padding-top: 4px;font-size: 14px">元</p>-->
+                <input type="text" ng-model="data.price"  style="background: #fff !important;border: none;float: left;line-height: 25px;width:70px;height:25px;"/>元
+            </div>
+            <div style="padding:10px 0 5px 15px">
+                <label style="float: left;color: #000;font-size: 14px;padding-top: 4px;float: left">消耗积分&nbsp;&nbsp;&nbsp;</label>
+                <!--<p style="padding-top: 4px;font-size: 14px">元</p>-->
+                <input type="text" ng-model="data.point"  style="background: #fff !important;border: none;float: left;line-height: 25px;width:70px;height:25px;"/>分
+            </div>
+        </div>
+    </ion-content>
+    <ion-footer-bar class="bar-balanced">
+        <h1 class="title" ng-click="confirm()">确认报名</h1>
+    </ion-footer-bar>
+</ion-view>

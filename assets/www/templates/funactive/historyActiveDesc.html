@@ -1,0 +1,23 @@
+<!--农趣活动（历史活动详细）-->
+<style>
+    .history-box div:first-child{
+        margin-top: 0;
+    }
+    .history-box div{
+        margin-top: 10px;
+    }
+</style>
+<div class="bar bar-header bar-anywide">
+    <button class="button button-clear ion-chevron-left button-anywide" ng-click="gotoHome()">&nbsp;&nbsp;&nbsp;&nbsp;</button>
+    <h1 class="title">历史活动详情</h1>
+</div>
+
+<ion-view view-title="历史活动详情" hide-nav-bar="true">
+    <ion-content class="has-header" style="background-color: #F2F2F2" ng-init="historyList()">
+            <div style="padding: 10px;" class="history-box">
+                <div ng-repeat="imgObj in data.historyList track by $index">
+                    <img src="{{handlePath(imgObj)}}" alt=""/>
+                </div>
+            </div>
+    </ion-content>
+</ion-view>

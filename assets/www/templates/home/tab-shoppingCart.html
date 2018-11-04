@@ -1,0 +1,61 @@
+<ion-view view-title="购物车">
+
+	<ion-content class="has-header has-footer">
+
+		<div ng-show="!data.goodsList.length > 0" style="text-align:center;">
+			<br>
+			<img src="img/shopping_none.png" style="height:50%;width:50%;background-size:100%;">
+			<br>
+			<p><font color="#77BF60">放心蔬菜放心购买</font></p>
+			<p><font color="#77BF60">请快快选购吧！</font></p>
+		</div>
+
+		<div class="list" ng-if="data.goodsList.length > 0">
+
+			<div class="item" ng-if="data.goodsList.length > 0">
+				<div class="item item-icon-left" style="border:none;"> <i class="icon ion-social-octocat"><h2>&nbsp;三寰集团农业服务部</h2></i>
+				</div>
+			</div>
+
+			<div class="item item-checkbox" ng-repeat="buf in data.goodsList">
+
+				<label class="checkbox">
+					<input type="checkbox" ng-click="selectGoods(buf)">
+				</label>
+
+				<a class="item item-thumbnail-left">
+					<img src="img/dapeng.jpg">
+					<h2>{{buf.describe}}</h2>
+					<p>￥{{buf.groundprice}}</p>
+					<!-- <div class="item-note" >
+						<button class="button button-small button-stable">
+							<i class="icon ion-minus"></i>
+						</button>
+						<button class="button button-small">1</button>
+						<button class="button button-small button-stable">
+							<i class="icon ion-plus"></i>
+						</button>
+					</div> -->
+				</a>
+
+			</div>
+
+		</div>
+
+	</ion-content>
+
+	<ion-footer-bar align-title="left" ng-if="data.goodsList.length > 0">
+		<!-- <div class="buttons">
+			<button class="button">全选</button>
+		</div> -->
+
+			<button class="button" ng-click="removeSelectGoods(data.selectedGoodsList)">删除</button>
+
+		<h5 class="title">合计：￥{{calcOrderPrice()}}</h5>
+		<div class="buttons" ng-click="doSomething()">
+			<button class="button button-anywide" ng-click="confirmOrder()">结算({{data.selectedGoodsList.length}})</button>
+		</div>
+	</ion-footer-bar>
+
+
+</ion-view>

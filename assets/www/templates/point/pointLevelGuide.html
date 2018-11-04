@@ -1,0 +1,17 @@
+<ion-view view-title="等级说明">
+    <ion-content>
+        <div class="list">
+            <div class="item" style="text-align:center; padding-top:4px; padding-bottom:4px;" ng-repeat="item in data.levelInfo">
+                <div class="row">
+                    <div class="col" style="height:auto;">{{item.level}}级</div>
+                    <div class="col" style="height:auto; color:#66BB6A;">{{item.level_name}}</div>
+                </div>
+                <div class="row">
+                    <div class="col" style="height:auto;">累计积分</div>
+                    <div ng-if="item.interval_end >= 0" class="col" style="height:auto; color:#66BB6A;">{{item.interval_start}}-{{item.interval_end}}积分</div>
+                    <div ng-if="item.interval_end < 0" class="col" style="height:auto; color:#66BB6A;">{{item.interval_start}}积分以上</div>
+                </div>
+            </div>
+        </div>
+    </ion-content>
+</ion-view>

@@ -1,0 +1,70 @@
+<style>
+
+    .time-item{overflow: hidden;position: relative;padding-top:8px;}
+    .time-icon{width:20px;height:20px;;position: absolute;top: 3px;left: 1%;z-index: 11;}
+    .timeTop{position:absolute;top:3px;left:25px;z-index:11;color:#66BB6A;}
+
+    .time-content:before{content: "";width:2%;height: 100%;background-color: #e5e5e5;position: absolute;}
+    .time-content:after{content: "";clear: both;}
+    .time-content{float: right;width: 97%; height:auto;}
+
+
+    .time-img{background-color:#fff;width:90%;border-radius:5px;float:right;margin:25px 10px 10px;;}
+    .time-img p{width:90%;margin:0 auto;font-size:0.9em;color:#737373;padding:10px 0;border-bottom:1px solid #eee;}
+
+    .time-img .picture{width:90%;margin:0 auto;height:auto;padding:10px 0;}
+    .time-img .picture>img{width:31%;height:auto;margin-right: 0.5%;}
+    .time-img .picture>img:lastChild{margin-right:0;}
+
+    .img-btn{position: absolute;z-index: 999;top:40%;font-size: 1.8em;color: #ffffff}
+    .left-btn{left:2%}
+    .right-btn{right:2%;}
+
+</style>
+
+<script id="my-modal.html" type="text/ng-template">
+    <div class="modal" style="background-color: rgba(0, 0, 0, 0.7)" ng-click="closeModal()">
+        <ion-content ng-click="closeModal()">
+            <!--TODO 此处应当使用poitionY除以2-->
+            <br/><br/><br/><br/><br/><br/>
+            <ion-slide-box show-pager="false" active-slide="data.curImg">
+                <ion-slide  ng-repeat="temp in data.taskList[data.clickImgIndex].images">
+                    <i class="ion-chevron-left img-btn left-btn" ng-click="leftClick()"></i>
+                    <i class="ion-chevron-right img-btn right-btn" ng-click="rightClick()"></i>
+                    <img ng-src="{{handlePath(temp.image_url, false)}}" style="width: 100%;padding-bottom: 10%;padding-top: 2%;" ng-click="closeModal()">
+
+                </ion-slide>
+            </ion-slide-box>
+        </ion-content>
+    </div>
+</script>
+
+<ion-view title="作物缩影">
+    <ion-nav-buttons side="left">
+        <button class="button button-clear ion-chevron-left button-anywide" ng-click="gotoHome()">&nbsp;&nbsp;&nbsp;&nbsp;</button>
+    </ion-nav-buttons>
+    <ion-content padding="true" class="has-header" style="background-color:#F2F2F2" ng-init="init(1, 0)">
+
+        <div class="time-item" ng-repeat="item in data.taskList">
+            <div class="time-icon">
+                <img src="img/taskList/dsbl-garden-pic01_03.png" alt=""/>
+            </div>
+            <p class="timeTop">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{ item.create_time | date:'yyyy-MM-dd' }}</p>
+            <div class="time-content">
+                <div class="time-img">
+                    <p>
+                        {{item.description}}
+                    </p>
+                    <div class="picture">
+                        <img ng-repeat="temp in item.images" ng-click="openModal(item.index, $index)" ng-if="$index < 6" ng-src="{{handlePath(temp.image_url, true)}}" style="width:30%;height:80px;"/>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </ion-content>
+
+</ion-view>
+
+
+

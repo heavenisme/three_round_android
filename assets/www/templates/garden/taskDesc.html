@@ -1,0 +1,109 @@
+<style>
+.tabs-striped.tabs-background-anywide .tabs {
+background-color: #ffffff;
+background-image: none; }
+
+.taskDesc{}
+.taskDesc1{width:94%;margin:15px auto 0;background-color: #ffffff;border-radius: 16px;padding:15px;}
+.taskDesc1 h3{font-size: 18px;}
+.taskDesc1 p{color: #333333;font-size: 15px;}
+.taskDesc1 p span{color: #818181;}
+
+.taskDesc2{width:98%;margin:15px auto 0;}
+.taskDesc2 ul{width:100%;overflow: hidden;}
+.taskDesc2 ul li{width:30%;float: left;margin-left: 2.5%;}
+.taskDesc2 ul li img{width: 100%;}
+
+.taskDesc3{width:94%;margin:15px auto 0;background-color: #ffffff;border-radius: 20px;padding:10px;}
+.taskDesc3 p{font-size: 15px;line-height: 30px;color:#c5c5c5;}
+.taskDesc3 p span{color: #747474;font-size: 18px;}
+
+.img-btn{position: absolute;z-index: 999;top:40%;font-size: 1.8em;color: #ffffff}
+.left-btn{left:2%}
+.right-btn{right:2%;}
+
+</style>
+<div class="bar bar-header bar-anywide">
+    <button class="button button-clear ion-chevron-left button-anywide" ng-click="gotoHome()">&nbsp;&nbsp;&nbsp;&nbsp;</button>
+    <h1 class="title" >任务详情</h1>
+</div>
+<div class="tabs-striped tabs-top tabs-background-anywide">
+  <div class="tabs">
+    <a class="tab-item"  ng-click="taskDescClick(0)" ng-class="{'true': 'tab-item active', 'false': 'tab-item inactive'}[data.isActive.all]">详情</a>
+    <a class="tab-item"  ng-click="taskDescClick(1)" ng-class="{'true': 'tab-item active', 'false': 'tab-item inactive'}[data.isActive.now]">照片</a>
+    <a class="tab-item"  ng-click="taskDescClick(2)" ng-class="{'true': 'tab-item active', 'false': 'tab-item inactive'}[data.isActive.join]">物资</a>
+  </div>
+</div>
+<script id="my-modal.html" type="text/ng-template">
+    <div class="modal" style="background-color: rgba(0, 0, 0, 0.7)" ng-click="closeModal()">
+        <ion-content ng-click="closeModal()">
+            <!--TODO 此处应当使用poitionY除以2-->
+            <br/><br/><br/><br/><br/><br/>
+            <ion-slide-box show-pager="false" on-slide-changed="slideHasChanged($index)" active-slide="myActiveSlide">
+                <ion-slide  ng-repeat="tmp in data.photoDesc" >
+                    <i class="ion-chevron-left img-btn left-btn" ng-click="leftClick()"></i>
+                    <i class="ion-chevron-right img-btn right-btn" ng-click="rightClick()"></i>
+                    <img ng-src="{{handlePath(data.photoDesc[myActiveSlide].image_url,false)}}" style="width: 100%;padding-bottom: 10%;padding-top: 2%;" ng-click="closeModal()">
+                </ion-slide>
+            </ion-slide-box>
+        </ion-content>
+    </div>
+</script>
+
+
+<ion-view view-title="任务详情" hide-nav-bar="true">
+
+    <ion-content class="has-subheader" style="background-color: #f2f2f2;">
+        <div class="taskDesc" ng-show="data.currState==0" ng-init="taskInfoDetails()">
+            <div class="taskDesc1" >
+                <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;大棚：<span>{{data.taskDesc.house_name}}</span></p>
+                <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;品名：<span>{{data.taskDesc.crop_name}}</span></p>
+                <p>作业项目：<i style="color: #5bb646">{{data.taskDesc.work_item_name}}</i></p>
+                <!--<p style="color: red">友情提醒<span>：{{data.taskDesc.publish_tip}}</span></p>-->
+            </div>
+            <div class="taskDesc1">
+                <h3>操作方法</h3>
+                <p style="color: #666666;">{{data.taskDesc.work_function}}</p>
+            </div>
+            <div class="taskDesc1">
+                <h3>作业要求</h3>
+                <p style="color: #666666;">{{data.taskDesc.work_demand}}</p>
+            </div>
+            <!--<div class="taskDesc1">-->
+                <!--<h3>备注</h3>-->
+                <!--<p style="color: #666666;">{{data.taskDesc.work_comment}}</p>-->
+            <!--</div>-->
+        </div>
+
+        <div class="taskDesc" ng-show="data.currState==1" ng-init="taskImages()">
+            <div class="taskDesc2">
+                <ul ng-repeat="tmp in data.photoDesc" style="display: inline">
+                    <li style="width: 30% !important;height: 70px !important;margin-left: 5px;margin-top: 5px;"><img ng-src="{{handlePath(tmp.image_url,true)}}" alt="" ng-click="openModal($index)"  width="100%" height="100%"/></li>
+                    <!--<li><img src="img/taskList/hgbl-task_03.png" alt=""/></li>
+                    <li><img src="img/taskList/hgbl-task_03.png" alt=""/></li>
+                    <li><img src="img/taskList/hgbl-task_03.png" alt=""/></li>
+                    <li><img src="img/taskList/hgbl-task_03.png" alt=""/></li>
+                    <li><img src="img/taskList/hgbl-task_03.png" alt=""/></li>
+                    <li><img src="img/taskList/hgbl-task_03.png" alt=""/></li>
+                    <li><img src="img/taskList/hgbl-task_03.png" alt=""/></li>
+                    <li><img src="img/taskList/hgbl-task_03.png" alt=""/></li>
+                    <li><img src="img/taskList/hgbl-task_03.png" alt=""/></li>
+                    <li><img src="img/taskList/hgbl-task_03.png" alt=""/></li>
+                    <li><img src="img/taskList/hgbl-task_03.png" alt=""/></li>
+                    <li><img src="img/taskList/hgbl-task_03.png" alt=""/></li>
+                    <li><img src="img/taskList/hgbl-task_03.png" alt=""/></li>
+                    <li><img src="img/taskList/hgbl-task_03.png" alt=""/></li>-->
+                </ul>
+            </div>
+        </div>
+
+        <div class="taskDesc" ng-show="data.currState==2" ng-init="taskMaterials()">
+            <div class="taskDesc3" ng-repeat = "item in data.workDesc">
+                <p>物资名称：<span>{{item.material_name}}</span></p>
+                <p>用量：&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<span>{{item.resource_number}}{{item.metering_unit}}</span></p>
+                <p>公司名称：<span>{{item.manufacturer}}</span></p>
+            </div>
+        </div>
+    </ion-content>
+</ion-view>
+

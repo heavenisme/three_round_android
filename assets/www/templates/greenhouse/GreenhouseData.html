@@ -1,0 +1,158 @@
+<!-- 大棚资料 -->
+<style type="text/css">
+.pos_shoppingcart
+{
+position:absolute;
+right:8.6%;
+bottom:10%;
+}
+</style>
+
+<ion-view title="大棚资料">
+	<ion-content class="padding" scroll=false>
+
+		<div class="item item-thumbnail-left">
+			<img src="http://ionicframework.com/img/docs/mcfly.jpg">
+			<h2>大棚编号：{{data.houseNo}}</h2>
+			<h2>大棚名称：{{data.content.greenhousename}}</h2>
+			<h2>大棚面积：{{data.content.area}}</h2>
+		</div>
+
+		<div class="button-bar padding-top">
+			<a class="button button-light">购买</a >
+			<a class="button">照片</a >
+			<a class="button">详情</a >
+			<a class="button">历史</a >
+		</div>
+
+		<div>
+
+			<div class="item">
+				<div class="row">
+					<div style="margin-left:0px;width:100%;height:360px">
+
+						<ion-view title="Home" hide-nav-bar="true">
+							<ion-scroll zooming="false" direction="y" style="width: 50%; height: 360px">
+
+								<div ng-repeat="buf in data.content.groundList">
+
+									<!-- 1-可选的 -->
+									<div class="item positive-bg light" ng-click="houseOneClick($index)"  ng-show="buf.groundstate == 1 && data.selectId != buf.id">
+										<div>地块编号：{{buf.id}}</div>
+									</div>
+
+									<!-- 已选的 -->
+									<div class="item assertive-bg light" ng-click="houseOneClick($index)"  ng-show="data.selectId == buf.id">
+										<div>地块编号：{{buf.id}}</div>
+									</div>
+
+									<!-- 已预定的 -->
+									<div class="item calm-bg light" ng-show="buf.groundstate == 2">
+										<div>地块编号：{{buf.id}}</div>
+										<!-- <div>地块状态：{{buf.groundstate}}</div> -->
+									</div>
+
+									<!-- 已卖出的 -->
+									<div class="item dark-bg light" ng-show="buf.groundstate == 3">
+										<div>地块编号：{{buf.id}}</div>
+										<!-- <div>地块状态：{{buf.groundstate}}</div> -->
+									</div>
+
+								</div>
+
+
+							</ion-scroll>
+						</ion-view>
+
+					</div>
+
+					<div style="width:100%;">
+						<div class="list card" >
+							<div class="item item-body" >
+								<p>地块编号:{{data.selectId}}</p >
+								<p>地块面积:{{data.selectArea}}</p >
+								<p>地块年限:{{data.expire}}</p >
+								<p>地块价格:{{data.groundprice}}</p >
+								<button class="button button-balanced" style="width:100%" ng-click="confirmOrder(data)">购买</button>
+								<img style="width:50%;height:50%;align:right;margin-top:50px;" src="img/btn_cart.png" ng-click="goToShoppingCart()">
+							</div>
+						</div>
+
+					</div>
+
+				</div>
+			</div>
+		</div>
+		<!--<div class="pos_shoppingcart">-->
+
+		<!--</div>-->
+	</ion-content>
+
+</ion-view>
+
+
+<!-- 
+
+
+<ion-view title="大棚资料">
+	<ion-content class="padding" scroll=false>
+
+		<div class="item item-thumbnail-left">
+			<img src="http://ionicframework.com/img/docs/mcfly.jpg"/>
+			<h2>大棚编号：{{data.houseNo}}</h2>
+			<h2>大棚名称：{{data.content.greenhousename}}</h2>
+			<h2>大棚面积：{{data.content.area}}</h2>
+		</div>
+
+		<div class="button-bar padding-top">
+			<a class="button button-light">购买</a>
+			<a class="button">照片</a>
+			<a class="button">详情</a>
+			<a class="button">历史</a>
+			<a class="button button-light">购买</a>
+			<a class="button">照片</a>
+			<a class="button">详情</a>
+			<a class="button">历史</a>
+			<a class="button button-light">购买</a>
+			<a class="button">照片</a>
+			<a class="button">详情</a>
+			<a class="button">历史</a>
+		</div>
+
+		<div >
+
+			<div class="item" style="height:400px">
+				<div class="row">
+					<div style="margin-left:0px;width:100%">
+
+						<ion-view title="Home" hide-nav-bar="true">
+							<ion-scroll zooming="false" direction="y" style="width: 50%; height: 800px">		
+							
+								<div ng-repeat="buf in data.content.groundList">
+									<div class="col  positive-bg light" ng-click="houseOneClick($index)">
+										<div>地块ID：{{buf.id}}</div>
+									</div>
+								</div>
+							</ion-scroll>
+						</ion-view>
+
+					</div>
+
+					<div style="width:100%;">
+						<div class="list card" >
+							<div class="item item-body" >
+								<p>大棚编号:{{data.selectId}}</p >
+								<p>大棚面积:{{data.selectArea}}</p >
+								<button class="button button-balanced" style="width:100%" ng-click="addToCart(data.selectId)">购买</button>
+							</div>
+						</div>
+					</div>
+
+				</div>
+			</div>
+		</div>
+
+	</ion-content>
+
+<ion-view>
+	

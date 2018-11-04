@@ -1,0 +1,249 @@
+<style>
+    .d1 button{
+    height: 40px;
+    border: none;
+    }
+
+</style>
+<!-- 菜园管理 -->
+<ion-view hide-nav-bar="false" title="土地购买">
+
+    <div class="padding" style="margin-top: 70px">
+        <label style="float: left;margin-left: 10%">{{data.houseName}}</label>
+        <label style="float: right;margin-right: 10%">大棚面积：{{data.content.area}}㎡</label>
+    </div>
+    <!--大棚入口-->
+    <div class="dapeng" style="width: 100%;">
+        <img src="img/dsbl-choose_07.png" style="width: 94%;height: auto"/>
+        <div style="margin-top: -22%;margin-left: 11.5%;width:80%;padding: 1px" class="d1 row">
+            <div ng-repeat="buf in data.content.groundList" class="col"  ng-init="switcher($index)" ng-show="data.isloaded">
+                <button style="background-color: #49C11F;padding: 5px" ng-if="buf.groundstate == 1"></button>
+                <button style="background-color: #D6D6D6;padding: 5px" ng-if="buf.groundstate == 2 || buf.groundstate == 3"></button>
+                <i class="ion-arrow-up-b" ng-if="data.selectId == buf.id && data.content.groundList.length <= 10" style="margin-left: -10px;margin-top: 40px;position: absolute"></i>
+                <i class="ion-arrow-up-b" ng-if="data.selectId == buf.id && data.content.groundList.length > 10"></i>
+            </div>
+            <!--进入页面先加载空div,防止页面文字窜位，待上面的div数据加载完成后，再隐藏掉空div-->
+			<div class="col" ng-show="!data.isloaded">
+
+            </div>
+        </div>
+    </div>
+    <!--地块信息-->
+    <div class="padding" style="margin-top: -5%">
+        <label style="float: left;margin-left: 10%;width: 40%;display: none">地块编号：{{data.selectId}}</label>
+        <label style="float: left;margin-left: 10%;width: 30%">面积：{{data.selectArea}}㎡</label>
+        <label style="float: right;margin-left: 10%;width: 40%;">价格：{{data.groundprice}}元</label>
+    </div>
+    <div class="padding">
+        <label style="float: left;margin-left: 10%;width: 30%">年限：{{data.expire}}年</label>
+        <label style="float: right;margin-left: 10%;width: 40%;">年服务费：{{data.servicePrice}}元</label>
+    </div>
+
+  <!--<div class="padding">-->
+    <!--<label style="float: left;margin-left: 10%;width: 40%"></label>-->
+
+  <!--</div>-->
+    <!--地块-->
+    <ion-content class="has-subheader" scrollbar-y=true style="margin-top: 150px">
+
+        <div ng-repeat="buf in data.content.groundList">
+            <div ng-if="$index%5 == 0" style="text-align: center;margin:0px;padding: 0px">
+                <!--新地 未选中-->
+                <img src="img/green.png" class="photo" style="margin-left:10%" ng-click="houseOneClick($index)"
+                    ng-if="buf.groundstate == 1 && data.selectId != buf.id">
+                <!--新地 已选中-->
+                <img src="img/greenclick.png" class="photo" style="margin-left:10%"
+                    ng-if="buf.groundstate == 1 && data.selectId == buf.id">
+
+                <!--自己的地 未卖 未选中-->
+                <img src="img/unsell-self.png" class="photo" style="margin-left:10%" ng-click="houseOneClick($index)"
+                    ng-if="buf.transfer == 0 && data.userId == buf.userId && data.selectId != buf.id">
+                <!--自己的地 未卖 已选中-->
+                <img src="img/unsell-self-select.png" class="photo" style="margin-left:10%"
+                    ng-if="buf.transfer == 0 && data.userId == buf.userId && data.selectId == buf.id">
+                <!--自己的地 正在卖 未选中-->
+                <img src="img/sell-self.png" class="photo" style="margin-left:10%" ng-click="houseOneClick($index)"
+                    ng-if="buf.transfer == 1 && data.userId == buf.userId && data.selectId != buf.id">
+                <!--自己的地 正在卖 已选中-->
+                <img src="img/sell-self-select.png" class="photo" style="margin-left:10%"
+                    ng-if="buf.transfer == 1 && data.userId == buf.userId && data.selectId == buf.id">
+
+                <!--转卖的地 未选中-->
+                <img src="img/sell.png" class="photo" style="margin-left:10%" ng-click="houseOneClickforTransfer($index)"
+                    ng-if="buf.transfer == 1 && data.userId != buf.userId && data.selectId != buf.id">
+                <!--转卖的地 已选中-->
+                <img src="img/sell-select.png" class="photo" style="margin-left:10%"  ng-click="alertMessage()"
+                    ng-if="buf.transfer == 1 && data.userId != buf.userId && data.selectId == buf.id">
+
+                <!-- 卖出的地 -->
+                <img src="img/gray.png" class="photo" style="margin-left:10%"
+                    ng-if="buf.transfer == 0 && data.userId != buf.userId && (buf.groundstate == 2 || buf.groundstate == 3)">
+
+                <span style="position: absolute;left: 10%;margin-top: 20%">{{getCurrGroundID($index + 1)}}</span>
+            </div>
+            <div ng-if="$index%5 == 1" style="text-align: center;margin:0px;padding: 0px">
+                <!--新地 未选中-->
+                <img src="img/green.png" class="photo" ng-click="houseOneClick($index)"
+                    ng-if="buf.groundstate == 1 && data.selectId != buf.id">
+                <!--新地 已选中-->
+                <img src="img/greenclick.png" class="photo"
+                    ng-if="buf.groundstate == 1 && data.selectId == buf.id">
+
+                <!--自己的地 未卖 未选中-->
+                <img src="img/unsell-self.png" class="photo" ng-click="houseOneClick($index)"
+                    ng-if="buf.transfer == 0 && data.userId == buf.userId && data.selectId != buf.id">
+                <!--自己的地 未卖 已选中-->
+                <img src="img/unsell-self-select.png" class="photo"
+                    ng-if="buf.transfer == 0 && data.userId == buf.userId && data.selectId == buf.id">
+                <!--自己的地 正在卖 未选中-->
+                <img src="img/sell-self.png" class="photo" ng-click="houseOneClick($index)"
+                    ng-if="buf.transfer == 1 && data.userId == buf.userId && data.selectId != buf.id">
+                <!--自己的地 正在卖 已选中-->
+                <img src="img/sell-self-select.png" class="photo"
+                    ng-if="buf.transfer == 1 && data.userId == buf.userId && data.selectId == buf.id">
+
+                <!--转卖的地 未选中-->
+                <img src="img/sell.png" class="photo" ng-click="houseOneClickforTransfer($index)"
+                    ng-if="buf.transfer == 1 && data.userId != buf.userId && data.selectId != buf.id">
+                <!--转卖的地 已选中-->
+                <img src="img/sell-select.png" class="photo"  ng-click="alertMessage()"
+                    ng-if="buf.transfer == 1 && data.userId != buf.userId && data.selectId == buf.id">
+
+                <!-- 卖出的地 -->
+                <img src="img/gray.png" class="photo"
+                    ng-if="buf.transfer == 0 && data.userId != buf.userId && (buf.groundstate == 2 || buf.groundstate == 3)">
+
+                <span style="position: absolute;left: 27%;margin-top: 20%">{{getCurrGroundID($index + 1)}}</span>
+            </div>
+            <div ng-if="$index%5 == 2" style="text-align: center;margin:0px;padding: 0px">
+                <!--新地 未选中-->
+                <img src="img/green.png" class="photo" ng-click="houseOneClick($index)"
+                    ng-if="buf.groundstate == 1 && data.selectId != buf.id">
+                <!--新地 已选中-->
+                <img src="img/greenclick.png" class="photo"
+                    ng-if="buf.groundstate == 1 && data.selectId == buf.id">
+
+                <!--自己的地 未卖 未选中-->
+                <img src="img/unsell-self.png" class="photo" ng-click="houseOneClick($index)"
+                    ng-if="buf.transfer == 0 && data.userId == buf.userId && data.selectId != buf.id">
+                <!--自己的地 未卖 已选中-->
+                <img src="img/unsell-self-select.png" class="photo"
+                    ng-if="buf.transfer == 0 && data.userId == buf.userId && data.selectId == buf.id">
+                <!--自己的地 正在卖 未选中-->
+                <img src="img/sell-self.png" class="photo" ng-click="houseOneClick($index)"
+                    ng-if="buf.transfer == 1 && data.userId == buf.userId && data.selectId != buf.id">
+                <!--自己的地 正在卖 已选中-->
+                <img src="img/sell-self-select.png" class="photo"
+                    ng-if="buf.transfer == 1 && data.userId == buf.userId && data.selectId == buf.id">
+
+                <!--转卖的地 未选中-->
+                <img src="img/sell.png" class="photo" ng-click="houseOneClickforTransfer($index)"
+                    ng-if="buf.transfer == 1 && data.userId != buf.userId && data.selectId != buf.id">
+                <!--转卖的地 已选中-->
+                <img src="img/sell-select.png" class="photo"  ng-click="alertMessage()"
+                    ng-if="buf.transfer == 1 && data.userId != buf.userId && data.selectId == buf.id">
+
+                <!-- 卖出的地 -->
+                <img src="img/gray.png" class="photo"
+                    ng-if="buf.transfer == 0 && data.userId != buf.userId && (buf.groundstate == 2 || buf.groundstate == 3)">
+
+                <span style="position: absolute;left: 44%;margin-top: 20%">{{getCurrGroundID($index + 1)}}</span>
+            </div>
+            <div ng-if="$index%5 == 3" style="text-align: center;margin:0px;padding: 0px">
+                <!--新地 未选中-->
+                <img src="img/green.png" class="photo" ng-click="houseOneClick($index)"
+                    ng-if="buf.groundstate == 1 && data.selectId != buf.id">
+                <!--新地 已选中-->
+                <img src="img/greenclick.png" class="photo"
+                    ng-if="buf.groundstate == 1 && data.selectId == buf.id">
+
+                <!--自己的地 未卖 未选中-->
+                <img src="img/unsell-self.png" class="photo" ng-click="houseOneClick($index)"
+                    ng-if="buf.transfer == 0 && data.userId == buf.userId && data.selectId != buf.id">
+                <!--自己的地 未卖 已选中-->
+                <img src="img/unsell-self-select.png" class="photo"
+                    ng-if="buf.transfer == 0 && data.userId == buf.userId && data.selectId == buf.id">
+                <!--自己的地 正在卖 未选中-->
+                <img src="img/sell-self.png" class="photo" ng-click="houseOneClick($index)"
+                    ng-if="buf.transfer == 1 && data.userId == buf.userId && data.selectId != buf.id">
+                <!--自己的地 正在卖 已选中-->
+                <img src="img/sell-self-select.png" class="photo"
+                    ng-if="buf.transfer == 1 && data.userId == buf.userId && data.selectId == buf.id">
+
+                <!--转卖的地 未选中-->
+                <img src="img/sell.png" class="photo" ng-click="houseOneClickforTransfer($index)"
+                    ng-if="buf.transfer == 1 && data.userId != buf.userId && data.selectId != buf.id">
+                <!--转卖的地 已选中-->
+                <img src="img/sell-select.png" class="photo"  ng-click="alertMessage()"
+                    ng-if="buf.transfer == 1 && data.userId != buf.userId && data.selectId == buf.id">
+
+                <!-- 卖出的地 -->
+                <img src="img/gray.png" class="photo"
+                    ng-if="buf.transfer == 0 && data.userId != buf.userId && (buf.groundstate == 2 || buf.groundstate == 3)">
+
+                <span style="position: absolute;left: 61%;margin-top: 20%">{{getCurrGroundID($index + 1)}}</span>
+            </div>
+            <div ng-if="$index%5 == 4" style="text-align: center;margin:0px;padding: 0px">
+                <!--新地 未选中-->
+                <img src="img/green.png" class="photo" style="margin-right:10%;margin-bottom: 1%" ng-click="houseOneClick($index)"
+                    ng-if="buf.groundstate == 1 && data.selectId != buf.id">
+                <!--新地 已选中-->
+                <img src="img/greenclick.png" class="photo" style="margin-right:10%;margin-bottom: 1%"
+                    ng-if="buf.groundstate == 1 && data.selectId == buf.id">
+
+                <!--自己的地 未卖 未选中-->
+                <img src="img/unsell-self.png" class="photo" style="margin-right:10%;margin-bottom: 1%" ng-click="houseOneClick($index)"
+                    ng-if="buf.transfer == 0 && data.userId == buf.userId && data.selectId != buf.id">
+                <!--自己的地 未卖 已选中-->
+                <img src="img/unsell-self-select.png" class="photo" style="margin-right:10%;margin-bottom: 1%"
+                    ng-if="buf.transfer == 0 && data.userId == buf.userId && data.selectId == buf.id">
+                <!--自己的地 正在卖 未选中-->
+                <img src="img/sell-self.png" class="photo" style="margin-right:10%;margin-bottom: 1%" ng-click="houseOneClick($index)"
+                    ng-if="buf.transfer == 1 && data.userId == buf.userId && data.selectId != buf.id">
+                <!--自己的地 正在卖 已选中-->
+                <img src="img/sell-self-select.png" class="photo" style="margin-right:10%;margin-bottom: 1%"
+                    ng-if="buf.transfer == 1 && data.userId == buf.userId && data.selectId == buf.id">
+
+                <!--转卖的地 未选中-->
+                <img src="img/sell.png" class="photo" style="margin-right:10%;margin-bottom: 1%" ng-click="houseOneClickforTransfer($index)"
+                    ng-if="buf.transfer == 1 && data.userId != buf.userId && data.selectId != buf.id">
+                <!--转卖的地 已选中-->
+                <img src="img/sell-select.png" class="photo" style="margin-right:10%;margin-bottom: 1%" ng-click="alertMessage()"
+                    ng-if="buf.transfer == 1 && data.userId != buf.userId && data.selectId == buf.id">
+
+                <!-- 卖出的地 -->
+                <img src="img/gray.png" class="photo" style="margin-right:10%;margin-bottom: 1%"
+                    ng-if="buf.transfer == 0 && data.userId != buf.userId && (buf.groundstate == 2 || buf.groundstate == 3)">
+
+                <span style="position: relative;right: -34%;">{{getCurrGroundID($index + 1)}}</span>
+            </div>
+        </div>
+        <div style="clear:both;"></div>
+        <div style="text-align: center;margin: 0 auto;margin-top:10%;">
+            <label style="font-size: 14px;">购买即视为同意</label><br>
+            <label ng-click="agree()" style="font-size: 14px;color: #66BB6A;">《三寰会耕部落市民菜园会员协议》</label>
+        </div>
+    </ion-content>
+
+    <ion-footer-bar>
+        <!--选中的是自己的大棚-->
+        <div ng-if="data.selectUserId == data.userId">
+            <div ng-if="data.selectTransfer == 0" class="bar bar-footer bar-balanced">
+                <div class="title" ng-click="resell(1)" ng-if="data.goodsList.length != 0">转让</div>
+            </div>
+            <div ng-if="data.selectTransfer == 1" class="bar bar-footer bar-balanced">
+                <div class="title" ng-click="resell(0)" ng-if="data.goodsList.length != 0">取消转让</div>
+            </div>
+        </div>
+
+        <!--选中的不是自己的大棚-->
+        <div ng-if="data.selectUserId != data.userId">
+            <div class="bar bar-footer bar-balanced">
+                <div class="title" ng-click="confirmOrder()" ng-if="data.goodsList.length != 0">购买</div>
+            </div>
+            <div class="bar bar-footer" style="background-color: #ccc;color:#fff" ng-if="data.goodsList.length == 0 || data.selectTransfer == 1">
+                <div class="title">购买</div>
+            </div>
+        </div>
+    </ion-footer-bar>
+</ion-view>

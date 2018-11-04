@@ -1,0 +1,145 @@
+<!--部落市场（商品详情页面）-->
+<style>
+    /*生命周期-----样式开始*/
+    .market-time-item{overflow: hidden;position: relative;padding-top:8px;}
+    .market-time-icon{width:20px;height:20px;;position: absolute;top: 0;left: 0.9%;z-index: 11;}
+    .market-timeTop{position:absolute;top:0;left:25px;z-index:11;color:#66BB6A;}
+
+    .market-time-content:before{content: "";width:2%;height: 100%;background-color: #e5e5e5;position: absolute;}
+    .market-time-content:after{content: "";clear: both;}
+    .market-time-content{float: right;width: 97%; height:auto;}
+
+
+    .market-time-img{background-color:#fff;width:90%;border-radius:5px;float:right;margin:25px 10px 10px;;}
+    .market-time-img p{width:90%;margin:0 auto;font-size:0.9em;color:#737373;padding:10px 0;border-bottom:1px solid #eee;}
+
+    .market-time-img .picture{width:90%;margin:0 auto;height:auto;padding:10px 0;}
+    .market-time-img .picture>img{width:31%;height:auto;margin-right: 0.5%;}
+    .market-time-img .picture>img:lastChild{margin-right:0;}
+
+    .img-btn{position: absolute;z-index: 999;top:40%;font-size: 1.8em;color: #ffffff}
+    .left-btn{left:2%}
+    .right-btn{right:2%;}
+    /*生命周期-----样式结束*/
+    .tab-box{
+        position: relative;
+        height: 30px;
+        margin-top: 30px;
+        border-bottom: 0.5px solid #b2b2b2;
+    }
+    .row.defined{width: 94%;margin: 0 auto;padding-top: 10px}
+    .col{height: auto;}
+    .col.odd{padding: 10px;background-color: #fff;border: 1px solid #ddd;margin-right: 10px}
+    .col.even{padding: 10px;background-color: #fff;border: 1px solid #ddd}
+    .row p{font-size: 14px;color:#000}
+</style>
+<div class="bar bar-header bar-anywide" ng-init="getProductInfo()">
+    <button class="button button-clear ion-chevron-left button-anywide" ng-click="gotoHome()">&nbsp;&nbsp;&nbsp;&nbsp;</button>
+    <h1 class="title" ng-if="!data.list.commodity_name">【{{data.list.crop_kind}}】{{data.list.crop_name}}</h1>
+    <h1 class="title" ng-if="data.list.commodity_name">{{data.list.commodity_name}}</h1>
+    <button class="button button-clear button-light" ng-click="sellStore()">
+        <img src="img/tribemarket/goto.png" style="width: 20px;height: 20px;margin-top: 8px"/>
+    </button>
+</div>
+<!--后添加---生命周期-->
+<script id="my-modal.html" type="text/ng-template">
+    <div class="modal" style="background-color: rgba(0, 0, 0, 0.7)" ng-click="closeModal()">
+        <ion-content ng-click="closeModal()">
+            <!--TODO 此处应当使用poitionY除以2-->
+            <br/><br/><br/><br/><br/><br/>
+            <ion-slide-box show-pager="false" active-slide="data.curImg">
+                <!--<ion-slide  ng-repeat="temp in data.taskList[data.clickImgIndex].images">
+                    <i class="ion-chevron-left img-btn left-btn" ng-click="leftClick()"></i>
+                    <i class="ion-chevron-right img-btn right-btn" ng-click="rightClick()"></i>-->
+                <ion-slide  ng-repeat="temp in growthArr[data.clickImgIndex].imageUrls">
+
+                    <img ng-src="{{handlePath(temp, false)}}" style="width: 100%;padding-bottom: 10%;padding-top: 2%;" ng-click="closeModal()">
+
+                </ion-slide>
+               <!-- <img src="img/taskList/dsbl-garden-pic01_03.png" alt=""/>-->
+            </ion-slide-box>
+        </ion-content>
+    </div>
+</script>
+<!--生命周期--end-->
+<ion-view hide-nav-bar="true" view-title="商品详情">
+    <ion-content class="has-header" overflow-scroll="true">
+        <div>
+            <img style="height:300px;" ng-src="{{handlePath(data.list.image_path,data.list.image_file)}}" alt=""/>
+            <div style="overflow: hidden">
+                <div ng-if="data.list.commodity_name"><p style="color: #000;font-size: 14px;padding-left: 5px;">{{data.list.commodity_name}}</p></div>
+                <div ng-if="!data.list.commodity_name"><p style="color: #000;font-size: 14px;padding-left: 5px;">【{{data.list.crop_kind}}】{{data.list.crop_name}}</p></div>
+                <div style="padding: 5px 5px">
+                    <img src="img/tribemarket/price.png" style="width: 15px;height: 15px"/>
+                    <span style="color: #FF5000;font-size: 14px" ng-if="!data.list.commodity_unit">{{data.list.price}}元/斤&nbsp;&nbsp;&nbsp;&nbsp;</span>
+                    <span style="color: #FF5000;font-size: 14px" ng-if="data.list.commodity_unit">{{data.list.price}}元/{{data.list.commodity_unit}}&nbsp;&nbsp;&nbsp;&nbsp;</span>
+                    <span style="border: 1px solid #CCC;background-color:#EEEEEE;color: #6D6D6D;font-size: 14px;border-radius: 15px;padding: 0px 5px;" ng-if="!data.list.commodity_unit">库存{{data.list.weight}}斤</span>
+                    <span style="border: 1px solid #CCC;background-color:#EEEEEE;color: #6D6D6D;font-size: 14px;border-radius: 15px;padding: 0px 5px;" ng-if="data.list.commodity_unit">库存{{data.list.weight}}{{data.list.commodity_unit}}</span>
+                </div>
+                <div style="padding: 5px 5px;width: 70%;float: left;">
+                    <span style="color: #000;font-size: 14px;float: left;display: block;margin-top: 10px" ng-if="!data.list.commodity_unit">购买数量（{{data.nowBuyWeight}}斤）</span>
+                    <span style="color: #000;font-size: 14px;float: left;display: block;margin-top: 10px" ng-if="data.list.commodity_unit">购买数量（{{data.nowBuyWeight}}{{data.list.commodity_unit}}）</span>
+                    <button style="border: none;background-color: #EEE;float: left;width:25px;line-height:25px;margin:0;padding:0;margin-top: 10px;" ng-click="cutNum()">&nbsp;-&nbsp;</button>
+                    <input type="number" ng-model="data.buyNum" style="float: left;width:40px;text-align: center;line-height: 25px;background: #fff !important;height:25px;margin-top:7px;" readonly/>
+                    <button style="border: none;background-color: #EEE;float: left;width:25px;line-height:25px;margin:0;padding:0;margin-top: 10px;" ng-click="addNum()">&nbsp;+</button>
+                </div>
+                <div style="width:30%;float: right;margin-top: 15px;">
+                    <button style="background-color: #66BB6A;border-radius: 5px;color: #fff;border: none;float:right;margin-right: 10px" ng-click="buyNow()">立即购买</button>
+                </div>
+            </div>
+            <div class="tab-box">
+                <div class="tabs">
+                    <a class="tab-item" ng-click="marketDesc(0)" ng-class="{'true': 'tab-item active', 'false': 'tab-item inactive'}[data.isActive.all]">商品详情</a>
+                    <a class="tab-item" ng-click="marketDesc(1)" ng-class="{'true': 'tab-item active', 'false': 'tab-item inactive'}[data.isActive.now]">生长周期</a>
+                    <a class="tab-item " ng-click="marketDesc(2)" ng-class="{'true': 'tab-item active', 'false': 'tab-item inactive'}[data.isActive.join]">推荐商品</a>
+                </div>
+            </div>
+        </div>
+        <!--商品详情-->
+        <div ng-init="getProductInfo()" ng-show="data.currState==0" style="background-color: #fff;width: 94%;margin: 0 auto">
+            <p style="text-indent: 2em;margin-top: 5px;font-size: 14px">
+                {{data.list.description}}
+            </p>
+        </div>
+        <!--生长周期-->
+        <div ng-if="data.currState==1" style="background-color: #fff;width: 94%;margin: 0 auto;">
+            <div style="margin:0 auto;width: 90%;padding-top: 10px">
+
+                <div class="market-time-item" ng-repeat="growthList in growthArr">
+                    <div class="market-time-icon">
+                        <img src="img/taskList/dsbl-garden-pic01_03.png" alt=""/>
+                    </div>
+                    <!--<p class="timeTop">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{growth.actual_start_on_format}}</p>-->
+                    <p  class="market-timeTop" style="color: #79C27C;margin-top:2px">{{growthList.actual_start_on | date:'yyyy-MM-dd'}}-{{growthList.actual_end_on | date:'yyyy-MM-dd'}}</p>
+                    <div class="market-time-content">
+                        <div class="market-time-img">
+                            <p>
+                                作业项目：{{growthList.work_item_name}}<br/>
+                                使用物资：{{growthList.material_name}}
+                            </p>
+                            <div class="picture">
+                                <img ng-repeat="temp in growthList.imageUrls" ng-click="openModal(growthList.index, $index)"
+                                     ng-if="$index < 6" ng-src="{{handlePath(temp,false)}}" style="width:30%;height:80px;"/>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            <ion-infinite-scroll ng-if="data.moredata" on-infinite="moreLoad()" distance="3%" ></ion-infinite-scroll>
+        </div>
+
+        <!--推荐商品-->
+        <div ng-show="data.currState==2" style="background-color: #fff;width: 100%;margin: 0 auto">
+            <div style="padding: 10px 0;width: 95%;margin:0 auto;overflow: hidden">
+                <div class="tribe-box" ng-repeat="commendGood in data.commendGoods[0].cropCommoditylist" style="background: #fff;border:1px solid #ddd;width:47%;padding:10px;margin-top: 10px;" ng-click="marketInfo(commendGood.commodity_id,commendGood.shop_id)" >
+                    <img ng-src="{{handlePath(commendGood.image_path,commendGood.image_file,false)}}" style="height: 100px" />
+                    <p style="font-size: 14px;color:#000; width:120px;overflow:hidden;white-space:nowrap;text-overflow:ellipsis;" ng-if="!commendGood.commodity_name">【{{commendGood.crop_kind}}】{{commendGood.crop_name}}</p>
+                    <p style="font-size: 14px;color:#000; width:120px;overflow:hidden;white-space:nowrap;text-overflow:ellipsis;" ng-if="commendGood.commodity_name">{{commendGood.commodity_name}}</p>
+                    <p style="color: #FF5912;font-size: 14px;padding: 0px 5px;margin: 0" ng-if="!commendGood.commodity_unit">{{commendGood.price}}元/斤</p>
+                    <p style="color: #FF5912;font-size: 14px;padding: 0px 5px;margin: 0" ng-if="commendGood.commodity_unit">{{commendGood.price}}元/{{commendGood.commodity_unit}}</p>
+                </div>
+            </div>
+        </div>
+    </ion-content>
+</ion-view>

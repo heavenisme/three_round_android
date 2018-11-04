@@ -1,0 +1,25 @@
+<!--商品详情-->
+<div class="bar bar-header bar-anywide">
+    <button class="button button-clear ion-chevron-left button-anywide" ng-click="gotoHome()">&nbsp;&nbsp;&nbsp;&nbsp;</button>
+    <h1 class="title">商品详情</h1>
+</div>
+<ion-view hide-nav-bar="true" view-title="商品详情">
+    <ion-content class="has-header shelfManagement" style="background: #F2F2F2">
+        <div class="productDetai-main" ng-init="getProductDetail()">
+            <div class="productDetai-title">
+                <label>商品名称</label>
+                <input type="text" ng-model="params.commodity_name" maxlength="15">
+            </div>
+            <div class="productDetai-font">
+                <label>商品详情</label>
+                <textarea contenteditable="true" ng-model="params.description" style="width: 100%;min-height: 200px;padding:10px;"></textarea>
+            </div>
+        </div>
+    </ion-content>
+    <ion-footer-bar  class="bar-balanced">
+        <h1 class="title" ng-click="goToProductManagement()">保存</h1>
+    </ion-footer-bar>
+</ion-view>
+
+
+

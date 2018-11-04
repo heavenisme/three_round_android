@@ -1,0 +1,46 @@
+<ion-view title="微信支付">
+
+	<ion-content padding="true" class="has-header">
+
+		<div class="row">
+			<div>
+				<img src="img/weChat_56x56.png"></div>
+			<div>
+				<h2>&nbsp;&nbsp;&nbsp;微信支付</h2>
+			</div>
+		</div>
+		<div class="list" >
+			<label class="item item-input">
+				<input type="text" placeholder="请输入充值金额" value="{{data.money}}" ng-model="data.money"></label>
+		</div>
+
+		<div class="row">
+
+			<div class="col" >
+				<button class="button button-balanced button-outline" ng-click="selectMoney('200')">
+					<div class="item-content">200元</div>
+				</button>
+			</div>
+
+			<div class="col">
+				<button class="button button-balanced button-outline" ng-click="selectMoney('400')">
+					<div class="item-content">400元</div>
+				</button>
+			</div>
+
+			<div class="col">
+				<button class="button button-balanced button-outline" ng-click="selectMoney('800')">
+					<div class="item-content">800元</div>
+				</button>
+			</div>
+
+			<div class="col">
+				<button class="button button-balanced button-outline" ng-click="selectMoney('1000')">
+					<div class="item-content">1000元</div>
+				</button>
+			</div>
+
+		</div>
+		<button class="button button-full button-positive" ng-disabled="isDisabled" ng-click="pay()" type="number" style="background-color:#66BB6A;border:1px solid #66BB6A">确定</button>
+	</ion-content>
+</ion-view>
