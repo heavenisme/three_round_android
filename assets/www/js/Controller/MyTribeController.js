@@ -171,6 +171,52 @@ angular.module('starter.MyTribeController', [])
                     });
                 });
         };
-})
 
-;
+
+        // 托管或取消托管 wuyabuluo
+            // status: 1取消托管 0非托管
+            $scope.trustship = function(houseId,selectLandId, trustshipstatus,index){
+                // 确认对话框
+                var confirmPopup = $ionicPopup.confirm({
+                    title: '<strong>提示</strong>',
+                    template: '是否确认托管?',
+                    okText: '确定',
+                    cancelText: '取消'
+                });
+                confirmPopup.then(function(res) {
+                    if(res) {
+                        console.log('确定');
+                        GreenhouseService.trusteeship(houseId,selectLandId, trustshipstatus)
+                            .success(function(data){
+                                if(data.code == 200){
+                                    var alertPopup = $ionicPopup.alert({
+                                        title: '提示',
+                                        template: '操作成功',
+                                        buttons: [{text: '知道了'}]
+                                    });
+                                    //$scope.data.selectTransfer = status;
+                                    //console.log("信息1---------》" + JSON.stringify($scope.tribe.myGreenHouseLand[index]));
+                                    $scope.tribe.myGreenHouseLand[index].trusteeship = trustshipstatus;
+                                }
+                                else{
+                                    var alertPopup = $ionicPopup.alert({
+                                        title: '提示',
+                                        template: '' + data.message,
+                                        buttons: [{text: '知道了'}]
+                                    });
+                                }
+                            })
+                            .error(function(state){
+                                var alertPopup = $ionicPopup.alert({
+                                    title: '提示',
+                                    template: '错误码: ' + state,
+                                    buttons: [{text: '知道了'}]
+                                });
+                            });
+                    } else {
+                        console.log('取消');
+                    }
+                });
+
+            };
+});

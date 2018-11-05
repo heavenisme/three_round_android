@@ -88,5 +88,35 @@ angular.module('starter.GreenhouseService', [])
 			}
 			return promise;
 		},
+
+
+		// 托管/取消托管
+                // status: 1托管 0非托管
+                trusteeship : function(houstId, landId, status){
+                    var deferred = $q.defer();
+                    var promise = deferred.promise;
+
+                    $http.post(AC.GREENHOUSE_TRUSTEESHIP() + "/"+ houstId + "/"+ landId + "/" + status)
+                        .success(
+                            function(data, status, headers, config) {
+                                deferred.resolve(data);
+                            }
+                        )
+                        .error(
+                            function(data, status, headers, config) {
+                                deferred.reject(status);
+                            }
+                        );
+
+                    promise.success = function(fn) {
+                        promise.then(fn);
+                        return promise;
+                    }
+                    promise.error = function(fn) {
+                        promise.then(null, fn);
+                        return promise;
+                    }
+                    return promise;
+                },
 	};
 });
