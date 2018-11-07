@@ -15,11 +15,11 @@ var AC = {
 
 
 
-//       _SERVER_IP  : "http://cq.xuduan.tech:45757",
-//       _SERVER_URL : "http://cq.xuduan.tech:45757/anywide-tribe-management/api/v1/app",
+       _SERVER_IP  : "http://cq.xuduan.tech:45757",
+       _SERVER_URL : "http://cq.xuduan.tech:45757/anywide-tribe-management/api/v1/app",
 
-	   _SERVER_IP  : "http://182.92.219.148:8080",
-	   _SERVER_URL : "http://182.92.219.148:8080/anywide-tribe-management/api/v1/app",
+//	   _SERVER_IP  : "http://182.92.219.148:8080",
+//	   _SERVER_URL : "http://182.92.219.148:8080/anywide-tribe-management/api/v1/app",
 
 	getDefaultServerList: function () {
 		return [
@@ -270,6 +270,12 @@ var AC = {
 	GREENHOUSE_RESELL: function () {
 		return this._SERVER_URL + "/landmarket/transfer"; //.../transfer/{landId}/{status}
 	},
+
+    // 大棚托管或取消托管
+    GREENHOUSE_TRUSTEESHIP: function () {
+        return this._SERVER_URL + "/landmarket/trusteeship"; //.../transfer/{landId}/{status}
+    },
+
 	// 获取菜园管理中的各种图
 	GARDEN_GET_IMAGE: function () {
 		return this._SERVER_URL + "/garden/image";
