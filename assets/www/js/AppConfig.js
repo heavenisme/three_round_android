@@ -15,11 +15,11 @@ var AC = {
 
 
 
-       _SERVER_IP  : "http://cq.xuduan.tech:45757",
-       _SERVER_URL : "http://cq.xuduan.tech:45757/anywide-tribe-management/api/v1/app",
+//       _SERVER_IP  : "http://cq.xuduan.tech:45757",
+//       _SERVER_URL : "http://cq.xuduan.tech:45757/anywide-tribe-management/api/v1/app",
 
-//	   _SERVER_IP  : "http://182.92.219.148:8080",
-//	   _SERVER_URL : "http://182.92.219.148:8080/anywide-tribe-management/api/v1/app",
+	   _SERVER_IP  : "http://182.92.219.148:8080",
+	   _SERVER_URL : "http://182.92.219.148:8080/anywide-tribe-management/api/v1/app",
 
 	getDefaultServerList: function () {
 		return [
